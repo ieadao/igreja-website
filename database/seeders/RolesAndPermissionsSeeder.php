@@ -42,26 +42,38 @@ class RolesAndPermissionsSeeder extends Seeder
 
         $matrix = [
             'admin' => array_merge(
+                // Phase 1 — Estrutura
                 $r('Province'),
                 $crud('Region'), $crud('Zone'), $crud('Church'),
                 $r('HomogeneousGroupType'),
                 $crud('ChurchProgram'), $crud('FamilyGroup'),
-                $r('Role')
+                $r('Role'),
+                // Phase 2 — Conteúdo
+                $crud('Event'), $crud('Sermon'), $crud('News'), $crud('Document')
             ),
 
             'province_manager' => array_merge(
+                // Phase 1
                 $r('Province'),
                 $crud('Region'), $crud('Zone'), $crud('Church'),
                 $r('HomogeneousGroupType'),
-                $crud('ChurchProgram'), $crud('FamilyGroup')
+                $crud('ChurchProgram'), $crud('FamilyGroup'),
+                // Phase 2
+                $crud('Event'), $crud('Sermon'), $crud('News'),
+                $r('Document')
             ),
 
             'province_editor' => array_merge(
+                // Phase 1
                 $r('Province'), $r('Region'), $r('Zone'), $r('Church'),
-                $r('HomogeneousGroupType')
+                $r('HomogeneousGroupType'),
+                // Phase 2
+                $cru('Event'), $cru('Sermon'), $cru('News'),
+                $r('Document')
             ),
 
             'region_leader' => array_merge(
+                // Phase 1
                 $r('Province'), $r('Region'),
                 $crud('Zone'), $crud('Church'),
                 $r('HomogeneousGroupType'),
@@ -69,19 +81,24 @@ class RolesAndPermissionsSeeder extends Seeder
             ),
 
             'pastor' => array_merge(
+                // Phase 1
                 $r('Province'), $r('Region'), $r('Zone'), $r('Church'),
                 $r('HomogeneousGroupType'),
                 $crud('ChurchProgram'), $crud('FamilyGroup')
             ),
 
             'missionary' => array_merge(
+                // Phase 1
                 $r('Province'), $r('Region'),
                 $r('HomogeneousGroupType')
             ),
 
             'viewer' => array_merge(
+                // Phase 1
                 $r('Province'), $r('Region'), $r('Zone'), $r('Church'),
-                $r('HomogeneousGroupType')
+                $r('HomogeneousGroupType'),
+                // Phase 2
+                $r('Document')
             ),
         ];
 
