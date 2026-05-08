@@ -38,7 +38,6 @@ class ProvinceForm
                     ->image()
                     ->disk('public')
                     ->directory('provinces/heroes')
-                    ->imageResizeWidth(1920)
                     ->columnSpanFull(),
 
                 TextInput::make('hero_video_url')
