@@ -3,30 +3,97 @@
 namespace Database\Seeders;
 
 use Illuminate\Database\Seeder;
-use Spatie\Permission\Models\Role;
 use Spatie\Permission\Models\Permission;
+use Spatie\Permission\Models\Role;
+use Spatie\Permission\PermissionRegistrar;
 
 class RolesAndPermissionsSeeder extends Seeder
 {
     public function run(): void
     {
-        app()[\Spatie\Permission\PermissionRegistrar::class]->forgetCachedPermissions();
+        app()[PermissionRegistrar::class]->forgetCachedPermissions();
 
-        $roles = [
-            'super_admin',
-            'admin',
-            'province_manager',
-            'province_editor',
-            'region_leader',
-            'pastor',
-            'missionary',
-            'viewer',
-        ];
-
-        foreach ($roles as $role) {
-            Role::firstOrCreate(['name' => $role, 'guard_name' => 'web']);
+        // Ensure all roles exist
+        $roles = ['super_admin', 'admin', 'province_manager', 'province_editor', 'region_leader', 'pastor', 'missionary', 'viewer'];
+        foreach ($roles as $name) {
+            Role::firstOrCreate(['name' => $name, 'guard_name' => 'web']);
         }
 
-        $this->command->info('Roles created: ' . implode(', ', $roles));
+        // Helper: resolve Permission models by name, silently skip missing ones
+        $perms = fn (array $names) => Permission::whereIn('name', $names)->get();
+
+        // Permission sets per resource
+        $r    = fn (string $res) => ["ViewAny:{$res}", "View:{$res}"];
+        $crud = fn (string $res) => ["ViewAny:{$res}", "View:{$res}", "Create:{$res}", "Update:{$res}", "Delete:{$res}", "DeleteAny:{$res}"];
+        $cru  = fn (string $res) => ["ViewAny:{$res}", "View:{$res}", "Create:{$res}", "Update:{$res}"];
+
+        // ── RBAC matrix (Phase 1 resources only; expand each phase) ──────────
+        //
+        // R = view only | CRUD = full | CRU = no delete | — = no access
+        //
+        //               Province  Region  Zone    Church  HGType  Program  FamilyGroup
+        // admin          R        CRUD    CRUD    CRUD    R       CRUD     CRUD
+        // province_mgr   R        CRUD    CRUD    CRUD    R       CRUD     CRUD
+        // province_ed    R        R       R       R       R       —        —
+        // region_leader  R        R       CRUD    CRUD    R       —        CRUD
+        // pastor         R        R       R       R       R       CRUD     CRUD
+        // missionary     R        R       —       —       R       —        —
+        // viewer         R        R       R       R       R       —        —
+
+        $matrix = [
+            'admin' => array_merge(
+                $r('Province'),
+                $crud('Region'), $crud('Zone'), $crud('Church'),
+                $r('HomogeneousGroupType'),
+                $crud('ChurchProgram'), $crud('FamilyGroup'),
+                $r('Role')
+            ),
+
+            'province_manager' => array_merge(
+                $r('Province'),
+                $crud('Region'), $crud('Zone'), $crud('Church'),
+                $r('HomogeneousGroupType'),
+                $crud('ChurchProgram'), $crud('FamilyGroup')
+            ),
+
+            'province_editor' => array_merge(
+                $r('Province'), $r('Region'), $r('Zone'), $r('Church'),
+                $r('HomogeneousGroupType')
+            ),
+
+            'region_leader' => array_merge(
+                $r('Province'), $r('Region'),
+                $crud('Zone'), $crud('Church'),
+                $r('HomogeneousGroupType'),
+                $crud('FamilyGroup')
+            ),
+
+            'pastor' => array_merge(
+                $r('Province'), $r('Region'), $r('Zone'), $r('Church'),
+                $r('HomogeneousGroupType'),
+                $crud('ChurchProgram'), $crud('FamilyGroup')
+            ),
+
+            'missionary' => array_merge(
+                $r('Province'), $r('Region'),
+                $r('HomogeneousGroupType')
+            ),
+
+            'viewer' => array_merge(
+                $r('Province'), $r('Region'), $r('Zone'), $r('Church'),
+                $r('HomogeneousGroupType')
+            ),
+        ];
+
+        foreach ($matrix as $roleName => $permissionNames) {
+            $role = Role::findByName($roleName);
+            $role->syncPermissions($perms($permissionNames));
+            $this->command->info("{$roleName}: " . count($permissionNames) . ' permissions assigned');
+        }
+
+        // super_admin gets everything
+        $superAdmin = Role::findByName('super_admin');
+        $superAdmin->syncPermissions(Permission::all());
+        $this->command->info('super_admin: all ' . Permission::count() . ' permissions');
     }
 }
