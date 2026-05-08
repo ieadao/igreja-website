@@ -3,9 +3,72 @@
 @source '../../vendor/laravel/framework/src/Illuminate/Pagination/resources/views/*.blade.php';
 @source '../../storage/framework/views/*.php';
 @source '../**/*.blade.php';
-@source '../**/*.js';
+@source '../**/*.tsx';
+@source '../**/*.ts';
 
+/* ── Brand design tokens ─────────────────────────────────────────────────── */
 @theme {
-    --font-sans: 'Instrument Sans', ui-sans-serif, system-ui, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji',
-        'Segoe UI Symbol', 'Noto Color Emoji';
+    --font-display: 'Cormorant Garamond', Georgia, serif;
+    --font-sans:    'DM Sans', ui-sans-serif, system-ui, sans-serif;
+
+    --color-brand:      #7B3B2A;
+    --color-brand-dark: #5C2B1C;
+    --color-brand-light:#C4826A;
+    --color-brand-pale: #F5EDE8;
+
+    --color-cream: #FAF7F2;
+
+    --color-ink:        #1A1410;
+    --color-ink-muted:  #5C5048;
+    --color-ink-faint:  #9A9088;
+
+    --color-border:       #E5E3DF;
+    --color-border-strong:#C5C0B8;
+}
+
+/* ── shadcn/ui semantic variables ────────────────────────────────────────── */
+@layer base {
+    :root {
+        --background:         251 248 244;   /* cream */
+        --foreground:         26 20 16;      /* ink */
+        --card:               255 255 255;
+        --card-foreground:    26 20 16;
+        --popover:            255 255 255;
+        --popover-foreground: 26 20 16;
+        --primary:            123 59 42;     /* brand */
+        --primary-foreground: 255 255 255;
+        --secondary:          245 237 232;   /* brand-pale */
+        --secondary-foreground:92 80 72;     /* ink-muted */
+        --muted:              245 237 232;
+        --muted-foreground:   92 80 72;
+        --accent:             245 237 232;
+        --accent-foreground:  26 20 16;
+        --destructive:        220 38 38;
+        --destructive-foreground:255 255 255;
+        --border:             229 227 223;
+        --input:              229 227 223;
+        --ring:               123 59 42;
+        --radius:             0.5rem;
+    }
+}
+
+@layer base {
+    * {
+        @apply border-border;
+    }
+
+    html {
+        scroll-behavior: smooth;
+    }
+
+    body {
+        background-color: theme(colors.cream);
+        color: theme(colors.ink);
+        font-family: var(--font-sans);
+        @apply antialiased;
+    }
+
+    h1, h2, h3, h4 {
+        font-family: var(--font-display);
+    }
 }
