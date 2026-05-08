@@ -9,21 +9,22 @@ class HomogeneousGroupTypeSeeder extends Seeder
 {
     public function run(): void
     {
+        // Limpar tipos anteriores (só correr uma vez em fresh install)
+        HomogeneousGroupType::truncate();
+
         $types = [
-            ['name' => 'Culto Principal',       'slug' => 'culto-principal',       'icon' => 'heroicon-o-building-library', 'order' => 1],
-            ['name' => 'Escola Dominical',       'slug' => 'escola-dominical',       'icon' => 'heroicon-o-academic-cap',    'order' => 2],
-            ['name' => 'Grupo de Jovens',        'slug' => 'grupo-de-jovens',        'icon' => 'heroicon-o-user-group',      'order' => 3],
-            ['name' => 'Grupo de Mulheres',      'slug' => 'grupo-de-mulheres',      'icon' => 'heroicon-o-users',           'order' => 4],
-            ['name' => 'Grupo de Homens',        'slug' => 'grupo-de-homens',        'icon' => 'heroicon-o-users',           'order' => 5],
-            ['name' => 'Grupo Familiar',         'slug' => 'grupo-familiar',         'icon' => 'heroicon-o-home',            'order' => 6],
-            ['name' => 'Grupo de Oração',        'slug' => 'grupo-de-oracao',        'icon' => 'heroicon-o-hand-raised',     'order' => 7],
-            ['name' => 'Missões',                'slug' => 'missoes',                'icon' => 'heroicon-o-globe-alt',       'order' => 8],
-            ['name' => 'Ministério de Louvor',   'slug' => 'ministerio-de-louvor',   'icon' => 'heroicon-o-musical-note',    'order' => 9],
-            ['name' => 'Grupo de Crianças',      'slug' => 'grupo-de-criancas',      'icon' => 'heroicon-o-face-smile',      'order' => 10],
+            // Programas gerais — para toda a congregação
+            ['name' => 'Geral',                          'slug' => 'geral',                          'icon' => 'heroicon-o-building-library', 'order' => 0],
+
+            // Os 4 Grupos Homogéneos canónicos do MAO
+            ['name' => 'Grupo Homogéneo de Homens',      'slug' => 'grupo-homogeneo-de-homens',      'icon' => 'heroicon-o-user',             'order' => 1],
+            ['name' => 'Grupo Homogéneo de Senhoras',    'slug' => 'grupo-homogeneo-de-senhoras',    'icon' => 'heroicon-o-user-circle',      'order' => 2],
+            ['name' => 'Grupo Homogéneo de Jovens',      'slug' => 'grupo-homogeneo-de-jovens',      'icon' => 'heroicon-o-sparkles',         'order' => 3],
+            ['name' => 'Grupo Homogéneo de Crianças',    'slug' => 'grupo-homogeneo-de-criancas',    'icon' => 'heroicon-o-face-smile',       'order' => 4],
         ];
 
         foreach ($types as $type) {
-            HomogeneousGroupType::firstOrCreate(['slug' => $type['slug']], $type);
+            HomogeneousGroupType::create($type);
         }
     }
 }
