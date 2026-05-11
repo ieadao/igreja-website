@@ -21,6 +21,7 @@ interface Props {
 
 function RegionCard({ region, province }: { region: RegionWithData; province: Province }) {
     const [expanded, setExpanded] = useState(false);
+    const regionHref = `/provincia/${province.slug}/${region.slug}`;
 
     return (
         <div className="bg-white rounded-xl border border-border overflow-hidden">
@@ -50,7 +51,11 @@ function RegionCard({ region, province }: { region: RegionWithData; province: Pr
             {expanded && region.zones.length > 0 && (
                 <div className="border-t border-border divide-y divide-border">
                     {region.zones.map(zone => (
-                        <div key={zone.id} className="px-5 py-3 flex items-center justify-between bg-cream/30">
+                        <Link
+                            key={zone.id}
+                            href={`${regionHref}/${zone.slug}`}
+                            className="px-5 py-3 flex items-center justify-between bg-cream/30 hover:bg-brand-pale transition-colors"
+                        >
                             <div className="flex items-center gap-2">
                                 <MapPin size={14} className="text-brand-light shrink-0" />
                                 <span className="text-sm text-ink">{zone.name}</span>
@@ -58,8 +63,13 @@ function RegionCard({ region, province }: { region: RegionWithData; province: Pr
                             <span className="text-xs text-ink-muted">
                                 {zone.churches_count} igrej{zone.churches_count !== 1 ? 'as' : 'a'}
                             </span>
-                        </div>
+                        </Link>
                     ))}
+                    <div className="px-5 py-3 bg-cream/20">
+                        <Link href={regionHref} className="text-xs font-medium text-brand hover:underline">
+                            Ver todas as zonas em {region.name} →
+                        </Link>
+                    </div>
                 </div>
             )}
 

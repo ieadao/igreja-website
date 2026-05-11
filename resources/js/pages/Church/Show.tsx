@@ -1,0 +1,188 @@
+import { Head, Link } from '@inertiajs/react';
+import { lazy, Suspense } from 'react';
+import { Phone, Mail, MapPin, User, Clock, ChevronRight } from 'lucide-react';
+import ProvinceLayout from '@/layouts/ProvinceLayout';
+import ProgramsByType from '@/components/church/ProgramsByType';
+import { Badge } from '@/components/ui/badge';
+import type { Province, Church } from '@/types';
+import type { MapPin as MapPinType } from '@/components/map/PinMap';
+
+const PinMap = lazy(() => import('@/components/map/PinMap'));
+
+const TYPE_LABELS: Record<string, string> = {
+    church:       'Igreja',
+    congregation: 'Congregação',
+};
+
+const DAYS: Record<string, string> = {
+    monday: 'Segunda', tuesday: 'Terça', wednesday: 'Quarta',
+    thursday: 'Quinta', friday: 'Sexta', saturday: 'Sábado', sunday: 'Domingo',
+};
+
+interface Props {
+    province: Province;
+    church: Church;
+}
+
+export default function ChurchShow({ province, church }: Props) {
+    const base       = `/provincia/${province.slug}`;
+    const regionBase = church.region ? `${base}/${church.region.slug}` : base;
+    const zoneBase   = church.zone ? `${regionBase}/${church.zone.slug}` : regionBase;
+
+    const pin: MapPinType | null =
+        church.lat && church.lng
+            ? { id: church.id, name: church.name, lat: church.lat, lng: church.lng, href: '#' }
+            : null;
+
+    return (
+        <ProvinceLayout province={province}>
+            <Head title={`${church.name} — ${province.name}`} />
+
+            {/* Breadcrumb */}
+            <div className="bg-white border-b border-border">
+                <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 py-3 flex items-center gap-1.5 text-sm text-ink-muted flex-wrap">
+                    <Link href="/" className="hover:text-brand transition-colors">MAO</Link>
+                    <ChevronRight className="w-3.5 h-3.5 shrink-0" />
+                    <Link href={base} className="hover:text-brand transition-colors">{province.name}</Link>
+                    {church.region && (
+                        <>
+                            <ChevronRight className="w-3.5 h-3.5 shrink-0" />
+                            <Link href={regionBase} className="hover:text-brand transition-colors">{church.region.name}</Link>
+                        </>
+                    )}
+                    {church.zone && (
+                        <>
+                            <ChevronRight className="w-3.5 h-3.5 shrink-0" />
+                            <Link href={zoneBase} className="hover:text-brand transition-colors">{church.zone.name}</Link>
+                        </>
+                    )}
+                    <ChevronRight className="w-3.5 h-3.5 shrink-0" />
+                    <span className="text-ink font-medium">{church.name}</span>
+                </div>
+            </div>
+
+            {/* Hero */}
+            <section className="bg-ink text-white">
+                <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 py-14 lg:py-20">
+                    <div className="flex flex-wrap items-center gap-3 mb-4">
+                        <Badge className="bg-brand text-white border-transparent">
+                            {TYPE_LABELS[church.type] ?? church.type}
+                        </Badge>
+                        {church.province && (
+                            <span className="text-white/60 text-sm">{church.province.name}</span>
+                        )}
+                    </div>
+                    <h1 className="font-display text-4xl lg:text-5xl font-bold leading-tight mb-4">
+                        {church.name}
+                    </h1>
+                    <div className="flex flex-wrap gap-6 text-white/75 text-sm">
+                        {church.pastor_name && (
+                            <span className="flex items-center gap-2">
+                                <User className="w-4 h-4" /> {church.pastor_name}
+                            </span>
+                        )}
+                        {church.address && (
+                            <span className="flex items-center gap-2">
+                                <MapPin className="w-4 h-4" /> {church.address}
+                            </span>
+                        )}
+                    </div>
+                </div>
+            </section>
+
+            <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 py-10 lg:py-14 space-y-10">
+
+                {/* Service times */}
+                {church.service_times && church.service_times.length > 0 && (
+                    <section className="bg-white rounded-2xl border border-border shadow-sm p-6">
+                        <h2 className="font-display text-xl font-bold text-ink mb-5 flex items-center gap-2">
+                            <Clock className="w-5 h-5 text-brand" /> Cultos e Horários
+                        </h2>
+                        <div className="divide-y divide-border">
+                            {church.service_times.map((st, i) => (
+                                <div key={i} className="py-3 flex items-center justify-between gap-4">
+                                    <div>
+                                        <p className="font-medium text-ink">{st.label}</p>
+                                        <p className="text-sm text-ink-muted">
+                                            {DAYS[st.day?.toLowerCase()] ?? st.day}
+                                        </p>
+                                    </div>
+                                    <span className="text-brand font-semibold tabular-nums">{st.time}</span>
+                                </div>
+                            ))}
+                        </div>
+                    </section>
+                )}
+
+                {/* Programs by group type */}
+                {church.programs && church.programs.length > 0 && (
+                    <section>
+                        <h2 className="font-display text-2xl font-bold text-ink mb-5">Ministérios e Grupos</h2>
+                        <ProgramsByType programs={church.programs} />
+                    </section>
+                )}
+
+                {/* Contact */}
+                {(church.phone || church.email) && (
+                    <section className="bg-white rounded-2xl border border-border shadow-sm p-6">
+                        <h2 className="font-display text-xl font-bold text-ink mb-5">Contacto</h2>
+                        <div className="space-y-3">
+                            {church.phone && (
+                                <a
+                                    href={`tel:${church.phone}`}
+                                    className="flex items-center gap-3 text-ink-muted hover:text-brand transition-colors"
+                                >
+                                    <Phone className="w-5 h-5 text-brand shrink-0" />
+                                    <span>{church.phone}</span>
+                                </a>
+                            )}
+                            {church.phone && (
+                                <a
+                                    href={`https://wa.me/${church.phone.replace(/\D/g, '')}`}
+                                    target="_blank"
+                                    rel="noopener noreferrer"
+                                    className="flex items-center gap-3 text-ink-muted hover:text-brand transition-colors"
+                                >
+                                    <svg className="w-5 h-5 text-brand shrink-0" viewBox="0 0 24 24" fill="currentColor">
+                                        <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/>
+                                    </svg>
+                                    <span>WhatsApp</span>
+                                </a>
+                            )}
+                            {church.email && (
+                                <a
+                                    href={`mailto:${church.email}`}
+                                    className="flex items-center gap-3 text-ink-muted hover:text-brand transition-colors"
+                                >
+                                    <Mail className="w-5 h-5 text-brand shrink-0" />
+                                    <span>{church.email}</span>
+                                </a>
+                            )}
+                        </div>
+                    </section>
+                )}
+
+                {/* Map */}
+                {pin && (
+                    <section>
+                        <h2 className="font-display text-xl font-bold text-ink mb-4 flex items-center gap-2">
+                            <MapPin className="w-5 h-5 text-brand" /> Como Chegar
+                        </h2>
+                        {church.address && (
+                            <p className="text-ink-muted text-sm mb-4">{church.address}</p>
+                        )}
+                        <div className="rounded-2xl overflow-hidden border border-border shadow-sm" style={{ height: 320 }}>
+                            <Suspense fallback={
+                                <div className="h-full flex items-center justify-center bg-brand-pale animate-pulse">
+                                    <p className="text-sm text-ink-muted">A carregar mapa…</p>
+                                </div>
+                            }>
+                                <PinMap pins={[pin]} zoom={15} />
+                            </Suspense>
+                        </div>
+                    </section>
+                )}
+            </div>
+        </ProvinceLayout>
+    );
+}
