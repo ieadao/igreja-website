@@ -40,8 +40,8 @@ export default function GlobalFooter() {
                         <h4 className="text-white text-xs font-semibold uppercase tracking-widest mb-4">Conteúdo</h4>
                         <ul className="space-y-2.5 text-sm">
                             {[
-                                ['Agenda', '/eventos'],
-                                ['Pregações', '/pregacoes'],
+                                ['Agenda', '/agenda'],
+                                ['Pregações', '/media'],
                                 ['Notícias', '/noticias'],
                                 ['Igrejas', '/igrejas'],
                             ].map(([label, href]) => (

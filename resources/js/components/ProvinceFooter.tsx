@@ -40,7 +40,7 @@ export default function ProvinceFooter({ province }: { province: Province }) {
                         <ul className="space-y-2.5 text-sm">
                             {[
                                 ['Site Nacional',       '/'],
-                                ['Eventos Nacionais',   '/eventos'],
+                                ['Eventos Nacionais',   '/agenda'],
                                 ['Documentos',          '/documentos'],
                                 ['Dar',                 '/dar'],
                             ].map(([label, href]) => (

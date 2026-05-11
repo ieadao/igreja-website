@@ -17,7 +17,7 @@ function EventCard({ event }: { event: Event }) {
 
     return (
         <Link
-            href={`/eventos/${event.slug}`}
+            href={`/agenda/${event.slug}`}
             className="group flex gap-5 p-5 rounded-2xl border border-border bg-white hover:border-brand hover:bg-brand-pale/30 transition-all"
         >
             {/* Date block */}
@@ -71,7 +71,7 @@ export default function NationalEventsSection({ events }: { events: Event[] }) {
                         </h2>
                     </div>
                     <Link
-                        href="/eventos"
+                        href="/agenda"
                         className="shrink-0 text-sm font-semibold text-brand hover:text-brand-dark transition-colors"
                     >
                         Ver agenda completa →
