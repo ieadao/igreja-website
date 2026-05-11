@@ -5,7 +5,6 @@ namespace App\Http\Controllers;
 use App\Models\Church;
 use App\Models\ChurchProgram;
 use App\Models\Event;
-use App\Models\HomogeneousGroupType;
 use App\Models\Missionary;
 use App\Models\News;
 use App\Models\Province;
@@ -138,19 +137,26 @@ class ProvinceController extends Controller
 
     public function ministerios(string $provinceSlug): \Inertia\Response
     {
-        $province   = $this->findProvince($provinceSlug);
-        $groupTypes = HomogeneousGroupType::orderBy('order')->get();
+        $province = $this->findProvince($provinceSlug);
 
-        $programs = ChurchProgram::whereHas('church', fn ($q) => $q->where('province_id', $province->id))
+        $churches = Church::where('province_id', $province->id)
             ->where('status', 'active')
-            ->with(['groupType:id,name,slug,icon,order', 'church:id,name,slug'])
-            ->get()
-            ->groupBy('group_type_id');
+            ->with([
+                'region:id,name,slug',
+                'zone:id,name,slug',
+                'programs' => fn ($q) => $q->where('status', 'active')
+                    ->with('groupType:id,name,slug,icon,order')
+                    ->orderBy('group_type_id')
+                    ->orderBy('name'),
+            ])
+            ->orderBy('name')
+            ->get(['id', 'name', 'slug', 'type', 'address', 'pastor_name', 'province_id', 'region_id', 'zone_id'])
+            ->filter(fn ($c) => $c->programs->isNotEmpty())
+            ->values();
 
         return Inertia::render('Province/Ministerios', [
-            'province'       => $province,
-            'groupTypes'     => $groupTypes,
-            'programsByType' => $programs,
+            'province' => $province,
+            'churches' => $churches,
         ]);
     }
 
