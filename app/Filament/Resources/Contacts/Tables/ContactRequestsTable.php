@@ -15,6 +15,12 @@ class ContactRequestsTable
     {
         return $table
             ->columns([
+                TextColumn::make('province.name')
+                    ->label('Província')
+                    ->sortable()
+                    ->toggleable()
+                    ->hidden(fn () => auth()->user()?->hasRole('province_manager')),
+
                 TextColumn::make('name')
                     ->label('Nome')
                     ->searchable()
@@ -65,6 +71,11 @@ class ContactRequestsTable
             ])
             ->defaultSort('created_at', 'desc')
             ->filters([
+                SelectFilter::make('province_id')
+                    ->label('Província')
+                    ->relationship('province', 'name')
+                    ->hidden(fn () => auth()->user()?->hasRole('province_manager')),
+
                 SelectFilter::make('type')
                     ->label('Tipo')
                     ->options([

@@ -2,6 +2,7 @@
 
 namespace App\Filament\Resources\Contacts\Schemas;
 
+use App\Models\Province;
 use App\Models\User;
 use Filament\Forms\Components\Select;
 use Filament\Forms\Components\Textarea;
@@ -12,9 +13,20 @@ class ContactRequestForm
 {
     public static function configure(Schema $schema): Schema
     {
+        $isProvinceManager = auth()->user()?->hasRole('province_manager');
+
         return $schema
             ->columns(2)
             ->components([
+                Select::make('province_id')
+                    ->label('Província')
+                    ->options(Province::pluck('name', 'id')->all())
+                    ->searchable()
+                    ->nullable()
+                    ->disabled($isProvinceManager)
+                    ->default(fn () => auth()->user()?->province_id)
+                    ->visible(fn () => auth()->user()?->hasAnyRole(['super_admin', 'admin', 'province_manager'])),
+
                 TextInput::make('name')
                     ->label('Nome')
                     ->disabled()

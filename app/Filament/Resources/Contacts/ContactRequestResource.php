@@ -12,6 +12,7 @@ use Filament\Resources\Resource;
 use Filament\Schemas\Schema;
 use Filament\Support\Icons\Heroicon;
 use Filament\Tables\Table;
+use Illuminate\Database\Eloquent\Builder;
 
 class ContactRequestResource extends Resource
 {
@@ -30,6 +31,18 @@ class ContactRequestResource extends Resource
     public static function getNavigationGroup(): string|\UnitEnum|null
     {
         return 'Utilizadores & Comunicação';
+    }
+
+    public static function getEloquentQuery(): Builder
+    {
+        $query = parent::getEloquentQuery();
+        $user  = auth()->user();
+
+        if ($user?->hasRole('province_manager')) {
+            return $query->where('province_id', $user->province_id);
+        }
+
+        return $query;
     }
 
     public static function form(Schema $schema): Schema
