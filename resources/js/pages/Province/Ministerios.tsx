@@ -1,7 +1,7 @@
 import { Head } from '@inertiajs/react';
 import { useState } from 'react';
 import ProvinceLayout from '@/layouts/ProvinceLayout';
-import { Clock, MapPin } from 'lucide-react';
+import { Clock, MapPin, User, Users, Sparkles, Smile, Building2, UserCircle } from 'lucide-react';
 import type { Province, GroupType, ChurchProgram } from '@/types';
 
 interface ChurchProgramWithChurch extends ChurchProgram {
@@ -12,6 +12,20 @@ interface Props {
     province: Province;
     groupTypes: GroupType[];
     programsByType: Record<number, ChurchProgramWithChurch[]>;
+}
+
+const ICON_MAP: Record<string, any> = {
+    'heroicon-o-building-library': Building2,
+    'heroicon-o-user':            User,
+    'heroicon-o-user-circle':     UserCircle,
+    'heroicon-o-sparkles':        Sparkles,
+    'heroicon-o-face-smile':      Smile,
+    'heroicon-o-users':           Users,
+};
+
+function IconRenderer({ icon, className }: { icon: string, className?: string }) {
+    const IconComponent = ICON_MAP[icon] || Building2;
+    return <IconComponent className={className} />;
 }
 
 const FREQUENCY_LABELS: Record<string, string> = {
@@ -103,7 +117,12 @@ export default function Ministerios({ province, groupTypes, programsByType }: Pr
                                                 : 'bg-white border border-border hover:border-brand/30 hover:bg-brand-pale/30'
                                         }`}
                                     >
-                                        <div className="text-3xl mb-2">{gt.icon}</div>
+                                        <div className="flex justify-center mb-2">
+                                            <IconRenderer 
+                                                icon={gt.icon} 
+                                                className={`w-8 h-8 ${isActive ? 'text-white' : 'text-brand'}`} 
+                                            />
+                                        </div>
                                         <p className={`font-semibold text-sm ${isActive ? 'text-white' : 'text-ink'}`}>
                                             {gt.name}
                                         </p>

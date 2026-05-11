@@ -8,9 +8,9 @@ import type { SharedProps } from '@/types';
 
 const NAV_LINKS = [
     { label: 'Sobre',      href: '/sobre' },
-    { label: 'Igrejas',    href: '/igrejas' },
-    { label: 'Agenda',     href: '/eventos' },
-    { label: 'Pregações',  href: '/pregacoes' },
+    { label: 'Agenda',     href: '/agenda' },
+    { label: 'Média',      href: '/media' },
+    { label: 'Missões',    href: '/missoes' },
     { label: 'Notícias',   href: '/noticias' },
     { label: 'Dar',        href: '/dar' },
 ];

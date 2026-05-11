@@ -1,29 +1,66 @@
 <?php
 
+use App\Http\Controllers\ChurchController;
+use App\Http\Controllers\ContactController;
+use App\Http\Controllers\DonationController;
+use App\Http\Controllers\EventController;
+use App\Http\Controllers\EventRegistrationController;
+use App\Http\Controllers\GlobalController;
+use App\Http\Controllers\PartnershipController;
 use App\Http\Controllers\ProvinceController;
+use App\Http\Controllers\RegionController;
+use App\Http\Controllers\SermonController;
+use App\Http\Controllers\ZoneController;
 use Inertia\Inertia;
 use Illuminate\Support\Facades\Route;
 
 // ── National pages ────────────────────────────────────────────────────────────
-Route::get('/', fn () => Inertia::render('Home'))->name('home');
+Route::get('/', [GlobalController::class, 'index'])->name('home');
 
-Route::get('/sobre',      fn () => Inertia::render('About'))->name('about');
+// Churches map data (JSON)
+Route::get('/api/churches', function () {
+    return \App\Models\Church::where('status', 'active')
+        ->whereNotNull('lat')
+        ->whereNotNull('lng')
+        ->with('province:id,name,slug')
+        ->get(['id', 'name', 'slug', 'lat', 'lng', 'province_id'])
+        ->map(fn ($c) => [
+            'id'       => $c->id,
+            'name'     => $c->name,
+            'slug'     => $c->slug,
+            'lat'      => (float) $c->lat,
+            'lng'      => (float) $c->lng,
+            'province' => $c->province ? ['name' => $c->province->name, 'slug' => $c->province->slug] : null,
+        ]);
+})->name('api.churches');
+
+Route::get('/sobre',               [GlobalController::class, 'quemSomos'])->name('about');
+Route::get('/social',              [GlobalController::class, 'social'])->name('social');
+Route::get('/missoes',             [GlobalController::class, 'missoes'])->name('missions');
+Route::get('/dar',                 [GlobalController::class, 'apoiar'])->name('give');
+Route::get('/contacto',            [GlobalController::class, 'contacto'])->name('contact');
+Route::post('/contacto',           [ContactController::class, 'store'])->name('contact.store');
+Route::post('/parcerias',          [PartnershipController::class, 'store'])->name('partnership.store');
+Route::post('/apoios',             [DonationController::class, 'store'])->name('donation.store');
+
 Route::get('/igrejas',    fn () => Inertia::render('Churches'))->name('churches');
-Route::get('/eventos',    fn () => Inertia::render('Events'))->name('events');
-Route::get('/pregacoes',  fn () => Inertia::render('Sermons'))->name('sermons');
 Route::get('/noticias',   fn () => Inertia::render('News'))->name('news');
 Route::get('/documentos', fn () => Inertia::render('Documents'))->name('documents');
-Route::get('/dar',        fn () => Inertia::render('Give'))->name('give');
-Route::get('/missoes',    fn () => Inertia::render('Missions'))->name('missions');
 Route::get('/oracao',     fn () => Inertia::render('Prayer'))->name('prayer');
-Route::get('/contacto',   fn () => Inertia::render('Contact'))->name('contact');
 Route::get('/privacidade',fn () => Inertia::render('Privacy'))->name('privacy');
 Route::get('/termos',     fn () => Inertia::render('Terms'))->name('terms');
 
-// Detail pages
-Route::get('/eventos/{slug}',   fn (string $slug) => Inertia::render('EventDetail',   ['slug' => $slug]))->name('events.show');
-Route::get('/pregacoes/{id}',   fn (int $id)       => Inertia::render('SermonDetail',  ['id' => $id]))->name('sermons.show');
-Route::get('/noticias/{slug}',  fn (string $slug) => Inertia::render('NewsDetail',    ['slug' => $slug]))->name('news.show');
+// Media (Sermons)
+Route::get('/media',          [SermonController::class, 'index'])->name('media');
+Route::get('/media/{id}',     [SermonController::class, 'show'])->name('sermon.show')->whereNumber('id');
+
+// Agenda (Events)
+Route::get('/agenda',         [EventController::class, 'index'])->name('agenda');
+Route::get('/agenda/{slug}',  [EventController::class, 'show'])->name('event.show');
+Route::post('/agenda/{slug}/registar', [EventRegistrationController::class, 'store'])->name('event.register');
+
+// News detail
+Route::get('/noticias/{slug}', fn (string $slug) => Inertia::render('NewsDetail', ['slug' => $slug]))->name('news.show');
 
 // ── Province sub-sites ────────────────────────────────────────────────────────
 Route::prefix('/provincia/{provinceSlug}')
@@ -41,4 +78,9 @@ Route::prefix('/provincia/{provinceSlug}')
         Route::get('/igrejas',       fn (string $provinceSlug) => Inertia::render('Province/Churches', ['province' => \App\Models\Province::where('slug', $provinceSlug)->firstOrFail()]))->name('province.churches');
         Route::get('/pregacoes',     fn (string $provinceSlug) => Inertia::render('Province/Sermons',  ['province' => \App\Models\Province::where('slug', $provinceSlug)->firstOrFail()]))->name('province.sermons');
         Route::get('/contacto',      fn (string $provinceSlug) => Inertia::render('Province/Contact',  ['province' => \App\Models\Province::where('slug', $provinceSlug)->firstOrFail()]))->name('province.contact');
+
+        // Location hierarchy — wildcard routes must come last
+        Route::get('/{regionSlug}',                               [RegionController::class, 'show'])->name('region.show');
+        Route::get('/{regionSlug}/{zoneSlug}',                    [ZoneController::class,   'show'])->name('zone.show');
+        Route::get('/{regionSlug}/{zoneSlug}/{churchSlug}',       [ChurchController::class, 'show'])->name('church.show');
     });

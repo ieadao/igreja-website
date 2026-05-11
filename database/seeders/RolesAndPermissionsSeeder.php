@@ -19,11 +19,16 @@ class RolesAndPermissionsSeeder extends Seeder
             Role::firstOrCreate(['name' => $name, 'guard_name' => 'web']);
         }
 
-        // Ensure Phase 4 permissions exist (User, ContactRequest, PartnershipRequest)
-        $phase4Resources = ['User', 'ContactRequest', 'PartnershipRequest'];
+        // Ensure all permissions exist for all resources in the matrix
+        $resources = [
+            'Province', 'Region', 'Zone', 'Church', 'HomogeneousGroupType', 'ChurchProgram', 'FamilyGroup', 'Role',
+            'Event', 'Sermon', 'News', 'Document',
+            'Missionary', 'MissionReport', 'SocialProject',
+            'User', 'ContactRequest', 'PartnershipRequest'
+        ];
         $actions = ['ViewAny', 'View', 'Create', 'Update', 'Delete', 'DeleteAny',
                     'ForceDelete', 'ForceDeleteAny', 'Reorder', 'Replicate', 'Restore', 'RestoreAny'];
-        foreach ($phase4Resources as $resource) {
+        foreach ($resources as $resource) {
             foreach ($actions as $action) {
                 Permission::firstOrCreate(['name' => "{$action}:{$resource}", 'guard_name' => 'web']);
             }
