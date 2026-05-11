@@ -53,6 +53,8 @@ export interface ChurchProgram {
     location: string | null;
     description: string | null;
     status: 'active' | 'inactive' | 'suspended';
+    cancelled_from: string | null;
+    cancelled_until: string | null;
 }
 
 export interface Church {

@@ -4,6 +4,8 @@ namespace App\Filament\Resources\ChurchPrograms\Schemas;
 
 use App\Models\Church;
 use App\Models\HomogeneousGroupType;
+use Filament\Forms\Components\DatePicker;
+use Filament\Forms\Components\Section;
 use Filament\Forms\Components\Select;
 use Filament\Forms\Components\Textarea;
 use Filament\Forms\Components\TextInput;
@@ -56,7 +58,7 @@ class ChurchProgramForm
                     ->seconds(false),
 
                 Select::make('frequency')
-                    ->label('Frequência')
+                    ->label('Frequência / Periodicidade')
                     ->options([
                         'weekly'     => 'Semanal',
                         'biweekly'   => 'Quinzenal',
@@ -79,6 +81,26 @@ class ChurchProgramForm
                     ->options(['active' => 'Ativo', 'inactive' => 'Inativo', 'suspended' => 'Suspenso'])
                     ->required()
                     ->default('active'),
+
+                Section::make('Período de Suspensão Temporária')
+                    ->description('Defina um intervalo de datas em que este programa não irá aparecer publicamente (ex: férias, obras, etc.). Deixe em branco se o programa estiver activo.')
+                    ->collapsed()
+                    ->schema([
+                        DatePicker::make('cancelled_from')
+                            ->label('Suspenso a partir de')
+                            ->native(false)
+                            ->displayFormat('d/m/Y')
+                            ->closeOnDateSelection(),
+
+                        DatePicker::make('cancelled_until')
+                            ->label('Suspenso até')
+                            ->native(false)
+                            ->displayFormat('d/m/Y')
+                            ->closeOnDateSelection()
+                            ->afterOrEqual('cancelled_from'),
+                    ])
+                    ->columns(2)
+                    ->columnSpanFull(),
             ]);
     }
 }
