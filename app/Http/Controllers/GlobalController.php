@@ -114,4 +114,14 @@ class GlobalController extends Controller
     {
         return Inertia::render('Contact');
     }
+
+    public function churches(): \Inertia\Response
+    {
+        $churches = Church::where('status', 'active')
+            ->with(['province:id,name,slug', 'region:id,name,slug', 'zone:id,name,slug'])
+            ->orderBy('name')
+            ->get(['id', 'name', 'slug', 'type', 'address', 'lat', 'lng', 'pastor_name', 'phone', 'service_times', 'status', 'province_id', 'region_id', 'zone_id']);
+
+        return Inertia::render('Churches', ['churches' => $churches]);
+    }
 }

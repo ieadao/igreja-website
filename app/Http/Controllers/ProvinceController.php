@@ -2,12 +2,14 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Church;
 use App\Models\ChurchProgram;
 use App\Models\Event;
 use App\Models\HomogeneousGroupType;
 use App\Models\Missionary;
 use App\Models\News;
 use App\Models\Province;
+use App\Models\Sermon;
 use Illuminate\Http\Request;
 use Inertia\Inertia;
 
@@ -155,6 +157,44 @@ class ProvinceController extends Controller
     public function dar(string $provinceSlug): \Inertia\Response
     {
         return Inertia::render('Province/Dar', [
+            'province' => $this->findProvince($provinceSlug),
+        ]);
+    }
+
+    public function igrejas(string $provinceSlug): \Inertia\Response
+    {
+        $province = $this->findProvince($provinceSlug);
+        $churches = Church::where('province_id', $province->id)
+            ->where('status', 'active')
+            ->with(['region:id,name,slug', 'zone:id,name,slug'])
+            ->orderBy('name')
+            ->get(['id', 'name', 'slug', 'type', 'address', 'lat', 'lng', 'pastor_name', 'phone', 'email', 'service_times', 'status', 'province_id', 'region_id', 'zone_id']);
+
+        return Inertia::render('Province/Churches', [
+            'province' => $province,
+            'churches' => $churches,
+        ]);
+    }
+
+    public function pregacoes(string $provinceSlug): \Inertia\Response
+    {
+        $province = $this->findProvince($provinceSlug);
+        $sermons  = Sermon::where('scope_type', 'province')
+            ->where('scope_id', $province->id)
+            ->where('status', 'published')
+            ->orderByDesc('preached_at')
+            ->limit(8)
+            ->get();
+
+        return Inertia::render('Province/Sermons', [
+            'province' => $province,
+            'sermons'  => $sermons,
+        ]);
+    }
+
+    public function contacto(string $provinceSlug): \Inertia\Response
+    {
+        return Inertia::render('Province/Contact', [
             'province' => $this->findProvince($provinceSlug),
         ]);
     }
