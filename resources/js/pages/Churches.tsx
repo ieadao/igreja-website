@@ -1,14 +1,16 @@
-import { Head, Link } from '@inertiajs/react';
-import { useState, Suspense, lazy } from 'react';
+import { Head, Link, router, usePage } from '@inertiajs/react';
+import { useState } from 'react';
+import { Suspense, lazy } from 'react';
 import GlobalLayout from '@/layouts/GlobalLayout';
 import { Badge } from '@/components/ui/badge';
 import { MapPin, Clock, User, Search } from 'lucide-react';
-import type { Church } from '@/types';
+import type { Church, SharedProps } from '@/types';
 
 const PinMap = lazy(() => import('@/components/map/PinMap'));
 
 interface Props {
     churches: Church[];
+    filters: { province?: string };
 }
 
 const TYPE_LABEL: Record<string, string> = {
@@ -16,8 +18,18 @@ const TYPE_LABEL: Record<string, string> = {
     congregation: 'Congregação',
 };
 
-export default function Churches({ churches }: Props) {
-    const [search, setSearch] = useState('');
+export default function Churches({ churches, filters = {} }: Props) {
+    const { provinces } = usePage<SharedProps>().props;
+    const [search, setSearch]       = useState('');
+    const [province, setProvince]   = useState(filters.province ?? '');
+
+    function applyProvince(slug: string) {
+        setProvince(slug);
+        setSearch('');
+        const params: Record<string, string> = {};
+        if (slug) params.province = slug;
+        router.get('/igrejas', params, { preserveState: true, preserveScroll: false });
+    }
 
     const pins = churches
         .filter(c => c.lat && c.lng)
@@ -33,8 +45,8 @@ export default function Churches({ churches }: Props) {
     const filtered = search
         ? churches.filter(c =>
               c.name.toLowerCase().includes(search.toLowerCase()) ||
-              c.province?.name.toLowerCase().includes(search.toLowerCase()) ||
-              c.address?.toLowerCase().includes(search.toLowerCase()),
+              c.address?.toLowerCase().includes(search.toLowerCase()) ||
+              c.zone?.name.toLowerCase().includes(search.toLowerCase()),
           )
         : churches;
 
@@ -48,7 +60,7 @@ export default function Churches({ churches }: Props) {
                     <p className="text-brand-light text-xs font-semibold uppercase tracking-widest mb-3">Localizações</p>
                     <h1 className="font-display text-4xl lg:text-5xl font-bold">Nossas Igrejas</h1>
                     <p className="text-white/65 mt-3 max-w-2xl text-lg">
-                        {churches.length} igrejas e congregações em todo o território nacional.
+                        {churches.length} igrej{churches.length !== 1 ? 'as' : 'a'} e congregaçõe{churches.length !== 1 ? 's' : ''} em todo o território nacional.
                     </p>
                 </div>
             </section>
@@ -62,20 +74,51 @@ export default function Churches({ churches }: Props) {
                 </div>
             )}
 
-            {/* Search + list */}
-            <div className="bg-cream min-h-[60vh]">
-                <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-10">
-                    <div className="mb-6 relative max-w-md">
-                        <Search size={16} className="absolute left-3 top-1/2 -translate-y-1/2 text-ink-muted" />
+            {/* Filter bar */}
+            <div className="bg-white border-b border-border sticky top-16 lg:top-20 z-20">
+                <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-3 flex flex-wrap items-center gap-3">
+                    {/* Province dropdown — server-side filter */}
+                    <select
+                        value={province}
+                        onChange={e => applyProvince(e.target.value)}
+                        className="h-9 rounded-md border border-input bg-background px-3 py-1 text-sm focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring"
+                    >
+                        <option value="">Todas as províncias</option>
+                        {provinces.map(p => (
+                            <option key={p.id} value={p.slug}>{p.name}</option>
+                        ))}
+                    </select>
+
+                    {/* Search — client-side on already-filtered list */}
+                    <div className="relative">
+                        <Search size={14} className="absolute left-3 top-1/2 -translate-y-1/2 text-ink-muted" />
                         <input
                             type="search"
                             value={search}
                             onChange={e => setSearch(e.target.value)}
-                            placeholder="Pesquisar por nome, província ou localização…"
-                            className="w-full pl-9 pr-4 h-10 rounded-md border border-input bg-white text-sm focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring"
+                            placeholder="Pesquisar…"
+                            className="pl-8 pr-3 h-9 rounded-md border border-input bg-background text-sm focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring w-48 sm:w-64"
                         />
                     </div>
 
+                    {(province || search) && (
+                        <button
+                            onClick={() => { applyProvince(''); setSearch(''); }}
+                            className="text-sm text-ink-muted hover:text-brand underline underline-offset-2"
+                        >
+                            Limpar filtros
+                        </button>
+                    )}
+
+                    <span className="ml-auto text-sm text-ink-muted">
+                        {filtered.length} igrej{filtered.length !== 1 ? 'as' : 'a'}
+                    </span>
+                </div>
+            </div>
+
+            {/* List */}
+            <div className="bg-cream min-h-[60vh]">
+                <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-10">
                     {filtered.length === 0 ? (
                         <div className="text-center py-24 text-ink-muted">
                             <MapPin size={40} className="mx-auto mb-4 text-brand-light" />
@@ -134,12 +177,6 @@ export default function Churches({ churches }: Props) {
                                 );
                             })}
                         </div>
-                    )}
-
-                    {search && (
-                        <p className="mt-6 text-sm text-ink-muted text-center">
-                            {filtered.length} resultado{filtered.length !== 1 ? 's' : ''} para "{search}"
-                        </p>
                     )}
                 </div>
             </div>

@@ -115,13 +115,21 @@ class GlobalController extends Controller
         return Inertia::render('Contact');
     }
 
-    public function churches(): \Inertia\Response
+    public function churches(\Illuminate\Http\Request $request): \Inertia\Response
     {
+        $province = $request->filled('province')
+            ? Province::where('slug', $request->province)->first()
+            : null;
+
         $churches = Church::where('status', 'active')
+            ->when($province, fn ($q) => $q->where('province_id', $province->id))
             ->with(['province:id,name,slug', 'region:id,name,slug', 'zone:id,name,slug'])
             ->orderBy('name')
             ->get(['id', 'name', 'slug', 'type', 'address', 'lat', 'lng', 'pastor_name', 'phone', 'service_times', 'status', 'province_id', 'region_id', 'zone_id']);
 
-        return Inertia::render('Churches', ['churches' => $churches]);
+        return Inertia::render('Churches', [
+            'churches' => $churches,
+            'filters'  => ['province' => $request->province ?? ''],
+        ]);
     }
 }
