@@ -19,7 +19,17 @@ class RolesAndPermissionsSeeder extends Seeder
             Role::firstOrCreate(['name' => $name, 'guard_name' => 'web']);
         }
 
-        // Helper: resolve Permission models by name, silently skip missing ones
+        // Ensure Phase 4 permissions exist (User, ContactRequest, PartnershipRequest)
+        $phase4Resources = ['User', 'ContactRequest', 'PartnershipRequest'];
+        $actions = ['ViewAny', 'View', 'Create', 'Update', 'Delete', 'DeleteAny',
+                    'ForceDelete', 'ForceDeleteAny', 'Reorder', 'Replicate', 'Restore', 'RestoreAny'];
+        foreach ($phase4Resources as $resource) {
+            foreach ($actions as $action) {
+                Permission::firstOrCreate(['name' => "{$action}:{$resource}", 'guard_name' => 'web']);
+            }
+        }
+
+        // Helper: resolve Permission models by name
         $perms = fn (array $names) => Permission::whereIn('name', $names)->get();
 
         // Permission sets per resource
@@ -27,18 +37,18 @@ class RolesAndPermissionsSeeder extends Seeder
         $crud = fn (string $res) => ["ViewAny:{$res}", "View:{$res}", "Create:{$res}", "Update:{$res}", "Delete:{$res}", "DeleteAny:{$res}"];
         $cru  = fn (string $res) => ["ViewAny:{$res}", "View:{$res}", "Create:{$res}", "Update:{$res}"];
 
-        // ── RBAC matrix (Phase 1 resources only; expand each phase) ──────────
+        // ── RBAC matrix (Phases 1–4) ─────────────────────────────────────────
         //
-        // R = view only | CRUD = full | CRU = no delete | — = no access
+        // R = view only | CRUD = full | CRU = no delete | RU = no create/delete | — = no access
         //
-        //               Province  Region  Zone    Church  HGType  Program  FamilyGroup
-        // admin          R        CRUD    CRUD    CRUD    R       CRUD     CRUD
-        // province_mgr   R        CRUD    CRUD    CRUD    R       CRUD     CRUD
-        // province_ed    R        R       R       R       R       —        —
-        // region_leader  R        R       CRUD    CRUD    R       —        CRUD
-        // pastor         R        R       R       R       R       CRUD     CRUD
-        // missionary     R        R       —       —       R       —        —
-        // viewer         R        R       R       R       R       —        —
+        //               Province  Region  Zone    Church  HGType  Program  FamilyGroup  Event  Sermon  News  Doc  Missionary  MissionReport  SocialProject  User   Contact  Partnership
+        // admin          R        CRUD    CRUD    CRUD    R       CRUD     CRUD         CRUD   CRUD    CRUD  CRUD  CRUD        CRUD           CRUD           CRUD   CRUD     CRUD
+        // province_mgr   R        CRUD    CRUD    CRUD    R       CRUD     CRUD         CRUD   CRUD    CRUD  R     CRUD        CRUD           CRUD           CRU    CRUD     R
+        // province_ed    R        R       R       R       R       —        —            CRU    CRU     CRU   R     —           —              —              —      —        —
+        // region_leader  R        R       CRUD    CRUD    R       —        CRUD         —      —       —     —     —           —              —              —      —        —
+        // pastor         R        R       R       R       R       CRUD     CRUD         —      —       —     —     —           —              —              —      —        —
+        // missionary     R        R       —       —       R       —        —            —      —       —     —     RU(own)     CRU(own)       —              —      —        —
+        // viewer         R        R       R       R       R       —        —            —      —       —     R     —           —              —              —      —        —
 
         $matrix = [
             'admin' => array_merge(
@@ -49,7 +59,11 @@ class RolesAndPermissionsSeeder extends Seeder
                 $crud('ChurchProgram'), $crud('FamilyGroup'),
                 $r('Role'),
                 // Phase 2 — Conteúdo
-                $crud('Event'), $crud('Sermon'), $crud('News'), $crud('Document')
+                $crud('Event'), $crud('Sermon'), $crud('News'), $crud('Document'),
+                // Phase 3 — Missões & Social
+                $crud('Missionary'), $crud('MissionReport'), $crud('SocialProject'),
+                // Phase 4 — Utilizadores & Comunicação
+                $crud('User'), $crud('ContactRequest'), $crud('PartnershipRequest')
             ),
 
             'province_manager' => array_merge(
@@ -60,7 +74,11 @@ class RolesAndPermissionsSeeder extends Seeder
                 $crud('ChurchProgram'), $crud('FamilyGroup'),
                 // Phase 2
                 $crud('Event'), $crud('Sermon'), $crud('News'),
-                $r('Document')
+                $r('Document'),
+                // Phase 3
+                $crud('Missionary'), $crud('MissionReport'), $crud('SocialProject'),
+                // Phase 4
+                $cru('User'), $crud('ContactRequest'), $r('PartnershipRequest')
             ),
 
             'province_editor' => array_merge(
@@ -90,7 +108,10 @@ class RolesAndPermissionsSeeder extends Seeder
             'missionary' => array_merge(
                 // Phase 1
                 $r('Province'), $r('Region'),
-                $r('HomogeneousGroupType')
+                $r('HomogeneousGroupType'),
+                // Phase 3 — RU own profile, CRU own reports
+                ['ViewAny:Missionary', 'View:Missionary', 'Update:Missionary'],
+                $cru('MissionReport')
             ),
 
             'viewer' => array_merge(
