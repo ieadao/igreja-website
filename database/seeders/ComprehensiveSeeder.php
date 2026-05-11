@@ -21,6 +21,21 @@ use Illuminate\Support\Str;
 
 class ComprehensiveSeeder extends Seeder
 {
+    // Provincial capital coordinates [lat, lng]
+    private array $provinceCoords = [
+        'niassa'            => [-13.3167,  35.2333],  // Lichinga
+        'cabo-delgado'      => [-12.9667,  40.5167],  // Pemba
+        'nampula'           => [-15.1164,  39.2833],  // Nampula
+        'zambezia'          => [-17.8792,  36.8881],  // Quelimane
+        'tete'              => [-16.1564,  33.5867],  // Tete
+        'manica'            => [-19.1167,  33.4833],  // Chimoio
+        'sofala'            => [-19.8436,  34.8389],  // Beira
+        'inhambane'         => [-23.8650,  35.3833],  // Inhambane
+        'gaza'              => [-25.0519,  33.6442],  // Xai-Xai
+        'maputo-provincia'  => [-25.9622,  32.4589],  // Matola
+        'maputo-cidade'     => [-25.9692,  32.5732],  // Maputo
+    ];
+
     public function run(): void
     {
         $admin = User::first();
@@ -51,6 +66,7 @@ class ComprehensiveSeeder extends Seeder
 
             // 2. Churches
             $churchName = "MAO " . $province->name . " Sede";
+            [$lat, $lng] = $this->provinceCoords[$province->slug] ?? [null, null];
             $church = Church::firstOrCreate(
                 ['slug' => Str::slug($churchName)],
                 [
@@ -60,6 +76,8 @@ class ComprehensiveSeeder extends Seeder
                     'name'         => $churchName,
                     'type'         => 'church',
                     'address'      => "Av. Principal de " . $province->name,
+                    'lat'          => $lat,
+                    'lng'          => $lng,
                     'pastor_name'  => "Pr. " . fake('pt_PT')->name(),
                     'phone'        => "+258 8" . rand(2, 7) . " " . rand(100, 999) . " " . rand(1000, 9999),
                     'service_times' => [
