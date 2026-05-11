@@ -13,10 +13,6 @@ class HomogeneousGroupTypeSeeder extends Seeder
         HomogeneousGroupType::truncate();
 
         $types = [
-            // Programas gerais — para toda a congregação
-            ['name' => 'Geral',                          'slug' => 'geral',                          'icon' => 'heroicon-o-building-library', 'order' => 0],
-
-            // Os 4 Grupos Homogéneos canónicos do MAO
             ['name' => 'Grupo Homogéneo de Homens',      'slug' => 'grupo-homogeneo-de-homens',      'icon' => 'heroicon-o-user',             'order' => 1],
             ['name' => 'Grupo Homogéneo de Senhoras',    'slug' => 'grupo-homogeneo-de-senhoras',    'icon' => 'heroicon-o-user-circle',      'order' => 2],
             ['name' => 'Grupo Homogéneo de Jovens',      'slug' => 'grupo-homogeneo-de-jovens',      'icon' => 'heroicon-o-sparkles',         'order' => 3],

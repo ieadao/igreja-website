@@ -1,7 +1,7 @@
 import { Head } from '@inertiajs/react';
 import { useState } from 'react';
 import ProvinceLayout from '@/layouts/ProvinceLayout';
-import { Clock, MapPin, User, Users, Sparkles, Smile, Building2, UserCircle } from 'lucide-react';
+import { Clock, MapPin, User, Sparkles, Smile, UserCircle } from 'lucide-react';
 import type { Province, GroupType, ChurchProgram } from '@/types';
 
 interface ChurchProgramWithChurch extends ChurchProgram {
@@ -15,12 +15,10 @@ interface Props {
 }
 
 const ICON_MAP: Record<string, any> = {
-    'heroicon-o-building-library': Building2,
-    'heroicon-o-user':            User,
-    'heroicon-o-user-circle':     UserCircle,
-    'heroicon-o-sparkles':        Sparkles,
-    'heroicon-o-face-smile':      Smile,
-    'heroicon-o-users':           Users,
+    'heroicon-o-user':        User,
+    'heroicon-o-user-circle': UserCircle,
+    'heroicon-o-sparkles':    Sparkles,
+    'heroicon-o-face-smile':  Smile,
 };
 
 function IconRenderer({ icon, className }: { icon: string, className?: string }) {

@@ -1,15 +1,13 @@
 import { Tabs, TabsList, TabsTrigger, TabsContent } from '@/components/ui/tabs';
 import { Badge } from '@/components/ui/badge';
-import { Clock, MapPin, Library, User, UserCircle, Sparkles, Smile, Users, type LucideIcon } from 'lucide-react';
+import { Clock, MapPin, User, UserCircle, Sparkles, Smile, type LucideIcon } from 'lucide-react';
 import type { ChurchProgram, GroupType } from '@/types';
 
 const ICON_MAP: Record<string, LucideIcon> = {
-    'heroicon-o-building-library': Library,
-    'heroicon-o-user':             User,
-    'heroicon-o-user-circle':      UserCircle,
-    'heroicon-o-sparkles':         Sparkles,
-    'heroicon-o-face-smile':       Smile,
-    'heroicon-o-user-group':       Users,
+    'heroicon-o-user':        User,
+    'heroicon-o-user-circle': UserCircle,
+    'heroicon-o-sparkles':    Sparkles,
+    'heroicon-o-face-smile':  Smile,
 };
 
 function GroupIcon({ icon }: { icon?: string | null }) {
