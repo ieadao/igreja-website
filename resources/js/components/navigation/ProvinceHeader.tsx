@@ -6,11 +6,11 @@ import OffCanvas from './OffCanvas';
 import type { Province } from '@/types';
 
 const DESKTOP_LINKS = [
-    { label: 'Eventos',    suffix: '/eventos' },
-    { label: 'Pregações',  suffix: '/pregacoes' },
-    { label: 'Missões',    suffix: '/missoes' },
-    { label: 'Notícias',   suffix: '/noticias' },
-    { label: 'Dar',        suffix: '/contacto' },
+    { label: 'Eventos',      suffix: '/eventos' },
+    { label: 'Ministérios',  suffix: '/ministerios' },
+    { label: 'Missões',      suffix: '/missoes' },
+    { label: 'Notícias',     suffix: '/noticias' },
+    { label: 'Dar',          suffix: '/dar' },
 ];
 
 interface Props {

@@ -37,11 +37,12 @@ const GLOBAL_SECTIONS = [
 
 const PROVINCE_MAIN = [
     { label: 'Início',       suffix: '' },
-    { label: 'Localizações', suffix: '/igrejas' },
+    { label: 'Localizações', suffix: '/localizacoes' },
     { label: 'Eventos',      suffix: '/eventos' },
+    { label: 'Ministérios',  suffix: '/ministerios' },
     { label: 'Missões',      suffix: '/missoes' },
     { label: 'Notícias',     suffix: '/noticias' },
-    { label: 'Dar',          suffix: '/contacto' },
+    { label: 'Dar',          suffix: '/dar' },
 ];
 
 const MINISTERIOS = [
