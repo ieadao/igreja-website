@@ -15,7 +15,7 @@ export default function Privacy() {
             </section>
 
             <div className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
-                <div className="prose prose-lg max-w-none prose-headings:font-display prose-headings:text-ink prose-p:text-ink-muted prose-a:text-brand">
+                <div className="prose prose-lg max-w-none prose-headings:font-display prose-headings:text-ink prose-p:text-ink-muted prose-a:text-brand-text">
                     <h2>1. Responsável pelo Tratamento de Dados</h2>
                     <p>
                         O Ministério Alfa e Ômega (MAO), com sede em Maputo, Moçambique, é o responsável pelo

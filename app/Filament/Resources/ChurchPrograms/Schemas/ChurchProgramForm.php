@@ -5,7 +5,7 @@ namespace App\Filament\Resources\ChurchPrograms\Schemas;
 use App\Models\Church;
 use App\Models\HomogeneousGroupType;
 use Filament\Forms\Components\DatePicker;
-use Filament\Forms\Components\Section;
+use Filament\Schemas\Components\Section;
 use Filament\Forms\Components\Select;
 use Filament\Forms\Components\Textarea;
 use Filament\Forms\Components\TextInput;
@@ -60,10 +60,12 @@ class ChurchProgramForm
                 Select::make('frequency')
                     ->label('Frequência / Periodicidade')
                     ->options([
-                        'weekly'     => 'Semanal',
-                        'biweekly'   => 'Quinzenal',
-                        'monthly'    => 'Mensal',
-                        'occasional' => 'Ocasional',
+                        'weekly'      => 'Semanal',
+                        'biweekly'    => 'Quinzenal',
+                        'monthly'     => 'Mensal',
+                        'quarterly'   => 'Trimestral',
+                        'annual'      => 'Anual',
+                        'occasional'  => 'Ocasional',
                     ])
                     ->required()
                     ->default('weekly'),

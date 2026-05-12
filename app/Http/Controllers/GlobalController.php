@@ -63,6 +63,11 @@ class GlobalController extends Controller
         return Inertia::render('About', compact('leadership', 'documents'));
     }
 
+    public function historia(): \Inertia\Response
+    {
+        return Inertia::render('Historia');
+    }
+
     public function social(): \Inertia\Response
     {
         $projects = SocialProject::where('status', 'active')

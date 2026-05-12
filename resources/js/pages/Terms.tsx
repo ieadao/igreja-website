@@ -15,7 +15,7 @@ export default function Terms() {
             </section>
 
             <div className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
-                <div className="prose prose-lg max-w-none prose-headings:font-display prose-headings:text-ink prose-p:text-ink-muted prose-a:text-brand">
+                <div className="prose prose-lg max-w-none prose-headings:font-display prose-headings:text-ink prose-p:text-ink-muted prose-a:text-brand-text">
                     <h2>1. Aceitação dos Termos</h2>
                     <p>
                         Ao aceder e utilizar o website do Ministério Alfa e Ômega (MAO), concorda em ficar vinculado

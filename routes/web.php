@@ -37,6 +37,7 @@ Route::get('/api/churches', function () {
 })->name('api.churches');
 
 Route::get('/sobre',               [GlobalController::class, 'quemSomos'])->name('about');
+Route::get('/historia',            [GlobalController::class, 'historia'])->name('history');
 Route::get('/social',              [GlobalController::class, 'social'])->name('social');
 Route::get('/missoes',             [GlobalController::class, 'missoes'])->name('missions');
 Route::get('/dar',                 [GlobalController::class, 'apoiar'])->name('give');
