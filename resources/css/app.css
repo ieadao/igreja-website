@@ -11,43 +11,44 @@
     --font-display: 'Cormorant Garamond', Georgia, serif;
     --font-sans:    'DM Sans', ui-sans-serif, system-ui, sans-serif;
 
-    --color-brand:      #7B3B2A;
-    --color-brand-dark: #5C2B1C;
-    --color-brand-light:#C4826A;
-    --color-brand-pale: #F5EDE8;
+    --color-brand:      #FF6700;
+    --color-brand-text: #C2410C;
+    --color-brand-dark: #10143D;
+    --color-brand-light:#FF8C3A;
+    --color-brand-pale: #FFF3EA;
 
-    --color-cream: #FAF7F2;
+    --color-cream: #FAF9F5;
 
-    --color-ink:        #1A1410;
-    --color-ink-muted:  #5C5048;
-    --color-ink-faint:  #9A9088;
+    --color-ink:        #10143D;
+    --color-ink-muted:  #1A1D6B;
+    --color-ink-faint:  #5A5D8B;
 
-    --color-border:       #E5E3DF;
-    --color-border-strong:#C5C0B8;
+    --color-border:       #E4E3EC;
+    --color-border-strong:#C4C2D8;
 }
 
 /* ── shadcn/ui semantic variables ────────────────────────────────────────── */
 @layer base {
     :root {
-        --background:         251 248 244;   /* cream */
-        --foreground:         26 20 16;      /* ink */
+        --background:         250 249 245;   /* cream */
+        --foreground:         16 20 61;      /* ink */
         --card:               255 255 255;
-        --card-foreground:    26 20 16;
+        --card-foreground:    16 20 61;
         --popover:            255 255 255;
-        --popover-foreground: 26 20 16;
-        --primary:            123 59 42;     /* brand */
-        --primary-foreground: 255 255 255;
-        --secondary:          245 237 232;   /* brand-pale */
-        --secondary-foreground:92 80 72;     /* ink-muted */
-        --muted:              245 237 232;
-        --muted-foreground:   92 80 72;
-        --accent:             245 237 232;
-        --accent-foreground:  26 20 16;
+        --popover-foreground: 16 20 61;
+        --primary:            255 103 0;     /* brand orange */
+        --primary-foreground: 16 20 61;      /* ink/navy for contrast */
+        --secondary:          255 243 234;   /* brand-pale */
+        --secondary-foreground:26 29 107;    /* ink-muted navy */
+        --muted:              255 243 234;
+        --muted-foreground:   90 93 139;     /* darkened ink-faint */
+        --accent:             255 243 234;
+        --accent-foreground:  16 20 61;
         --destructive:        220 38 38;
         --destructive-foreground:255 255 255;
-        --border:             229 227 223;
-        --input:              229 227 223;
-        --ring:               123 59 42;
+        --border:             228 227 236;
+        --input:              228 227 236;
+        --ring:               255 103 0;
         --radius:             0.5rem;
     }
 }

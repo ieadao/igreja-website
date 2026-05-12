@@ -64,7 +64,7 @@ export default function DonationForm({ onSuccess }: Props) {
         <form onSubmit={submit} className="space-y-4">
             <div>
                 <label className="block text-sm font-medium text-ink mb-1">
-                    Nome <span className="text-brand">*</span>
+                    Nome <span className="text-brand-text">*</span>
                 </label>
                 <Input
                     value={data.name}
@@ -77,7 +77,7 @@ export default function DonationForm({ onSuccess }: Props) {
 
             <div>
                 <label className="block text-sm font-medium text-ink mb-2">
-                    Tipo <span className="text-brand">*</span>
+                    Tipo <span className="text-brand-text">*</span>
                 </label>
                 <div className="grid grid-cols-2 gap-2">
                     {TYPES.map(t => (
@@ -101,7 +101,7 @@ export default function DonationForm({ onSuccess }: Props) {
 
             <div>
                 <label className="block text-sm font-medium text-ink mb-2">
-                    Valor (MZN) <span className="text-brand">*</span>
+                    Valor (MZN) <span className="text-brand-text">*</span>
                 </label>
                 <div className="flex gap-2 flex-wrap mb-2">
                     {PRESET_AMOUNTS.map(amt => (
@@ -133,7 +133,7 @@ export default function DonationForm({ onSuccess }: Props) {
 
             <div>
                 <label className="block text-sm font-medium text-ink mb-2">
-                    Método de Pagamento <span className="text-brand">*</span>
+                    Método de Pagamento <span className="text-brand-text">*</span>
                 </label>
                 <div className="grid grid-cols-3 gap-2">
                     {METHODS.map(m => (

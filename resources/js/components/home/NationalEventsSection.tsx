@@ -22,7 +22,7 @@ function EventCard({ event }: { event: Event }) {
         >
             {/* Date block */}
             <div className="shrink-0 w-14 text-center">
-                <span className="block font-display text-3xl font-semibold text-brand leading-none">{day}</span>
+                <span className="block font-display text-3xl font-semibold text-brand-text leading-none">{day}</span>
                 <span className="block text-xs font-semibold uppercase tracking-widest text-ink-muted mt-0.5">{month}</span>
             </div>
 
@@ -32,14 +32,14 @@ function EventCard({ event }: { event: Event }) {
             {/* Content */}
             <div className="flex-1 min-w-0">
                 <div className="flex items-center gap-2 mb-1.5">
-                    <span className="text-xs font-semibold uppercase tracking-wide text-brand-light">
+                    <span className="text-xs font-semibold uppercase tracking-wide text-ink-faint">
                         {TYPE_LABELS[event.type] ?? event.type}
                     </span>
                     {event.is_online && (
-                        <span className="text-xs bg-brand-pale text-brand px-2 py-0.5 rounded-full">Online</span>
+                        <span className="text-xs bg-brand-pale text-brand-text px-2 py-0.5 rounded-full">Online</span>
                     )}
                 </div>
-                <h3 className="font-display text-lg font-semibold text-ink group-hover:text-brand transition-colors leading-snug truncate">
+                <h3 className="font-display text-lg font-semibold text-ink group-hover:text-brand-text transition-colors leading-snug truncate">
                     {event.title}
                 </h3>
                 <p className="text-xs text-ink-muted mt-1">
@@ -48,7 +48,7 @@ function EventCard({ event }: { event: Event }) {
             </div>
 
             {/* Arrow */}
-            <div className="shrink-0 self-center text-ink-faint group-hover:text-brand transition-colors">
+            <div className="shrink-0 self-center text-ink-faint group-hover:text-brand-text transition-colors">
                 <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
                 </svg>
@@ -63,7 +63,7 @@ export default function NationalEventsSection({ events }: { events: Event[] }) {
             <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
                 <div className="flex flex-col sm:flex-row sm:items-end justify-between gap-4 mb-10">
                     <div>
-                        <p className="text-xs font-semibold uppercase tracking-widest text-brand mb-3">
+                        <p className="text-xs font-semibold uppercase tracking-widest text-brand-text mb-3">
                             Agenda Nacional
                         </p>
                         <h2 className="font-display text-4xl font-semibold text-ink">
@@ -72,7 +72,7 @@ export default function NationalEventsSection({ events }: { events: Event[] }) {
                     </div>
                     <Link
                         href="/agenda"
-                        className="shrink-0 text-sm font-semibold text-brand hover:text-brand-dark transition-colors"
+                        className="shrink-0 text-sm font-semibold text-brand-text hover:text-brand-dark transition-colors"
                     >
                         Ver agenda completa →
                     </Link>

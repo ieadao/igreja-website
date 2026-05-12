@@ -31,11 +31,11 @@ export default function Missions({ missionaries, stats }: Props) {
                     «Mas recebereis poder quando o Espírito Santo vier sobre vós; e sereis minhas testemunhas
                     em Jerusalém, e em toda a Judéia e Samaria, e até ao fim da terra.»
                 </p>
-                <p className="text-white/40 text-sm">Actos 1:8</p>
+                <p className="text-white/60 text-sm">Actos 1:8</p>
             </section>
 
             {/* Stats */}
-            <section className="bg-[var(--color-brand)] py-14 px-6">
+            <section className="bg-[var(--color-brand-dark)] py-14 px-6">
                 <div className="max-w-3xl mx-auto grid grid-cols-3 gap-6 text-center text-white">
                     <div>
                         <div className="font-display text-5xl font-bold">{stats.missionaries}</div>
@@ -92,7 +92,7 @@ export default function Missions({ missionaries, stats }: Props) {
                                                 className="w-full h-full object-cover"
                                             />
                                         ) : (
-                                            <span className="font-display text-xl text-[var(--color-brand)] font-bold">
+                                            <span className="font-display text-xl text-[var(--color-brand-text)] font-bold">
                                                 {m.full_name.split(' ').map(n => n[0]).slice(0, 2).join('')}
                                             </span>
                                         )}
@@ -101,7 +101,7 @@ export default function Missions({ missionaries, stats }: Props) {
                                         {m.full_name}
                                     </h3>
                                     {m.specialization && (
-                                        <p className="text-xs text-[var(--color-brand)] font-medium mb-1">
+                                        <p className="text-xs text-[var(--color-brand-text)] font-medium mb-1">
                                             {m.specialization}
                                         </p>
                                     )}
@@ -159,7 +159,7 @@ export default function Missions({ missionaries, stats }: Props) {
             </section>
 
             {/* CTA */}
-            <section className="bg-[var(--color-brand)] text-white py-20 px-6 text-center">
+            <section className="bg-[var(--color-brand-dark)] text-white py-20 px-6 text-center">
                 <h2 className="font-display text-4xl font-bold mb-4">Responde ao Chamado</h2>
                 <p className="text-white/70 max-w-xl mx-auto mb-8">
                     Sentes o chamado de Deus para as missões? Estamos à procura de pessoas comprometidas
@@ -168,7 +168,7 @@ export default function Missions({ missionaries, stats }: Props) {
                 <div className="flex flex-wrap gap-4 justify-center">
                     <a
                         href="/contacto"
-                        className="px-8 py-4 bg-white text-[var(--color-brand)] font-bold rounded-lg hover:bg-[var(--color-brand-pale)] transition-colors"
+                        className="px-8 py-4 bg-brand text-brand-dark font-bold rounded-lg hover:bg-brand-light transition-colors"
                     >
                         Torna-te Missionário
                     </a>

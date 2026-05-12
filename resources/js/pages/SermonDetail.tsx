@@ -47,7 +47,7 @@ export default function SermonDetail({ sermon, related }: Props) {
                 <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 pt-6">
                     <Link
                         href="/media"
-                        className="inline-flex items-center gap-1.5 text-sm text-ink-muted hover:text-brand transition-colors"
+                        className="inline-flex items-center gap-1.5 text-sm text-ink-muted hover:text-brand-text transition-colors"
                     >
                         <ChevronLeft className="w-4 h-4" /> Voltar às pregações
                     </Link>
@@ -71,14 +71,14 @@ export default function SermonDetail({ sermon, related }: Props) {
                         </div>
                     ) : (
                         <div className="rounded-2xl bg-brand-pale mb-8 aspect-video flex items-center justify-center">
-                            <BookOpen className="w-16 h-16 text-brand/30" />
+                            <BookOpen className="w-16 h-16 text-brand-text/30" />
                         </div>
                     )}
 
                     {/* Metadata */}
                     <div className="flex flex-wrap items-center gap-3 mb-4">
                         {sermon.series && (
-                            <Badge variant="outline" className="text-brand border-brand/40 text-sm">
+                            <Badge variant="outline" className="text-brand-text border-brand/40 text-sm">
                                 {sermon.series}
                             </Badge>
                         )}
@@ -106,7 +106,7 @@ export default function SermonDetail({ sermon, related }: Props) {
                     <div className="flex flex-wrap gap-3 pb-8 border-b border-border">
                         {sermon.pdf_url && (
                             <a href={storageUrl(sermon.pdf_url)} target="_blank" rel="noopener noreferrer">
-                                <Button variant="outline" className="gap-2 border-brand text-brand hover:bg-brand hover:text-white">
+                                <Button variant="outline" className="gap-2 border-brand text-brand-text hover:bg-brand hover:text-brand-dark">
                                     <Download className="w-4 h-4" /> Baixar esboço (PDF)
                                 </Button>
                             </a>

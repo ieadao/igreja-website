@@ -121,7 +121,7 @@ export default function Media({ sermons, series, preachers, months, provinces, f
                     </select>
 
                     {hasFilters && (
-                        <button onClick={clear} className="text-sm text-ink-muted hover:text-brand underline underline-offset-2">
+                        <button onClick={clear} className="text-sm text-ink-muted hover:text-brand-text underline underline-offset-2">
                             Limpar filtros
                         </button>
                     )}
@@ -159,8 +159,8 @@ export default function Media({ sermons, series, preachers, months, provinces, f
                                         className={cn(
                                             'px-3 py-1.5 rounded-md text-sm border transition-colors',
                                             link.active
-                                                ? 'bg-brand text-white border-brand'
-                                                : 'bg-white border-border text-ink-muted hover:border-brand hover:text-brand',
+                                                ? 'bg-brand-dark text-white border-brand-dark'
+                                                : 'bg-white border-border text-ink-muted hover:border-brand hover:text-brand-text',
                                         )}
                                     />
                                 ) : (

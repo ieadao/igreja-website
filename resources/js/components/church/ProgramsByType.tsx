@@ -1,6 +1,6 @@
 import { Tabs, TabsList, TabsTrigger, TabsContent } from '@/components/ui/tabs';
 import { Badge } from '@/components/ui/badge';
-import { Clock, MapPin, User, UserCircle, Sparkles, Smile, type LucideIcon } from 'lucide-react';
+import { Clock, MapPin, User, UserCircle, Sparkles, Smile, CalendarX, type LucideIcon } from 'lucide-react';
 import type { ChurchProgram, GroupType } from '@/types';
 
 const ICON_MAP: Record<string, LucideIcon> = {
@@ -23,8 +23,24 @@ const DAYS: Record<string, string> = {
 };
 
 const FREQ: Record<string, string> = {
-    weekly: 'Semanal', biweekly: 'Quinzenal', monthly: 'Mensal', occasional: 'Ocasional',
+    weekly: 'Semanal', biweekly: 'Quinzenal', monthly: 'Mensal',
+    quarterly: 'Trimestral', annual: 'Anual', occasional: 'Ocasional',
 };
+
+function fmtDate(iso: string) {
+    const [y, m, d] = iso.split('-');
+    return `${d}/${m}/${y}`;
+}
+
+type SuspensionState = 'active' | 'upcoming' | null;
+
+function suspensionState(from: string | null, until: string | null): SuspensionState {
+    if (!from) return null;
+    const today = new Date().toISOString().slice(0, 10);
+    if (today >= from && (!until || today <= until)) return 'active';
+    if (today < from) return 'upcoming';
+    return null;
+}
 
 interface Props {
     programs: ChurchProgram[];
@@ -95,10 +111,30 @@ export default function ProgramsByType({ programs }: Props) {
                                     </span>
                                 )}
                                 {prog.frequency && (
-                                    <Badge variant="outline" className="text-xs border-brand/30 text-brand">
+                                    <Badge variant="outline" className="text-xs border-brand/30 text-brand-text">
                                         {FREQ[prog.frequency] ?? prog.frequency}
                                     </Badge>
                                 )}
+                                {(() => {
+                                    const state = suspensionState(prog.cancelled_from, prog.cancelled_until);
+                                    if (!state) return null;
+                                    const range = [
+                                        prog.cancelled_from ? fmtDate(prog.cancelled_from) : null,
+                                        prog.cancelled_until ? fmtDate(prog.cancelled_until) : null,
+                                    ].filter(Boolean).join('–');
+                                    if (state === 'active') return (
+                                        <Badge className="text-xs bg-red-100 text-red-700 border-red-200 flex items-center gap-1">
+                                            <CalendarX className="w-3 h-3" />
+                                            Suspenso{range ? `: ${range}` : ''}
+                                        </Badge>
+                                    );
+                                    return (
+                                        <Badge variant="outline" className="text-xs border-amber-300 text-amber-700 flex items-center gap-1">
+                                            <CalendarX className="w-3 h-3" />
+                                            Pausa prevista: {range}
+                                        </Badge>
+                                    );
+                                })()}
                             </div>
                         </div>
                     ))}

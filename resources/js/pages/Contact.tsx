@@ -12,7 +12,7 @@ export default function Contact() {
             <Head title="Contacto" />
 
             {/* Page header */}
-            <section className="bg-[var(--color-brand)] text-white py-20 px-6 text-center">
+            <section className="bg-[var(--color-brand-dark)] text-white py-20 px-6 text-center">
                 <p className="text-[var(--color-brand-light)] text-sm font-semibold uppercase tracking-widest mb-4">
                     Estamos Aqui
                 </p>
@@ -69,7 +69,7 @@ export default function Contact() {
                                     <span className="text-[var(--color-ink-muted)]">Email: </span>
                                     <a
                                         href="mailto:geral@alfaomega.org.mz"
-                                        className="text-[var(--color-brand)] hover:underline"
+                                        className="text-[var(--color-brand-text)] hover:underline"
                                     >
                                         geral@alfaomega.org.mz
                                     </a>
@@ -80,14 +80,14 @@ export default function Contact() {
                                         href="https://wa.me/258840000000"
                                         target="_blank"
                                         rel="noopener noreferrer"
-                                        className="text-[var(--color-brand)] hover:underline"
+                                        className="text-[var(--color-brand-text)] hover:underline"
                                     >
                                         +258 84 000 0000
                                     </a>
                                 </p>
                             </div>
 
-                            <div className="bg-[var(--color-brand)] rounded-xl p-6 text-white">
+                            <div className="bg-[var(--color-brand-dark)] rounded-xl p-6 text-white">
                                 <p className="text-sm font-semibold mb-1">Resposta Rápida</p>
                                 <p className="text-white/70 text-xs leading-relaxed mb-3">
                                     Para uma resposta mais rápida, contacte-nos diretamente via WhatsApp.

@@ -63,7 +63,7 @@ export default function Agenda({ events, types, months, provinces, filters = {} 
             <Head title="Agenda" />
 
             {/* Hero */}
-            <section className="pt-16 lg:pt-20 bg-brand text-white">
+            <section className="pt-16 lg:pt-20 bg-brand-dark text-white">
                 <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-14 lg:py-20">
                     <p className="text-brand-light text-xs font-semibold uppercase tracking-widest mb-3">Calendário</p>
                     <h1 className="font-display text-4xl lg:text-5xl font-bold">Agenda</h1>
@@ -121,7 +121,7 @@ export default function Agenda({ events, types, months, provinces, filters = {} 
                     </select>
 
                     {hasFilters && (
-                        <button onClick={clear} className="text-sm text-ink-muted hover:text-brand underline underline-offset-2">
+                        <button onClick={clear} className="text-sm text-ink-muted hover:text-brand-text underline underline-offset-2">
                             Limpar filtros
                         </button>
                     )}
@@ -131,7 +131,7 @@ export default function Agenda({ events, types, months, provinces, filters = {} 
                             onClick={() => setView('list')}
                             className={cn(
                                 "p-1.5 rounded-md transition-colors",
-                                view === 'list' ? "bg-brand/10 text-brand" : "text-ink-muted hover:bg-gray-100"
+                                view === 'list' ? "bg-brand/10 text-brand-text" : "text-ink-muted hover:bg-gray-100"
                             )}
                             title="Ver em lista"
                         >
@@ -141,7 +141,7 @@ export default function Agenda({ events, types, months, provinces, filters = {} 
                             onClick={() => setView('calendar')}
                             className={cn(
                                 "p-1.5 rounded-md transition-colors",
-                                view === 'calendar' ? "bg-brand/10 text-brand" : "text-ink-muted hover:bg-gray-100"
+                                view === 'calendar' ? "bg-brand/10 text-brand-text" : "text-ink-muted hover:bg-gray-100"
                             )}
                             title="Ver em calendário"
                         >
@@ -185,7 +185,7 @@ export default function Agenda({ events, types, months, provinces, filters = {} 
                                             'px-3 py-1.5 rounded-md text-sm border transition-colors',
                                             link.active
                                                 ? 'bg-brand text-white border-brand'
-                                                : 'bg-white border-border text-ink-muted hover:border-brand hover:text-brand',
+                                                : 'bg-white border-border text-ink-muted hover:border-brand hover:text-brand-text',
                                         )}
                                     />
                                 ) : (

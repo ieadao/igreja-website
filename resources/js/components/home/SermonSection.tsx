@@ -73,11 +73,11 @@ export default function SermonSection({ sermon }: { sermon: Sermon | null }) {
                         <h3 className="font-display text-3xl sm:text-4xl font-semibold text-white mb-3 leading-snug">
                             {sermon.title}
                         </h3>
-                        <p className="text-white/50 text-sm mb-1">
+                        <p className="text-white/70 text-sm mb-1">
                             {sermon.speaker_name}
                             {sermon.duration_minutes ? ` · ${sermon.duration_minutes} min` : ''}
                         </p>
-                        <p className="text-white/40 text-xs mb-6">
+                        <p className="text-white/60 text-xs mb-6">
                             {formatDate(sermon.preached_at)}
                         </p>
 
@@ -94,7 +94,7 @@ export default function SermonSection({ sermon }: { sermon: Sermon | null }) {
                                     href={sermon.video_url}
                                     target="_blank"
                                     rel="noopener noreferrer"
-                                    className="inline-flex items-center gap-2 px-5 py-2.5 bg-brand text-white text-sm font-medium rounded-lg hover:bg-brand-light transition-colors"
+                                    className="inline-flex items-center gap-2 px-5 py-2.5 bg-brand text-brand-dark text-sm font-medium rounded-lg hover:bg-brand-light transition-colors"
                                 >
                                     <PlayCircle className="w-4 h-4" />
                                     Assistir

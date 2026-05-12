@@ -16,7 +16,7 @@ export default function ProvinceAbout({ province }: Props) {
             <div className="bg-cream border-b border-border py-10 lg:py-16">
                 <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
                     <div className="max-w-3xl">
-                        <p className="text-brand text-xs font-semibold uppercase tracking-widest mb-3">Ministério Alfa e Ômega</p>
+                        <p className="text-brand-text text-xs font-semibold uppercase tracking-widest mb-3">Ministério Alfa e Ômega</p>
                         <h1 className="font-display text-4xl sm:text-5xl lg:text-6xl font-semibold text-ink leading-tight">
                             Nossa Presença em {province.name}
                         </h1>
@@ -48,11 +48,11 @@ export default function ProvinceAbout({ province }: Props) {
 
                         <div className="grid grid-cols-2 gap-6 mt-10">
                             <div className="bg-cream rounded-xl p-5 border border-border">
-                                <p className="text-brand text-2xl font-bold">100%</p>
+                                <p className="text-brand-text text-2xl font-bold">100%</p>
                                 <p className="text-ink-muted text-sm font-medium">Comprometimento</p>
                             </div>
                             <div className="bg-cream rounded-xl p-5 border border-border">
-                                <p className="text-brand text-2xl font-bold">PT-MZ</p>
+                                <p className="text-brand-text text-2xl font-bold">PT-MZ</p>
                                 <p className="text-ink-muted text-sm font-medium">Presença Local</p>
                             </div>
                         </div>
@@ -74,7 +74,7 @@ export default function ProvinceAbout({ province }: Props) {
                             <ul className="space-y-4">
                                 <li className="flex gap-4">
                                     <div className="shrink-0 w-10 h-10 rounded-lg bg-white/10 flex items-center justify-center">
-                                        <Users className="text-brand-light" size={20} />
+                                        <Users className="text-brand-text" size={20} />
                                     </div>
                                     <div>
                                         <p className="font-semibold text-sm">Comunidade</p>
@@ -83,7 +83,7 @@ export default function ProvinceAbout({ province }: Props) {
                                 </li>
                                 <li className="flex gap-4">
                                     <div className="shrink-0 w-10 h-10 rounded-lg bg-white/10 flex items-center justify-center">
-                                        <Building2 className="text-brand-light" size={20} />
+                                        <Building2 className="text-brand-text" size={20} />
                                     </div>
                                     <div>
                                         <p className="font-semibold text-sm">Igrejas Fortes</p>
@@ -92,7 +92,7 @@ export default function ProvinceAbout({ province }: Props) {
                                 </li>
                                 <li className="flex gap-4">
                                     <div className="shrink-0 w-10 h-10 rounded-lg bg-white/10 flex items-center justify-center">
-                                        <Globe className="text-brand-light" size={20} />
+                                        <Globe className="text-brand-text" size={20} />
                                     </div>
                                     <div>
                                         <p className="font-semibold text-sm">Impacto Social</p>

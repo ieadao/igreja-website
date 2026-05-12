@@ -28,7 +28,7 @@ export default function ProvinceChurches({ province, churches }: Props) {
 
             <div className="bg-cream border-b border-border py-10">
                 <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-                    <p className="text-brand text-xs font-semibold uppercase tracking-widest mb-2">Localizações</p>
+                    <p className="text-brand-text text-xs font-semibold uppercase tracking-widest mb-2">Localizações</p>
                     <h1 className="font-display text-4xl sm:text-5xl font-semibold text-ink">Igrejas</h1>
                     <p className="text-ink-muted mt-2">{province.name} · {churches.length} igrej{churches.length !== 1 ? 'as' : 'a'}</p>
                 </div>
@@ -50,7 +50,7 @@ export default function ProvinceChurches({ province, churches }: Props) {
 
                 {filtered.length === 0 ? (
                     <div className="text-center py-24">
-                        <MapPin size={48} className="mx-auto text-brand-light mb-4" />
+                        <MapPin size={48} className="mx-auto text-brand-text mb-4" />
                         <p className="text-ink-muted">Nenhuma igreja encontrada.</p>
                     </div>
                 ) : (
@@ -70,7 +70,7 @@ export default function ProvinceChurches({ province, churches }: Props) {
                 <div className="mt-10 pt-6 border-t border-border">
                     <Link
                         href={`${base}/localizacoes`}
-                        className="text-sm text-brand hover:underline font-medium"
+                        className="text-sm text-brand-text hover:underline font-medium"
                     >
                         Ver por região e zona →
                     </Link>

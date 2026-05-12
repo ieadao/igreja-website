@@ -56,7 +56,7 @@ export default function ContactForm({ type: initialType = 'general', onSuccess }
         <form onSubmit={submit} className="space-y-4">
             <div>
                 <label className="block text-sm font-medium text-ink mb-1">
-                    Nome <span className="text-brand">*</span>
+                    Nome <span className="text-brand-text">*</span>
                 </label>
                 <Input
                     value={data.name}
@@ -94,7 +94,7 @@ export default function ContactForm({ type: initialType = 'general', onSuccess }
 
             <div>
                 <label className="block text-sm font-medium text-ink mb-1">
-                    Assunto <span className="text-brand">*</span>
+                    Assunto <span className="text-brand-text">*</span>
                 </label>
                 <select
                     value={data.type}
@@ -110,7 +110,7 @@ export default function ContactForm({ type: initialType = 'general', onSuccess }
 
             <div>
                 <label className="block text-sm font-medium text-ink mb-1">
-                    Mensagem <span className="text-brand">*</span>
+                    Mensagem <span className="text-brand-text">*</span>
                 </label>
                 <textarea
                     value={data.message}

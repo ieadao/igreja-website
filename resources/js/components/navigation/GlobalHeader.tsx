@@ -24,26 +24,26 @@ export default function GlobalHeader({ transparent = false }: { transparent?: bo
         <>
             <header
                 className={cn(
-                    'fixed top-0 left-0 right-0 z-40 transition-colors duration-300',
+                    'fixed top-0 left-0 right-0 z-99 transition-colors duration-300',
                     transparent
-                        ? 'bg-transparent text-white'
+                        ? 'bg-white text-black'
                         : 'bg-cream/95 backdrop-blur-sm border-b border-border text-ink shadow-sm',
                 )}
             >
                 <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex items-center justify-between h-16 lg:h-20">
                     {/* Logo */}
                     <Link href="/" className="flex items-center gap-3 shrink-0">
-                        <div
-                            className={cn(
-                                'w-8 h-8 rounded-full flex items-center justify-center text-sm font-bold',
-                                transparent ? 'bg-white text-brand' : 'bg-brand text-white',
-                            )}
-                        >
-                            M
-                        </div>
-                        <span className="font-display text-xl font-semibold tracking-wide">
+                        <img
+                            src="/images/logo.png"
+                            alt="IEADAO"
+                            className="w-25 h-25 object-contain"
+                        />
+                        {/* <span className={cn(
+                            'font-display text-xl font-semibold tracking-wide',
+                            transparent ? 'text-white' : 'text-ink',
+                        )}>
                             MAO Moçambique
-                        </span>
+                        </span> */}
                     </Link>
 
                     {/* Desktop nav */}
@@ -53,8 +53,8 @@ export default function GlobalHeader({ transparent = false }: { transparent?: bo
                                 key={link.href}
                                 href={link.href}
                                 className={cn(
-                                    'text-sm font-medium tracking-wide hover:text-brand transition-colors',
-                                    transparent ? 'text-white/85 hover:text-white' : 'text-ink-muted',
+                                    'text-sm font-medium tracking-wide hover:text-brand-text transition-colors',
+                                    transparent ? 'text-black/85 hover:text-brand' : 'text-ink-muted',
                                 )}
                             >
                                 {link.label}
@@ -69,8 +69,8 @@ export default function GlobalHeader({ transparent = false }: { transparent?: bo
                         >
                             <button
                                 className={cn(
-                                    'text-sm font-medium tracking-wide hover:text-brand transition-colors flex items-center gap-1',
-                                    transparent ? 'text-white/85 hover:text-white' : 'text-ink-muted',
+                                    'text-sm font-medium tracking-wide hover:text-brand-text transition-colors flex items-center gap-1',
+                                    transparent ? 'text-black/85 hover:text-brand' : 'text-ink-muted',
                                 )}
                             >
                                 Províncias
@@ -89,7 +89,7 @@ export default function GlobalHeader({ transparent = false }: { transparent?: bo
                                             <Link
                                                 key={p.id}
                                                 href={`/provincia/${p.slug}`}
-                                                className="block px-4 py-2.5 text-sm text-ink-muted hover:text-brand hover:bg-brand-pale transition-colors"
+                                                className="block px-4 py-2.5 text-sm text-ink-muted hover:text-brand-text hover:bg-brand-pale transition-colors"
                                             >
                                                 {p.name}
                                             </Link>
@@ -106,7 +106,7 @@ export default function GlobalHeader({ transparent = false }: { transparent?: bo
                         className={cn(
                             'flex items-center gap-2 px-3 py-2 rounded-md text-sm font-medium transition-colors',
                             transparent
-                                ? 'text-white/85 hover:text-white hover:bg-white/10'
+                                ? 'text-black/85 hover:text-brand hover:bg-white/10'
                                 : 'text-ink-muted hover:text-ink hover:bg-brand-pale',
                         )}
                         aria-label="Abrir menu"

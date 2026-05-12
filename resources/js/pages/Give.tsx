@@ -42,7 +42,7 @@ export default function Give() {
             <Head title="Apoiar" />
 
             {/* Hero */}
-            <section className="bg-[var(--color-brand)] text-white py-24 px-6 text-center">
+            <section className="bg-[var(--color-brand-dark)] text-white py-24 px-6 text-center">
                 <p className="text-[var(--color-brand-light)] text-sm font-semibold uppercase tracking-widest mb-4">
                     Juntos Fazemos Mais
                 </p>
@@ -53,7 +53,7 @@ export default function Give() {
                     «Cada um contribua segundo propôs no seu coração; não com tristeza, nem por necessidade;
                     porque Deus ama ao que dá com alegria.»
                 </p>
-                <p className="text-white/50 text-sm">2 Coríntios 9:7</p>
+                <p className="text-white/60 text-sm">2 Coríntios 9:7</p>
             </section>
 
             {/* 3-column CTAs */}

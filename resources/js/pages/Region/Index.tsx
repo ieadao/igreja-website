@@ -26,11 +26,11 @@ export default function RegionIndex({ province, region, zones }: Props) {
             {/* Breadcrumb */}
             <div className="bg-white border-b border-border">
                 <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 py-3 flex items-center gap-1.5 text-sm text-ink-muted flex-wrap">
-                    <Link href="/" className="hover:text-brand transition-colors">MAO</Link>
+                    <Link href="/" className="hover:text-brand-text transition-colors">MAO</Link>
                     <ChevronRight className="w-3.5 h-3.5 shrink-0" />
-                    <Link href={base} className="hover:text-brand transition-colors">{province.name}</Link>
+                    <Link href={base} className="hover:text-brand-text transition-colors">{province.name}</Link>
                     <ChevronRight className="w-3.5 h-3.5 shrink-0" />
-                    <Link href={`${base}/localizacoes`} className="hover:text-brand transition-colors">Localizações</Link>
+                    <Link href={`${base}/localizacoes`} className="hover:text-brand-text transition-colors">Localizações</Link>
                     <ChevronRight className="w-3.5 h-3.5 shrink-0" />
                     <span className="text-ink font-medium">{region.name}</span>
                 </div>
@@ -39,17 +39,17 @@ export default function RegionIndex({ province, region, zones }: Props) {
             {/* Header */}
             <section className="bg-cream border-b border-border py-12 lg:py-16">
                 <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
-                    <p className="text-brand text-xs font-semibold uppercase tracking-widest mb-2">Região</p>
+                    <p className="text-brand-text text-xs font-semibold uppercase tracking-widest mb-2">Região</p>
                     <h1 className="font-display text-4xl lg:text-5xl font-bold text-ink">{region.name}</h1>
                     <p className="text-ink-muted mt-1">{province.name}</p>
 
                     <div className="flex gap-6 mt-6 text-sm text-ink-muted">
                         <span className="flex items-center gap-1.5">
-                            <MapPin className="w-4 h-4 text-brand" />
+                            <MapPin className="w-4 h-4 text-brand-text" />
                             <strong className="text-ink">{zones.length}</strong> zona{zones.length !== 1 ? 's' : ''}
                         </span>
                         <span className="flex items-center gap-1.5">
-                            <Building2 className="w-4 h-4 text-brand" />
+                            <Building2 className="w-4 h-4 text-brand-text" />
                             <strong className="text-ink">{totalChurches}</strong> igrej{totalChurches !== 1 ? 'as' : 'a'}
                         </span>
                     </div>
@@ -60,7 +60,7 @@ export default function RegionIndex({ province, region, zones }: Props) {
             <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 py-10 lg:py-14">
                 {zones.length === 0 ? (
                     <div className="text-center py-20 text-ink-muted">
-                        <MapPin className="w-12 h-12 mx-auto mb-4 text-brand-light" />
+                        <MapPin className="w-12 h-12 mx-auto mb-4 text-brand-text" />
                         <p>Nenhuma zona registada nesta região.</p>
                     </div>
                 ) : (
@@ -73,7 +73,7 @@ export default function RegionIndex({ province, region, zones }: Props) {
                             >
                                 <div className="flex items-start justify-between gap-2">
                                     <div>
-                                        <h2 className="font-semibold text-ink group-hover:text-brand transition-colors">
+                                        <h2 className="font-semibold text-ink group-hover:text-brand-text transition-colors">
                                             {zone.name}
                                         </h2>
                                         <p className="text-sm text-ink-muted mt-1">
@@ -82,12 +82,12 @@ export default function RegionIndex({ province, region, zones }: Props) {
                                     </div>
                                     <Badge
                                         variant="outline"
-                                        className="shrink-0 text-xs border-brand/30 text-brand"
+                                        className="shrink-0 text-xs border-brand/30 text-brand-text"
                                     >
                                         Zona
                                     </Badge>
                                 </div>
-                                <p className="text-xs text-brand mt-4 font-medium group-hover:underline">
+                                <p className="text-xs text-brand-text mt-4 font-medium group-hover:underline">
                                     Ver igrejas →
                                 </p>
                             </Link>

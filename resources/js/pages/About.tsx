@@ -1,4 +1,4 @@
-import { Head } from '@inertiajs/react';
+import { Head, Link } from '@inertiajs/react';
 import GlobalLayout from '@/layouts/GlobalLayout';
 import { storageUrl } from '@/lib/utils';
 import type { Document } from '@/types';
@@ -43,7 +43,7 @@ export default function About({ documents, leadership }: Props) {
             <Head title="Quem Somos" />
 
             {/* Hero */}
-            <section className="bg-[var(--color-brand)] text-white py-24 px-6 text-center">
+            <section className="bg-[var(--color-brand-dark)] text-white py-24 px-6 text-center">
                 <p className="text-[var(--color-brand-light)] text-sm font-semibold uppercase tracking-widest mb-4">
                     Ministério Alfa e Ômega
                 </p>
@@ -53,14 +53,14 @@ export default function About({ documents, leadership }: Props) {
                 <p className="text-white/80 max-w-2xl mx-auto text-lg leading-relaxed italic">
                     «O Espírito do Senhor está sobre mim, porque me ungiu para evangelizar os pobres.»
                 </p>
-                <p className="text-white/50 text-sm mt-2">Lucas 4:18</p>
+                <p className="text-white/60 text-sm mt-2">Lucas 4:18</p>
             </section>
 
             {/* Missão & Visão */}
             <section className="py-20 px-6 bg-[var(--color-cream)]">
                 <div className="max-w-5xl mx-auto grid md:grid-cols-2 gap-12">
                     <div>
-                        <span className="text-xs font-bold uppercase tracking-widest text-[var(--color-brand)] mb-3 block">
+                        <span className="text-xs font-bold uppercase tracking-widest text-[var(--color-brand-text)] mb-3 block">
                             Missão
                         </span>
                         <h2 className="font-display text-3xl font-semibold text-[var(--color-ink)] mb-4">
@@ -72,7 +72,7 @@ export default function About({ documents, leadership }: Props) {
                         </p>
                     </div>
                     <div>
-                        <span className="text-xs font-bold uppercase tracking-widest text-[var(--color-brand)] mb-3 block">
+                        <span className="text-xs font-bold uppercase tracking-widest text-[var(--color-brand-text)] mb-3 block">
                             Visão
                         </span>
                         <h2 className="font-display text-3xl font-semibold text-[var(--color-ink)] mb-4">
@@ -107,7 +107,7 @@ export default function About({ documents, leadership }: Props) {
                                     {/* card */}
                                     <div className="flex-1 pl-14 md:pl-0">
                                         <div className={`bg-white rounded-xl p-6 shadow-sm border border-[var(--color-brand)]/10 ${i % 2 === 0 ? 'md:mr-10' : 'md:ml-10'}`}>
-                                            <span className="text-xs font-bold text-[var(--color-brand)] uppercase tracking-widest">
+                                            <span className="text-xs font-bold text-[var(--color-brand-text)] uppercase tracking-widest">
                                                 {event.year}
                                             </span>
                                             <h3 className="font-display text-xl font-semibold text-[var(--color-ink)] mt-1 mb-2">
@@ -123,6 +123,17 @@ export default function About({ documents, leadership }: Props) {
                                 </div>
                             ))}
                         </div>
+                    </div>
+
+                    {/* Link to immersive history page */}
+                    <div className="mt-14 text-center">
+                        <Link
+                            href="/historia"
+                            className="inline-flex items-center gap-2 px-7 py-3.5 bg-[var(--color-brand)] text-white font-semibold rounded-lg hover:bg-[var(--color-brand-dark)] transition-colors"
+                        >
+                            Ver a história completa
+                            <span aria-hidden>→</span>
+                        </Link>
                     </div>
                 </div>
             </section>
@@ -197,14 +208,14 @@ export default function About({ documents, leadership }: Props) {
             )}
 
             {/* CTA */}
-            <section className="bg-[var(--color-brand)] text-white py-16 px-6 text-center">
+            <section className="bg-[var(--color-brand-dark)] text-white py-16 px-6 text-center">
                 <h2 className="font-display text-3xl font-bold mb-4">Faz Parte da Família</h2>
                 <p className="text-white/70 max-w-lg mx-auto mb-8">
                     Estamos presentes em todo o país. Encontra uma igreja perto de ti.
                 </p>
                 <a
                     href="/igrejas"
-                    className="inline-block px-8 py-3 bg-white text-[var(--color-brand)] font-semibold rounded-lg hover:bg-[var(--color-brand-pale)] transition-colors"
+                    className="inline-block px-8 py-3 bg-brand text-brand-dark font-semibold rounded-lg hover:bg-brand-light transition-colors"
                 >
                     Encontrar uma Igreja
                 </a>

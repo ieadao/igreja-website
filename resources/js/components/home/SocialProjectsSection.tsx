@@ -17,7 +17,7 @@ export default function SocialProjectsSection({ projects }: { projects: SocialPr
         <section className="py-20 bg-brand-pale">
             <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
                 <div className="text-center mb-12">
-                    <p className="text-xs font-semibold uppercase tracking-widest text-brand mb-3">
+                    <p className="text-xs font-semibold uppercase tracking-widest text-brand-text mb-3">
                         Intervenção Social
                     </p>
                     <h2 className="font-display text-4xl font-semibold text-ink mb-4">
@@ -38,7 +38,7 @@ export default function SocialProjectsSection({ projects }: { projects: SocialPr
                                 className="bg-white rounded-2xl p-6 shadow-sm border border-border hover:shadow-md transition-shadow"
                             >
                                 <div className="flex items-start justify-between gap-3 mb-4">
-                                    <span className="inline-block text-xs font-semibold uppercase tracking-widest text-brand bg-brand-pale px-3 py-1 rounded-full">
+                                    <span className="inline-block text-xs font-semibold uppercase tracking-widest text-brand-text bg-brand-pale px-3 py-1 rounded-full">
                                         {CATEGORY_LABELS[project.category] ?? project.category}
                                     </span>
                                     <span className="text-xs text-ink-faint">{project.province.name}</span>
@@ -59,7 +59,7 @@ export default function SocialProjectsSection({ projects }: { projects: SocialPr
                 <div className="text-center mt-10">
                     <Link
                         href="/social"
-                        className="inline-flex items-center gap-2 text-sm font-semibold text-brand hover:text-brand-dark transition-colors"
+                        className="inline-flex items-center gap-2 text-sm font-semibold text-brand-text hover:text-brand-dark transition-colors"
                     >
                         Ver todos os projectos
                         <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">

@@ -42,13 +42,13 @@ export default function ZoneIndex({ province, region, zone, churches }: Props) {
             {/* Breadcrumb */}
             <div className="bg-white border-b border-border">
                 <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 py-3 flex items-center gap-1.5 text-sm text-ink-muted flex-wrap">
-                    <Link href="/" className="hover:text-brand transition-colors">MAO</Link>
+                    <Link href="/" className="hover:text-brand-text transition-colors">MAO</Link>
                     <ChevronRight className="w-3.5 h-3.5 shrink-0" />
-                    <Link href={base} className="hover:text-brand transition-colors">{province.name}</Link>
+                    <Link href={base} className="hover:text-brand-text transition-colors">{province.name}</Link>
                     <ChevronRight className="w-3.5 h-3.5 shrink-0" />
-                    <Link href={`${base}/localizacoes`} className="hover:text-brand transition-colors">Localizações</Link>
+                    <Link href={`${base}/localizacoes`} className="hover:text-brand-text transition-colors">Localizações</Link>
                     <ChevronRight className="w-3.5 h-3.5 shrink-0" />
-                    <Link href={regionBase} className="hover:text-brand transition-colors">{region.name}</Link>
+                    <Link href={regionBase} className="hover:text-brand-text transition-colors">{region.name}</Link>
                     <ChevronRight className="w-3.5 h-3.5 shrink-0" />
                     <span className="text-ink font-medium">{zone.name}</span>
                 </div>
@@ -57,12 +57,12 @@ export default function ZoneIndex({ province, region, zone, churches }: Props) {
             {/* Header */}
             <section className="bg-cream border-b border-border py-12 lg:py-16">
                 <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
-                    <p className="text-brand text-xs font-semibold uppercase tracking-widest mb-2">Zona</p>
+                    <p className="text-brand-text text-xs font-semibold uppercase tracking-widest mb-2">Zona</p>
                     <h1 className="font-display text-4xl lg:text-5xl font-bold text-ink">{zone.name}</h1>
                     <p className="text-ink-muted mt-1">{region.name} · {province.name}</p>
 
                     <div className="flex items-center gap-1.5 mt-5 text-sm text-ink-muted">
-                        <Building2 className="w-4 h-4 text-brand" />
+                        <Building2 className="w-4 h-4 text-brand-text" />
                         <strong className="text-ink">{churches.length}</strong>
                         &nbsp;igrej{churches.length !== 1 ? 'as' : 'a'} activ{churches.length !== 1 ? 'as' : 'a'}
                     </div>
@@ -88,7 +88,7 @@ export default function ZoneIndex({ province, region, zone, churches }: Props) {
             <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 py-10 lg:py-14">
                 {churches.length === 0 ? (
                     <div className="text-center py-20 text-ink-muted">
-                        <Building2 className="w-12 h-12 mx-auto mb-4 text-brand-light" />
+                        <Building2 className="w-12 h-12 mx-auto mb-4 text-brand-text" />
                         <p>Nenhuma igreja registada nesta zona.</p>
                     </div>
                 ) : (

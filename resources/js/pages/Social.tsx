@@ -42,7 +42,7 @@ export default function Social({ projects }: Props) {
             </section>
 
             {/* Stats bar */}
-            <section className="bg-[var(--color-brand)] py-12 px-6">
+            <section className="bg-[var(--color-brand-dark)] py-12 px-6">
                 <div className="max-w-3xl mx-auto grid grid-cols-3 gap-6 text-center text-white">
                     <div>
                         <div className="font-display text-4xl md:text-5xl font-bold">{projects.length}</div>
@@ -138,7 +138,7 @@ export default function Social({ projects }: Props) {
             </section>
 
             {/* CTA */}
-            <section className="bg-[var(--color-brand)] text-white py-20 px-6 text-center">
+            <section className="bg-[var(--color-brand-dark)] text-white py-20 px-6 text-center">
                 <h2 className="font-display text-4xl font-bold mb-4">Faz Parte Desta Missão</h2>
                 <p className="text-white/70 max-w-xl mx-auto mb-8">
                     Juntos podemos fazer mais. Seja através de donativos, voluntariado ou parcerias.
@@ -146,7 +146,7 @@ export default function Social({ projects }: Props) {
                 <div className="flex flex-wrap gap-4 justify-center">
                     <a
                         href="/dar"
-                        className="px-8 py-3 bg-white text-[var(--color-brand)] font-semibold rounded-lg hover:bg-[var(--color-brand-pale)] transition-colors"
+                        className="px-8 py-3 bg-brand text-brand-dark font-semibold rounded-lg hover:bg-brand-light transition-colors"
                     >
                         Apoiar Financeiramente
                     </a>

@@ -63,7 +63,7 @@ export default function CalendarView({ events }: Props) {
                     </button>
                     <button
                         onClick={() => setCurrentDate(new Date())}
-                        className="px-3 py-1 text-xs font-medium text-brand hover:bg-brand/5 rounded-md"
+                        className="px-3 py-1 text-xs font-medium text-brand-text hover:bg-brand/5 rounded-md"
                     >
                         Hoje
                     </button>
@@ -112,7 +112,7 @@ export default function CalendarView({ events }: Props) {
                                     <Link
                                         key={event.id}
                                         href={`/agenda/${event.slug}`}
-                                        className="block p-1 rounded bg-brand/10 border-l-2 border-brand text-[10px] font-medium text-brand-dark hover:bg-brand/20 transition-colors line-clamp-1"
+                                        className="block p-1 rounded bg-brand/10 border-l-2 border-brand text-[10px] font-medium text-brand-text hover:bg-brand/20 transition-colors line-clamp-1"
                                         title={event.title}
                                     >
                                         {new Date(event.starts_at).toLocaleTimeString('pt-MZ', { hour: '2-digit', minute: '2-digit' })} {event.title}

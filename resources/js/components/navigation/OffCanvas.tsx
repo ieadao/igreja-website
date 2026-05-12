@@ -10,6 +10,7 @@ const GLOBAL_SECTIONS = [
         label: 'Explorar',
         links: [
             { label: 'Quem Somos',          href: '/sobre' },
+            { label: 'A Nossa História',     href: '/historia' },
             { label: 'Intervenção Social',   href: '/social' },
             { label: 'Missões',              href: '/missoes' },
             { label: 'Média',                href: '/media' },
@@ -102,7 +103,7 @@ export default function OffCanvas(props: Props) {
                         animate={{ x: 0 }}
                         exit={{ x: '100%' }}
                         transition={{ type: 'tween', duration: 0.3 }}
-                        className="fixed inset-y-0 right-0 w-96 max-w-[90vw] bg-ink z-50 overflow-y-auto flex flex-col shadow-2xl"
+                        className="fixed inset-y-0 right-0 w-96 max-w-[90vw] bg-ink z-99 overflow-y-auto flex flex-col shadow-2xl"
                         onKeyDown={(e) => e.key === 'Escape' && onClose()}
                     >
                         {/* Header */}
@@ -134,7 +135,7 @@ export default function OffCanvas(props: Props) {
                                 <Link
                                     href="/"
                                     onClick={onClose}
-                                    className="text-sm text-white/40 hover:text-white/70 transition-colors"
+                                    className="text-sm text-white/60 hover:text-white/90 transition-colors"
                                 >
                                     ← MAO Nacional
                                 </Link>
@@ -170,7 +171,7 @@ function GlobalNav({
         <div className="space-y-8">
             {GLOBAL_SECTIONS.map((section) => (
                 <div key={section.label}>
-                    <p className="text-xs font-semibold uppercase tracking-widest text-white/30 mb-3">
+                    <p className="text-xs font-semibold uppercase tracking-widest text-white/50 mb-3">
                         {section.label}
                     </p>
                     <ul className="space-y-0.5">
@@ -191,7 +192,7 @@ function GlobalNav({
 
             {/* Provinces list */}
             <div>
-                <p className="text-xs font-semibold uppercase tracking-widest text-white/30 mb-3">
+                <p className="text-xs font-semibold uppercase tracking-widest text-white/50 mb-3">
                     Províncias
                 </p>
                 <ul className="space-y-0.5">
@@ -236,7 +237,7 @@ function ProvinceNav({ province, onClose }: { province: Province; onClose: () =>
 
             {/* Ministérios */}
             <div>
-                <p className="text-xs font-semibold uppercase tracking-widest text-white/30 mb-3">
+                <p className="text-xs font-semibold uppercase tracking-widest text-white/50 mb-3">
                     Ministérios
                 </p>
                 <ul className="space-y-0.5">

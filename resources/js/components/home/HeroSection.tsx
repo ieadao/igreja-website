@@ -49,7 +49,7 @@ function KpiCounter({ value, label }: { value: number; label: string }) {
             >
                 {count.toLocaleString('pt-MZ')}
             </span>
-            <span className="block text-xs font-semibold uppercase tracking-widest text-white/50 mt-1">
+            <span className="block text-xs font-semibold uppercase tracking-widest text-white/70 mt-1">
                 {label}
             </span>
         </div>
@@ -58,17 +58,26 @@ function KpiCounter({ value, label }: { value: number; label: string }) {
 
 export default function HeroSection({ stats }: { stats: Stats }) {
     return (
-        <section className="relative min-h-screen flex flex-col items-center justify-center bg-brand-dark overflow-hidden">
+        <section className="relative min-h-screen flex flex-col items-center justify-center overflow-hidden" style={{ backgroundColor: '#10143D' }}>
             {/* Background */}
             <div
-                className="absolute inset-0 bg-cover bg-center opacity-20"
+                className="absolute inset-0 bg-cover bg-center opacity-15"
                 style={{ backgroundImage: "url('/images/hero-bg.jpg')" }}
             />
-            <div className="absolute inset-0 bg-gradient-to-b from-brand-dark/60 via-transparent to-brand-dark/80" />
+            <div className="absolute inset-0" style={{ background: 'linear-gradient(to bottom, rgba(16,20,61,0.7) 0%, rgba(16,20,61,0.3) 50%, rgba(16,20,61,0.85) 100%)' }} />
+
+            {/* Orange accent line at top */}
+            <div className="absolute top-0 left-0 right-0 h-1" style={{ backgroundColor: '#FF6700' }} />
 
             {/* Main content */}
             <div className="relative z-10 flex-1 flex flex-col items-center justify-center text-center px-4 max-w-4xl mx-auto py-32">
-                <p className="text-xs font-semibold uppercase tracking-[0.3em] text-white/50 mb-6">
+                {/* Logo */}
+                <img
+                    src="/images/logo.png"
+                    alt="IEADAO"
+                    className="w-24 h-24 object-contain mb-8 drop-shadow-xl brightness-0 invert opacity-90"
+                />
+                <p className="text-xs font-semibold uppercase tracking-[0.3em] text-white/70 mb-6">
                     Ministério Alfa e Ômega — Moçambique
                 </p>
                 <h1 className="font-display text-5xl sm:text-7xl font-semibold leading-tight text-white mb-6">
@@ -77,14 +86,17 @@ export default function HeroSection({ stats }: { stats: Stats }) {
                 </h1>
                 <blockquote className="text-white/60 text-base sm:text-lg italic font-display mb-10 max-w-xl">
                     "Eu sou o Alfa e o Ômega, o primeiro e o último, o princípio e o fim."
-                    <cite className="block not-italic text-xs font-sans tracking-widest uppercase text-white/40 mt-2">
+                    <cite className="block not-italic text-xs font-sans tracking-widest uppercase text-white/60 mt-2">
                         Apocalipse 22:13
                     </cite>
                 </blockquote>
                 <div className="flex flex-col sm:flex-row gap-4 justify-center">
                     <Link
                         href="/igrejas"
-                        className="px-8 py-4 bg-brand text-white font-medium rounded-lg hover:bg-brand-light transition-colors"
+                        className="px-8 py-4 text-brand-dark font-medium rounded-lg transition-colors"
+                        style={{ backgroundColor: '#FF6700' }}
+                        onMouseEnter={e => (e.currentTarget.style.backgroundColor = '#FF8C3A')}
+                        onMouseLeave={e => (e.currentTarget.style.backgroundColor = '#FF6700')}
                     >
                         Encontrar uma Igreja
                     </Link>
@@ -105,7 +117,7 @@ export default function HeroSection({ stats }: { stats: Stats }) {
             </div>
 
             {/* KPI strip */}
-            <div className="relative z-10 w-full border-t border-white/10 bg-black/30 backdrop-blur-sm">
+            <div className="relative z-10 w-full border-t border-white/10 backdrop-blur-sm" style={{ backgroundColor: 'rgba(0,0,0,0.35)' }}>
                 <div className="max-w-4xl mx-auto px-4 py-8 grid grid-cols-2 sm:grid-cols-4 gap-8">
                     <KpiCounter value={stats.churches} label="Igrejas" />
                     <KpiCounter value={stats.provinces} label="Províncias" />

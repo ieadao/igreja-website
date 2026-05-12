@@ -28,7 +28,7 @@ export default function ProvinceNewsDetail({ province, article, related }: Props
             <article className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
                 <Link
                     href={`${base}/noticias`}
-                    className="inline-flex items-center gap-1 text-brand text-sm font-medium mb-8 hover:text-brand-dark transition-colors"
+                    className="inline-flex items-center gap-1 text-brand-text text-sm font-medium mb-8 hover:text-ink transition-colors"
                 >
                     <ArrowLeft size={16} /> Voltar às Notícias
                 </Link>
@@ -44,7 +44,7 @@ export default function ProvinceNewsDetail({ province, article, related }: Props
 
                     <button
                         onClick={shareArticle}
-                        className="mt-4 inline-flex items-center gap-2 text-sm text-ink-muted hover:text-brand transition-colors"
+                        className="mt-4 inline-flex items-center gap-2 text-sm text-ink-muted hover:text-brand-text transition-colors"
                     >
                         <Share2 size={15} /> Partilhar
                     </button>
@@ -61,7 +61,7 @@ export default function ProvinceNewsDetail({ province, article, related }: Props
                 )}
 
                 <div
-                    className="prose prose-lg max-w-none prose-headings:font-display prose-headings:text-ink prose-p:text-ink-muted prose-a:text-brand"
+                    className="prose prose-lg max-w-none prose-headings:font-display prose-headings:text-ink prose-p:text-ink-muted prose-a:text-brand-text"
                     dangerouslySetInnerHTML={{ __html: article.body }}
                 />
             </article>
@@ -86,13 +86,13 @@ export default function ProvinceNewsDetail({ province, article, related }: Props
                                             />
                                         ) : (
                                             <div className="w-full h-full flex items-center justify-center">
-                                                <BookOpen size={28} className="text-brand-light" />
+                                                <BookOpen size={28} className="text-brand-text" />
                                             </div>
                                         )}
                                     </div>
                                     <div className="p-4">
                                         <p className="text-xs text-ink-muted mb-1">{formatDate(item.published_at)}</p>
-                                        <h3 className="font-semibold text-ink text-sm leading-snug line-clamp-2 group-hover:text-brand transition-colors">
+                                        <h3 className="font-semibold text-ink text-sm leading-snug line-clamp-2 group-hover:text-brand-text transition-colors">
                                             {item.title}
                                         </h3>
                                     </div>

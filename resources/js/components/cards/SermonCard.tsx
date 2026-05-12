@@ -35,23 +35,23 @@ export default function SermonCard({ sermon }: { sermon: Sermon }) {
                     />
                 ) : (
                     <div className="w-full h-full flex items-center justify-center bg-brand-pale">
-                        <BookOpen className="w-12 h-12 text-brand/40" />
+                        <BookOpen className="w-12 h-12 text-brand-text/40" />
                     </div>
                 )}
                 <div className="absolute inset-0 flex items-center justify-center">
                     <div className="w-12 h-12 rounded-full bg-white/90 flex items-center justify-center shadow group-hover:scale-110 transition-transform">
-                        <Play className="w-5 h-5 text-brand fill-brand ml-0.5" />
+                        <Play className="w-5 h-5 text-brand-text fill-brand ml-0.5" />
                     </div>
                 </div>
             </div>
 
             <div className="p-4">
                 {sermon.series && (
-                    <Badge variant="outline" className="text-xs text-brand border-brand/40 mb-2">
+                    <Badge variant="outline" className="text-xs text-brand-text border-brand/40 mb-2">
                         {sermon.series}
                     </Badge>
                 )}
-                <h3 className="font-semibold text-ink leading-snug group-hover:text-brand transition-colors line-clamp-2">
+                <h3 className="font-semibold text-ink leading-snug group-hover:text-brand-text transition-colors line-clamp-2">
                     {sermon.title}
                 </h3>
                 <p className="text-ink-muted text-sm mt-1">{sermon.speaker_name}</p>

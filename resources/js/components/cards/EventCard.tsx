@@ -26,16 +26,16 @@ export default function EventCard({ event }: { event: Event }) {
 
     return (
         <div className="group flex gap-4 bg-white rounded-xl border border-border p-4 hover:shadow-md transition-shadow">
-            <div className="shrink-0 w-14 h-16 rounded-lg bg-brand flex flex-col items-center justify-center text-white select-none">
+            <div className="shrink-0 w-14 h-16 rounded-lg bg-brand flex flex-col items-center justify-center text-brand-dark select-none">
                 <span className="text-xl font-bold leading-none">{day}</span>
                 <span className="text-[10px] uppercase tracking-widest mt-0.5 opacity-80">{month}</span>
             </div>
 
             <div className="flex-1 min-w-0">
-                <Badge variant="outline" className="text-xs border-brand/40 text-brand mb-1">
+                <Badge variant="outline" className="text-xs border-brand/40 text-brand-text mb-1">
                     {TYPE_LABELS[event.type] ?? 'Evento'}
                 </Badge>
-                <h3 className="font-semibold text-ink leading-snug group-hover:text-brand transition-colors line-clamp-1">
+                <h3 className="font-semibold text-ink leading-snug group-hover:text-brand-text transition-colors line-clamp-1">
                     {event.title}
                 </h3>
                 <div className="flex items-center gap-3 mt-1.5 text-xs text-ink-muted">
@@ -57,7 +57,7 @@ export default function EventCard({ event }: { event: Event }) {
                 <Button
                     size="sm"
                     variant="outline"
-                    className="border-brand text-brand hover:bg-brand hover:text-white"
+                    className="border-brand text-brand-text hover:bg-brand hover:text-white"
                 >
                     Ver
                 </Button>

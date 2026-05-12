@@ -61,7 +61,7 @@ export default function SupportCTASection() {
                             </p>
                             <Link
                                 href={href}
-                                className="mt-6 inline-flex items-center gap-2 px-5 py-2.5 bg-brand text-white text-sm font-medium rounded-lg hover:bg-brand-light transition-colors self-start"
+                                className="mt-6 inline-flex items-center gap-2 px-5 py-2.5 bg-brand text-brand-dark text-sm font-medium rounded-lg hover:bg-brand-light transition-colors self-start"
                             >
                                 {cta}
                             </Link>

@@ -104,7 +104,7 @@ export default function Churches({ churches, filters = {} }: Props) {
                     {(province || search) && (
                         <button
                             onClick={() => { applyProvince(''); setSearch(''); }}
-                            className="text-sm text-ink-muted hover:text-brand underline underline-offset-2"
+                            className="text-sm text-ink-muted hover:text-brand-text underline underline-offset-2"
                         >
                             Limpar filtros
                         </button>
@@ -121,7 +121,7 @@ export default function Churches({ churches, filters = {} }: Props) {
                 <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-10">
                     {filtered.length === 0 ? (
                         <div className="text-center py-24 text-ink-muted">
-                            <MapPin size={40} className="mx-auto mb-4 text-brand-light" />
+                            <MapPin size={40} className="mx-auto mb-4 text-brand-text" />
                             <p>Nenhuma igreja encontrada.</p>
                         </div>
                     ) : (
@@ -144,7 +144,7 @@ export default function Churches({ churches, filters = {} }: Props) {
                                         className="group bg-white rounded-xl border border-border p-5 hover:shadow-md hover:border-brand/30 transition-all"
                                     >
                                         <div className="flex items-start justify-between mb-3">
-                                            <h3 className="font-semibold text-ink group-hover:text-brand transition-colors leading-snug">
+                                            <h3 className="font-semibold text-ink group-hover:text-brand-text transition-colors leading-snug">
                                                 {church.name}
                                             </h3>
                                             <Badge variant="outline" className="text-xs ml-2 shrink-0">
@@ -155,20 +155,20 @@ export default function Churches({ churches, filters = {} }: Props) {
                                         <div className="space-y-1.5 text-sm text-ink-muted">
                                             {church.province && (
                                                 <p className="flex items-center gap-1.5">
-                                                    <MapPin size={13} className="text-brand shrink-0" />
+                                                    <MapPin size={13} className="text-brand-text shrink-0" />
                                                     {church.province.name}
                                                     {church.address && ` · ${church.address}`}
                                                 </p>
                                             )}
                                             {church.pastor_name && (
                                                 <p className="flex items-center gap-1.5">
-                                                    <User size={13} className="text-brand shrink-0" />
+                                                    <User size={13} className="text-brand-text shrink-0" />
                                                     {church.pastor_name}
                                                 </p>
                                             )}
                                             {church.service_times && church.service_times.length > 0 && (
                                                 <p className="flex items-center gap-1.5">
-                                                    <Clock size={13} className="text-brand shrink-0" />
+                                                    <Clock size={13} className="text-brand-text shrink-0" />
                                                     {church.service_times[0].label ?? `${church.service_times[0].day} ${church.service_times[0].time}`}
                                                 </p>
                                             )}

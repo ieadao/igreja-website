@@ -59,7 +59,7 @@ export default function EventDetail({ event, isRegistered }: Props) {
                 <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 pt-6">
                     <Link
                         href="/agenda"
-                        className="inline-flex items-center gap-1.5 text-sm text-ink-muted hover:text-brand transition-colors"
+                        className="inline-flex items-center gap-1.5 text-sm text-ink-muted hover:text-brand-text transition-colors"
                     >
                         <ChevronLeft className="w-4 h-4" /> Voltar à agenda
                     </Link>
@@ -75,7 +75,7 @@ export default function EventDetail({ event, isRegistered }: Props) {
 
                     {/* Hero card */}
                     <div className="bg-white rounded-2xl border border-border shadow-sm overflow-hidden mb-8">
-                        <div className="bg-brand px-6 py-8 text-white">
+                        <div className="bg-brand-dark px-6 py-8 text-white">
                             <div className="flex flex-wrap items-center gap-3 mb-4">
                                 <Badge className="bg-white/20 text-white border-transparent text-sm">
                                     {TYPE_LABELS[event.type] ?? 'Evento'}
@@ -93,7 +93,7 @@ export default function EventDetail({ event, isRegistered }: Props) {
 
                         <div className="px-6 py-6 grid sm:grid-cols-2 gap-4">
                             <div className="flex items-start gap-3">
-                                <Calendar className="w-5 h-5 text-brand mt-0.5 shrink-0" />
+                                <Calendar className="w-5 h-5 text-brand-text mt-0.5 shrink-0" />
                                 <div>
                                     <p className="text-xs text-ink-muted uppercase tracking-wide font-medium mb-0.5">Data e hora</p>
                                     <p className="text-ink font-medium">{formatDateTime(event.starts_at)}</p>
@@ -105,9 +105,9 @@ export default function EventDetail({ event, isRegistered }: Props) {
 
                             <div className="flex items-start gap-3">
                                 {event.is_online ? (
-                                    <Wifi className="w-5 h-5 text-brand mt-0.5 shrink-0" />
+                                    <Wifi className="w-5 h-5 text-brand-text mt-0.5 shrink-0" />
                                 ) : (
-                                    <MapPin className="w-5 h-5 text-brand mt-0.5 shrink-0" />
+                                    <MapPin className="w-5 h-5 text-brand-text mt-0.5 shrink-0" />
                                 )}
                                 <div>
                                     <p className="text-xs text-ink-muted uppercase tracking-wide font-medium mb-0.5">
@@ -123,7 +123,7 @@ export default function EventDetail({ event, isRegistered }: Props) {
 
                             {event.max_capacity && (
                                 <div className="flex items-start gap-3">
-                                    <Users className="w-5 h-5 text-brand mt-0.5 shrink-0" />
+                                    <Users className="w-5 h-5 text-brand-text mt-0.5 shrink-0" />
                                     <div>
                                         <p className="text-xs text-ink-muted uppercase tracking-wide font-medium mb-0.5">Capacidade</p>
                                         <p className="text-ink font-medium">{event.max_capacity} lugares</p>
@@ -162,7 +162,7 @@ export default function EventDetail({ event, isRegistered }: Props) {
                                 href={event.stream_url}
                                 target="_blank"
                                 rel="noopener noreferrer"
-                                className="inline-flex items-center gap-2 text-brand hover:underline font-medium"
+                                className="inline-flex items-center gap-2 text-brand-text hover:underline font-medium"
                             >
                                 <ExternalLink className="w-4 h-4" />
                                 Assistir transmissão
@@ -179,7 +179,7 @@ export default function EventDetail({ event, isRegistered }: Props) {
                             </p>
                             <Button
                                 onClick={() => setRegistrationOpen(true)}
-                                className="bg-brand hover:bg-brand-dark text-white px-8"
+                                className="bg-brand hover:bg-brand-dark text-brand-dark hover:text-white px-8"
                             >
                                 Inscrever-me
                             </Button>

@@ -6,11 +6,11 @@ import OffCanvas from './OffCanvas';
 import type { Province } from '@/types';
 
 const DESKTOP_LINKS = [
-    { label: 'Eventos',      suffix: '/eventos' },
-    { label: 'Ministérios',  suffix: '/ministerios' },
-    { label: 'Missões',      suffix: '/missoes' },
-    { label: 'Notícias',     suffix: '/noticias' },
-    { label: 'Dar',          suffix: '/dar' },
+    { label: 'Eventos', suffix: '/eventos' },
+    { label: 'Ministérios', suffix: '/ministerios' },
+    { label: 'Missões', suffix: '/missoes' },
+    { label: 'Notícias', suffix: '/noticias' },
+    { label: 'Dar', suffix: '/dar' },
 ];
 
 interface Props {
@@ -26,9 +26,9 @@ export default function ProvinceHeader({ province, transparent = false }: Props)
         <>
             <header
                 className={cn(
-                    'fixed top-0 left-0 right-0 z-40 transition-colors duration-300',
+                    'fixed top-0 left-0 right-0 z-90 transition-colors duration-300',
                     transparent
-                        ? 'bg-transparent text-white'
+                        ? 'bg-white text-black'
                         : 'bg-cream/95 backdrop-blur-sm border-b border-border text-ink shadow-sm',
                 )}
             >
@@ -42,9 +42,13 @@ export default function ProvinceHeader({ province, transparent = false }: Props)
                                 transparent ? 'text-white/50 hover:text-white/90' : 'text-ink-faint hover:text-ink-muted',
                             )}
                         >
-                            MAO Nacional
+                            <img
+                                src="/images/logo.png"
+                                alt="IEADAO"
+                                className="w-25 h-25 object-contain"
+                            />
                         </Link>
-                        <span className={transparent ? 'text-white/20' : 'text-border'}>|</span>
+                        <span className={transparent ? 'text-black/20' : 'text-ink-faint'}>|</span>
                         <Link
                             href={base}
                             className="font-display text-xl font-semibold tracking-wide truncate"
@@ -60,8 +64,8 @@ export default function ProvinceHeader({ province, transparent = false }: Props)
                                 key={link.suffix}
                                 href={`${base}${link.suffix}`}
                                 className={cn(
-                                    'text-sm font-medium tracking-wide hover:text-brand transition-colors',
-                                    transparent ? 'text-white/85 hover:text-white' : 'text-ink-muted',
+                                    'text-sm font-medium tracking-wide hover:text-brand-text transition-colors',
+                                    transparent ? 'text-black/85 hover:text-brand' : 'text-ink-muted',
                                 )}
                             >
                                 {link.label}
@@ -75,7 +79,7 @@ export default function ProvinceHeader({ province, transparent = false }: Props)
                         className={cn(
                             'flex items-center gap-2 px-3 py-2 rounded-md text-sm font-medium transition-colors',
                             transparent
-                                ? 'text-white/85 hover:text-white hover:bg-white/10'
+                                ? 'text-black/85 hover:text-brand hover:bg-white/10'
                                 : 'text-ink-muted hover:text-ink hover:bg-brand-pale',
                         )}
                         aria-label="Abrir menu"

@@ -43,7 +43,7 @@ export default function EventRegistrationForm({ eventSlug, onSuccess }: Props) {
         <form onSubmit={submit} className="space-y-4">
             <div>
                 <label className="block text-sm font-medium text-ink mb-1">
-                    Nome completo <span className="text-brand">*</span>
+                    Nome completo <span className="text-brand-text">*</span>
                 </label>
                 <Input
                     value={data.name}

@@ -8,12 +8,14 @@ export default function GlobalFooter() {
                     {/* Brand */}
                     <div className="md:col-span-1">
                         <div className="flex items-center gap-3 mb-4">
-                            <div className="w-8 h-8 rounded-full bg-brand flex items-center justify-center text-sm font-bold text-white">
-                                M
-                            </div>
+                            <img
+                                src="/images/logo.png"
+                                alt="IEADAO"
+                                className="w-10 h-10 object-contain brightness-0 invert"
+                            />
                             <span className="font-display text-xl font-semibold text-white">MAO</span>
                         </div>
-                        <p className="text-sm leading-relaxed text-white/50">
+                        <p className="text-sm leading-relaxed text-white/70">
                             Ministério Alfa e Ômega — levando o Evangelho a todo Moçambique desde 1996.
                         </p>
                     </div>
@@ -70,11 +72,11 @@ export default function GlobalFooter() {
                     </div>
                 </div>
 
-                <div className="border-t border-white/10 mt-12 pt-8 flex flex-col sm:flex-row justify-between items-center gap-4 text-xs text-white/30">
+                <div className="border-t border-white/10 mt-12 pt-8 flex flex-col sm:flex-row justify-between items-center gap-4 text-xs text-white/50">
                     <span>© {new Date().getFullYear()} Ministério Alfa e Ômega. Todos os direitos reservados.</span>
                     <div className="flex gap-6">
-                        <Link href="/privacidade" className="hover:text-white/60 transition-colors">Privacidade</Link>
-                        <Link href="/termos" className="hover:text-white/60 transition-colors">Termos</Link>
+                        <Link href="/privacidade" className="hover:text-white/90 transition-colors">Privacidade</Link>
+                        <Link href="/termos" className="hover:text-white/90 transition-colors">Termos</Link>
                     </div>
                 </div>
             </div>

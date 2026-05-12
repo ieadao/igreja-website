@@ -47,7 +47,7 @@ export default function Documents({ documents }: Props) {
             <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
                 {documents.length === 0 ? (
                     <div className="text-center py-24">
-                        <FolderOpen size={48} className="mx-auto text-brand-light mb-4" />
+                        <FolderOpen size={48} className="mx-auto text-brand-text mb-4" />
                         <p className="text-ink-muted">Nenhum documento publicado ainda.</p>
                     </div>
                 ) : (
@@ -67,10 +67,10 @@ export default function Documents({ documents }: Props) {
                                             className="group flex items-center gap-4 bg-white rounded-xl border border-border p-4 hover:shadow-md hover:border-brand/30 transition-all"
                                         >
                                             <div className="w-10 h-10 rounded-lg bg-brand-pale flex items-center justify-center shrink-0">
-                                                <FileText size={18} className="text-brand" />
+                                                <FileText size={18} className="text-brand-text" />
                                             </div>
                                             <div className="flex-1 min-w-0">
-                                                <p className="font-medium text-ink group-hover:text-brand transition-colors truncate">
+                                                <p className="font-medium text-ink group-hover:text-brand-text transition-colors truncate">
                                                     {doc.title}
                                                 </p>
                                                 <p className="text-xs text-ink-muted mt-0.5">
@@ -78,7 +78,7 @@ export default function Documents({ documents }: Props) {
                                                     {doc.file_size_kb && ` · ${formatSize(doc.file_size_kb)}`}
                                                 </p>
                                             </div>
-                                            <Download size={16} className="text-ink-muted group-hover:text-brand shrink-0 transition-colors" />
+                                            <Download size={16} className="text-ink-muted group-hover:text-brand-text shrink-0 transition-colors" />
                                         </a>
                                     ))}
                                 </div>

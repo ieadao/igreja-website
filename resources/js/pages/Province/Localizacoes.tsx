@@ -57,7 +57,7 @@ function RegionCard({ region, province }: { region: RegionWithData; province: Pr
                             className="px-5 py-3 flex items-center justify-between bg-cream/30 hover:bg-brand-pale transition-colors"
                         >
                             <div className="flex items-center gap-2">
-                                <MapPin size={14} className="text-brand-light shrink-0" />
+                                <MapPin size={14} className="text-brand-text shrink-0" />
                                 <span className="text-sm text-ink">{zone.name}</span>
                             </div>
                             <span className="text-xs text-ink-muted">
@@ -66,7 +66,7 @@ function RegionCard({ region, province }: { region: RegionWithData; province: Pr
                         </Link>
                     ))}
                     <div className="px-5 py-3 bg-cream/20">
-                        <Link href={regionHref} className="text-xs font-medium text-brand hover:underline">
+                        <Link href={regionHref} className="text-xs font-medium text-brand-text hover:underline">
                             Ver todas as zonas em {region.name} →
                         </Link>
                     </div>
@@ -91,17 +91,17 @@ export default function Localizacoes({ province, regions }: Props) {
 
             <div className="bg-cream border-b border-border py-10">
                 <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-                    <p className="text-brand text-xs font-semibold uppercase tracking-widest mb-2">Localizações</p>
+                    <p className="text-brand-text text-xs font-semibold uppercase tracking-widest mb-2">Localizações</p>
                     <h1 className="font-display text-4xl sm:text-5xl font-semibold text-ink">Nossas Igrejas</h1>
                     <p className="text-ink-muted mt-2">{province.name}</p>
 
                     <div className="flex gap-6 mt-6">
                         <div className="flex items-center gap-2 text-ink-muted text-sm">
-                            <Building2 size={16} className="text-brand" />
+                            <Building2 size={16} className="text-brand-text" />
                             <span><strong className="text-ink">{regions.length}</strong> regiões</span>
                         </div>
                         <div className="flex items-center gap-2 text-ink-muted text-sm">
-                            <MapPin size={16} className="text-brand" />
+                            <MapPin size={16} className="text-brand-text" />
                             <span><strong className="text-ink">{totalChurches}</strong> igrejas</span>
                         </div>
                     </div>
@@ -111,7 +111,7 @@ export default function Localizacoes({ province, regions }: Props) {
             <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
                 {regions.length === 0 ? (
                     <div className="text-center py-24">
-                        <MapPin size={48} className="mx-auto text-brand-light mb-4" />
+                        <MapPin size={48} className="mx-auto text-brand-text mb-4" />
                         <p className="text-ink-muted">Nenhuma região registada ainda.</p>
                     </div>
                 ) : (

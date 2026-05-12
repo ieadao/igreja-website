@@ -21,7 +21,7 @@ export default function ChurchCard({ church, href }: Props) {
         <div className="bg-white rounded-xl border border-border p-5 hover:shadow-md transition-shadow flex flex-col gap-3">
             <div className="flex items-start justify-between gap-2">
                 <div className="min-w-0">
-                    <Badge variant="outline" className="text-xs border-brand/40 text-brand mb-1.5">
+                    <Badge variant="outline" className="text-xs border-brand/40 text-brand-text mb-1.5">
                         {TYPE_LABELS[church.type] ?? church.type}
                     </Badge>
                     <h3 className="font-semibold text-ink leading-snug">{church.name}</h3>
@@ -53,7 +53,7 @@ export default function ChurchCard({ church, href }: Props) {
                 <Button
                     variant="outline"
                     size="sm"
-                    className="w-full border-brand text-brand hover:bg-brand hover:text-white"
+                    className="w-full border-brand text-brand-text hover:bg-brand hover:text-white"
                 >
                     Ver Igreja
                 </Button>

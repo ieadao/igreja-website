@@ -45,7 +45,7 @@ export default function Prayer() {
             <div className="max-w-2xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
                 <div className="flex items-center gap-3 mb-8">
                     <div className="w-10 h-10 rounded-full bg-brand-pale flex items-center justify-center">
-                        <Heart size={18} className="text-brand" />
+                        <Heart size={18} className="text-brand-text" />
                     </div>
                     <div>
                         <p className="font-semibold text-ink">Equipa de Intercessão</p>
@@ -60,7 +60,7 @@ export default function Prayer() {
                         <p className="text-green-700 text-sm mt-1">A nossa equipa de intercessão irá orar pelo seu pedido.</p>
                         <button
                             onClick={() => reset()}
-                            className="mt-4 text-sm text-brand hover:underline"
+                            className="mt-4 text-sm text-brand-text hover:underline"
                         >
                             Enviar outro pedido
                         </button>
@@ -70,7 +70,7 @@ export default function Prayer() {
                         <div className="grid sm:grid-cols-2 gap-4">
                             <div>
                                 <label className="block text-sm font-medium text-ink mb-1">
-                                    Nome <span className="text-brand">*</span>
+                                    Nome <span className="text-brand-text">*</span>
                                 </label>
                                 <Input
                                     value={data.name}
@@ -107,7 +107,7 @@ export default function Prayer() {
 
                         <div>
                             <label className="block text-sm font-medium text-ink mb-1">
-                                O seu pedido <span className="text-brand">*</span>
+                                O seu pedido <span className="text-brand-text">*</span>
                             </label>
                             <textarea
                                 value={data.message}
@@ -125,7 +125,7 @@ export default function Prayer() {
                         <Button
                             type="submit"
                             disabled={processing}
-                            className="w-full bg-brand hover:bg-brand-dark text-white"
+                            className="w-full bg-brand hover:bg-brand-dark text-brand-dark hover:text-white"
                         >
                             {processing ? 'A enviar…' : 'Enviar Pedido de Oração'}
                         </Button>

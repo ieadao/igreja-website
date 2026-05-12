@@ -66,12 +66,12 @@ function LocationGrid({ province }: { province: Province & { regions: Region[] }
             <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
                 <div className="flex items-end justify-between mb-10">
                     <div>
-                        <p className="text-brand text-xs font-semibold uppercase tracking-widest mb-2">Localizações</p>
+                        <p className="text-brand-text text-xs font-semibold uppercase tracking-widest mb-2">Localizações</p>
                         <h2 className="font-display text-3xl sm:text-4xl font-semibold text-ink">Regiões da Província</h2>
                     </div>
                     <Link
                         href={`${base}/localizacoes`}
-                        className="hidden sm:flex items-center gap-1 text-brand font-medium hover:text-brand-dark transition-colors text-sm"
+                        className="hidden sm:flex items-center gap-1 text-brand-text font-medium hover:text-ink transition-colors text-sm"
                     >
                         Ver todas <ArrowRight size={16} />
                     </Link>
@@ -102,7 +102,7 @@ function LocationGrid({ province }: { province: Province & { regions: Region[] }
                 </div>
 
                 <div className="mt-6 sm:hidden text-center">
-                    <Link href={`${base}/localizacoes`} className="inline-flex items-center gap-1 text-brand font-medium text-sm">
+                    <Link href={`${base}/localizacoes`} className="inline-flex items-center gap-1 text-brand-text font-medium text-sm">
                         Ver todas as regiões <ArrowRight size={16} />
                     </Link>
                 </div>
@@ -120,12 +120,12 @@ function EventsSection({ province, events }: { province: Province; events: Event
             <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
                 <div className="flex items-end justify-between mb-10">
                     <div>
-                        <p className="text-brand text-xs font-semibold uppercase tracking-widest mb-2">Agenda</p>
+                        <p className="text-brand-text text-xs font-semibold uppercase tracking-widest mb-2">Agenda</p>
                         <h2 className="font-display text-3xl sm:text-4xl font-semibold text-ink">Próximos Eventos</h2>
                     </div>
                     <Link
                         href={`${base}/eventos`}
-                        className="hidden sm:flex items-center gap-1 text-brand font-medium hover:text-brand-dark text-sm transition-colors"
+                        className="hidden sm:flex items-center gap-1 text-brand-text font-medium hover:text-ink text-sm transition-colors"
                     >
                         Ver todos <ArrowRight size={16} />
                     </Link>
@@ -134,7 +134,7 @@ function EventsSection({ province, events }: { province: Province; events: Event
                 <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-4">
                     {events.map(event => (
                         <div key={event.id} className="bg-cream rounded-xl p-5 flex flex-col gap-3">
-                            <div className="flex items-center gap-2 text-brand">
+                            <div className="flex items-center gap-2 text-brand-text">
                                 <Calendar size={16} />
                                 <span className="text-xs font-medium">{formatDate(event.starts_at)}</span>
                             </div>
@@ -145,7 +145,7 @@ function EventsSection({ province, events }: { province: Province; events: Event
                                     <span className="line-clamp-1">{event.location}</span>
                                 </div>
                             )}
-                            <span className="text-xs text-brand-dark font-medium capitalize bg-brand-pale px-2 py-0.5 rounded-full self-start">
+                            <span className="text-xs text-brand-text font-medium capitalize bg-brand-pale px-2 py-0.5 rounded-full self-start">
                                 {event.type}
                             </span>
                         </div>
@@ -165,12 +165,12 @@ function NewsSection({ province, news }: { province: Province; news: NewsItem[] 
             <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
                 <div className="flex items-end justify-between mb-10">
                     <div>
-                        <p className="text-brand text-xs font-semibold uppercase tracking-widest mb-2">Notícias</p>
+                        <p className="text-brand-text text-xs font-semibold uppercase tracking-widest mb-2">Notícias</p>
                         <h2 className="font-display text-3xl sm:text-4xl font-semibold text-ink">Últimas Notícias</h2>
                     </div>
                     <Link
                         href={`${base}/noticias`}
-                        className="hidden sm:flex items-center gap-1 text-brand font-medium hover:text-brand-dark text-sm transition-colors"
+                        className="hidden sm:flex items-center gap-1 text-brand-text font-medium hover:text-ink text-sm transition-colors"
                     >
                         Ver todas <ArrowRight size={16} />
                     </Link>
@@ -198,7 +198,7 @@ function NewsSection({ province, news }: { province: Province; news: NewsItem[] 
                             </div>
                             <div className="p-5">
                                 <p className="text-xs text-ink-muted mb-2">{formatDate(item.published_at)}</p>
-                                <h3 className="font-semibold text-ink leading-snug line-clamp-2 group-hover:text-brand transition-colors">
+                                <h3 className="font-semibold text-ink leading-snug line-clamp-2 group-hover:text-brand-text transition-colors">
                                     {item.title}
                                 </h3>
                                 {item.excerpt && (
@@ -222,12 +222,12 @@ function MissionariesSection({ province, missionaries }: { province: Province; m
             <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
                 <div className="flex items-end justify-between mb-10">
                     <div>
-                        <p className="text-brand text-xs font-semibold uppercase tracking-widest mb-2">Missões</p>
+                        <p className="text-brand-text text-xs font-semibold uppercase tracking-widest mb-2">Missões</p>
                         <h2 className="font-display text-3xl sm:text-4xl font-semibold text-ink">Nossos Missionários</h2>
                     </div>
                     <Link
                         href={`${base}/missoes`}
-                        className="hidden sm:flex items-center gap-1 text-brand font-medium hover:text-brand-dark text-sm transition-colors"
+                        className="hidden sm:flex items-center gap-1 text-brand-text font-medium hover:text-ink text-sm transition-colors"
                     >
                         Ver todos <ArrowRight size={16} />
                     </Link>
@@ -269,7 +269,7 @@ function DarCTA({ province }: { province: Province }) {
                 </p>
                 <Link
                     href={`${base}/dar`}
-                    className="inline-flex items-center gap-2 px-8 py-3 bg-white text-brand font-semibold rounded-lg hover:bg-brand-pale transition-colors"
+                    className="inline-flex items-center gap-2 px-8 py-3 bg-white text-brand-text font-semibold rounded-lg hover:bg-brand-pale transition-colors"
                 >
                     Contribuir Agora <ArrowRight size={18} />
                 </Link>

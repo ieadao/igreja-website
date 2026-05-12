@@ -64,7 +64,7 @@ export default function ProvinceDar({ province }: Props) {
             <Head title={`Dar — ${province.name}`} />
 
             {/* Hero */}
-            <div className="bg-brand text-white py-16">
+            <div className="bg-brand-dark text-white py-16">
                 <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
                     <Heart size={40} className="mx-auto mb-4 text-brand-light" />
                     <p className="text-brand-light text-xs font-semibold uppercase tracking-widest mb-3">Parceria</p>
@@ -106,7 +106,7 @@ export default function ProvinceDar({ province }: Props) {
                                 <ol className="space-y-2">
                                     {method.steps.map((step, i) => (
                                         <li key={i} className="flex gap-2 text-sm text-ink">
-                                            <span className="shrink-0 w-5 h-5 rounded-full bg-white flex items-center justify-center text-xs font-bold text-brand shadow-sm">
+                                            <span className="shrink-0 w-5 h-5 rounded-full bg-white flex items-center justify-center text-xs font-bold text-brand-text shadow-sm">
                                                 {i + 1}
                                             </span>
                                             {step}
@@ -130,7 +130,7 @@ export default function ProvinceDar({ province }: Props) {
                     </p>
                     <Link
                         href={`/provincia/${province.slug}/contacto`}
-                        className="inline-flex items-center gap-2 px-6 py-2.5 bg-brand text-white rounded-lg font-medium hover:bg-brand-dark transition-colors text-sm"
+                        className="inline-flex items-center gap-2 px-6 py-2.5 bg-brand text-brand-dark rounded-lg font-medium hover:bg-brand-dark hover:text-white transition-colors text-sm"
                     >
                         Contactar a Província
                     </Link>

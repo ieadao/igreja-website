@@ -28,7 +28,7 @@ export default function Ministerios({ province, churches }: Props) {
 
             <div className="bg-cream border-b border-border py-10">
                 <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-                    <p className="text-brand text-xs font-semibold uppercase tracking-widest mb-2">Ministérios</p>
+                    <p className="text-brand-text text-xs font-semibold uppercase tracking-widest mb-2">Ministérios</p>
                     <h1 className="font-display text-4xl sm:text-5xl font-semibold text-ink">Grupos e Ministérios</h1>
                     <p className="text-ink-muted mt-2">{province.name}</p>
                 </div>
@@ -37,7 +37,7 @@ export default function Ministerios({ province, churches }: Props) {
             <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12 space-y-12">
                 {churches.length === 0 ? (
                     <div className="text-center py-24">
-                        <Users size={48} className="mx-auto text-brand-light mb-4" />
+                        <Users size={48} className="mx-auto text-brand-text mb-4" />
                         <p className="text-ink-muted">Nenhum grupo registado nesta província ainda.</p>
                     </div>
                 ) : (
@@ -53,7 +53,7 @@ export default function Ministerios({ province, churches }: Props) {
                                         <div className="flex items-center gap-2 mb-1">
                                             <Link
                                                 href={churchHref}
-                                                className="font-display text-xl font-semibold text-ink hover:text-brand transition-colors"
+                                                className="font-display text-xl font-semibold text-ink hover:text-brand-text transition-colors"
                                             >
                                                 {church.name}
                                             </Link>
@@ -64,13 +64,13 @@ export default function Ministerios({ province, churches }: Props) {
                                         <div className="flex flex-wrap gap-4 text-sm text-ink-muted mt-1">
                                             {church.pastor_name && (
                                                 <span className="flex items-center gap-1.5">
-                                                    <User size={13} className="text-brand shrink-0" />
+                                                    <User size={13} className="text-brand-text shrink-0" />
                                                     {church.pastor_name}
                                                 </span>
                                             )}
                                             {church.address && (
                                                 <span className="flex items-center gap-1.5">
-                                                    <MapPin size={13} className="text-brand shrink-0" />
+                                                    <MapPin size={13} className="text-brand-text shrink-0" />
                                                     {church.address}
                                                 </span>
                                             )}
@@ -78,7 +78,7 @@ export default function Ministerios({ province, churches }: Props) {
                                     </div>
                                     <Link
                                         href={churchHref}
-                                        className="shrink-0 text-xs text-brand font-medium hover:underline"
+                                        className="shrink-0 text-xs text-brand-text font-medium hover:underline"
                                     >
                                         Ver igreja →
                                     </Link>

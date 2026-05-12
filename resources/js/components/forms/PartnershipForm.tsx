@@ -56,7 +56,7 @@ export default function PartnershipForm({ onSuccess }: Props) {
         <form onSubmit={submit} className="space-y-4">
             <div>
                 <label className="block text-sm font-medium text-ink mb-1">
-                    Nome da Organização <span className="text-brand">*</span>
+                    Nome da Organização <span className="text-brand-text">*</span>
                 </label>
                 <Input
                     value={data.org_name}
@@ -69,7 +69,7 @@ export default function PartnershipForm({ onSuccess }: Props) {
 
             <div>
                 <label className="block text-sm font-medium text-ink mb-1">
-                    Pessoa de Contacto <span className="text-brand">*</span>
+                    Pessoa de Contacto <span className="text-brand-text">*</span>
                 </label>
                 <Input
                     value={data.contact_name}
@@ -83,7 +83,7 @@ export default function PartnershipForm({ onSuccess }: Props) {
             <div className="grid sm:grid-cols-2 gap-4">
                 <div>
                     <label className="block text-sm font-medium text-ink mb-1">
-                        Email <span className="text-brand">*</span>
+                        Email <span className="text-brand-text">*</span>
                     </label>
                     <Input
                         type="email"
@@ -109,7 +109,7 @@ export default function PartnershipForm({ onSuccess }: Props) {
 
             <div>
                 <label className="block text-sm font-medium text-ink mb-1">
-                    Área de Parceria <span className="text-brand">*</span>
+                    Área de Parceria <span className="text-brand-text">*</span>
                 </label>
                 <select
                     value={data.type}
@@ -125,7 +125,7 @@ export default function PartnershipForm({ onSuccess }: Props) {
 
             <div>
                 <label className="block text-sm font-medium text-ink mb-1">
-                    Proposta <span className="text-brand">*</span>
+                    Proposta <span className="text-brand-text">*</span>
                 </label>
                 <textarea
                     value={data.proposal}

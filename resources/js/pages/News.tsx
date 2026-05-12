@@ -26,7 +26,7 @@ export default function News({ news }: Props) {
             <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
                 {news.data.length === 0 ? (
                     <div className="text-center py-24">
-                        <BookOpen size={48} className="mx-auto text-brand-light mb-4" />
+                        <BookOpen size={48} className="mx-auto text-brand-text mb-4" />
                         <p className="text-ink-muted">Nenhuma notícia publicada ainda.</p>
                     </div>
                 ) : (
@@ -47,13 +47,13 @@ export default function News({ news }: Props) {
                                             />
                                         ) : (
                                             <div className="w-full h-full flex items-center justify-center">
-                                                <BookOpen size={32} className="text-brand-light" />
+                                                <BookOpen size={32} className="text-brand-text" />
                                             </div>
                                         )}
                                     </div>
                                     <div className="p-5">
                                         <p className="text-xs text-ink-muted mb-2">{formatDate(item.published_at)}</p>
-                                        <h2 className="font-semibold text-ink leading-snug line-clamp-2 group-hover:text-brand transition-colors">
+                                        <h2 className="font-semibold text-ink leading-snug line-clamp-2 group-hover:text-brand-text transition-colors">
                                             {item.title}
                                         </h2>
                                         {item.excerpt && (
@@ -72,7 +72,7 @@ export default function News({ news }: Props) {
                                         href={link.url ?? '#'}
                                         className={`px-3 py-1.5 rounded-lg text-sm font-medium transition-colors ${
                                             link.active
-                                                ? 'bg-brand text-white'
+                                                ? 'bg-brand-dark text-white'
                                                 : link.url
                                                 ? 'text-ink hover:bg-cream'
                                                 : 'text-ink-muted opacity-40 pointer-events-none'

@@ -49,7 +49,7 @@ export default function ProvinceContact({ province }: Props) {
 
             <div className="bg-cream border-b border-border py-10">
                 <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-                    <p className="text-brand text-xs font-semibold uppercase tracking-widest mb-2">Contacto</p>
+                    <p className="text-brand-text text-xs font-semibold uppercase tracking-widest mb-2">Contacto</p>
                     <h1 className="font-display text-4xl sm:text-5xl font-semibold text-ink">Fale Connosco</h1>
                     <p className="text-ink-muted mt-2">{province.name}</p>
                 </div>
@@ -66,7 +66,7 @@ export default function ProvinceContact({ province }: Props) {
                                 <CheckCircle2 size={40} className="mx-auto text-green-500 mb-3" />
                                 <p className="font-semibold text-green-800">Mensagem enviada com sucesso!</p>
                                 <p className="text-green-700 text-sm mt-1">Entraremos em contacto em breve.</p>
-                                <button onClick={() => reset()} className="mt-4 text-sm text-brand hover:underline">
+                                <button onClick={() => reset()} className="mt-4 text-sm text-brand-text hover:underline">
                                     Enviar outra mensagem
                                 </button>
                             </div>
@@ -74,7 +74,7 @@ export default function ProvinceContact({ province }: Props) {
                             <form onSubmit={submit} className="space-y-4">
                                 <div>
                                     <label className="block text-sm font-medium text-ink mb-1">
-                                        Nome <span className="text-brand">*</span>
+                                        Nome <span className="text-brand-text">*</span>
                                     </label>
                                     <Input
                                         value={data.name}
@@ -112,7 +112,7 @@ export default function ProvinceContact({ province }: Props) {
 
                                 <div>
                                     <label className="block text-sm font-medium text-ink mb-1">
-                                        Assunto <span className="text-brand">*</span>
+                                        Assunto <span className="text-brand-text">*</span>
                                     </label>
                                     <select
                                         value={data.type}
@@ -128,7 +128,7 @@ export default function ProvinceContact({ province }: Props) {
 
                                 <div>
                                     <label className="block text-sm font-medium text-ink mb-1">
-                                        Mensagem <span className="text-brand">*</span>
+                                        Mensagem <span className="text-brand-text">*</span>
                                     </label>
                                     <textarea
                                         value={data.message}
@@ -146,7 +146,7 @@ export default function ProvinceContact({ province }: Props) {
                                 <Button
                                     type="submit"
                                     disabled={processing}
-                                    className="w-full bg-brand hover:bg-brand-dark text-white"
+                                    className="w-full bg-brand hover:bg-brand-dark text-brand-dark hover:text-white"
                                 >
                                     {processing ? 'A enviar…' : 'Enviar Mensagem'}
                                 </Button>
@@ -160,7 +160,7 @@ export default function ProvinceContact({ province }: Props) {
                         <div className="space-y-5">
                             <div className="flex items-start gap-4 p-5 bg-cream rounded-xl">
                                 <div className="w-10 h-10 rounded-lg bg-brand-pale flex items-center justify-center shrink-0">
-                                    <MapPin size={18} className="text-brand" />
+                                    <MapPin size={18} className="text-brand-text" />
                                 </div>
                                 <div>
                                     <p className="font-medium text-ink">Sede Provincial</p>

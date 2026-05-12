@@ -15,11 +15,11 @@ function EventCard({ event }: { event: Event }) {
         <div className="bg-white rounded-xl overflow-hidden border border-border hover:shadow-md transition-shadow">
             <div className="p-5 flex flex-col gap-3">
                 <div className="flex items-center justify-between">
-                    <div className="flex items-center gap-2 text-brand">
+                    <div className="flex items-center gap-2 text-brand-text">
                         <Calendar size={15} />
                         <span className="text-xs font-medium">{formatDate(event.starts_at)}</span>
                     </div>
-                    <span className="text-xs text-brand-dark font-medium capitalize bg-brand-pale px-2 py-0.5 rounded-full">
+                    <span className="text-xs text-brand-text font-medium capitalize bg-brand-pale px-2 py-0.5 rounded-full">
                         {event.type}
                     </span>
                 </div>
@@ -59,7 +59,7 @@ export default function ProvinceEvents({ province, events, types }: Props) {
 
             <div className="bg-cream border-b border-border py-10">
                 <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-                    <p className="text-brand text-xs font-semibold uppercase tracking-widest mb-2">Agenda</p>
+                    <p className="text-brand-text text-xs font-semibold uppercase tracking-widest mb-2">Agenda</p>
                     <h1 className="font-display text-4xl sm:text-5xl font-semibold text-ink">Eventos</h1>
                     <p className="text-ink-muted mt-2">{province.name}</p>
                 </div>
@@ -71,7 +71,7 @@ export default function ProvinceEvents({ province, events, types }: Props) {
                         <button
                             onClick={() => setType(null)}
                             className={`shrink-0 px-4 py-1.5 rounded-full text-sm font-medium transition-colors ${
-                                !currentType ? 'bg-brand text-white' : 'bg-cream text-ink-muted hover:text-ink'
+                                !currentType ? 'bg-brand-dark text-white' : 'bg-cream text-ink-muted hover:text-ink'
                             }`}
                         >
                             Todos
@@ -81,7 +81,7 @@ export default function ProvinceEvents({ province, events, types }: Props) {
                                 key={type}
                                 onClick={() => setType(type)}
                                 className={`shrink-0 px-4 py-1.5 rounded-full text-sm font-medium capitalize transition-colors ${
-                                    currentType === type ? 'bg-brand text-white' : 'bg-cream text-ink-muted hover:text-ink'
+                                    currentType === type ? 'bg-brand-dark text-white' : 'bg-cream text-ink-muted hover:text-ink'
                                 }`}
                             >
                                 {type}
@@ -94,7 +94,7 @@ export default function ProvinceEvents({ province, events, types }: Props) {
             <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
                 {events.data.length === 0 ? (
                     <div className="text-center py-24">
-                        <Calendar size={48} className="mx-auto text-brand-light mb-4" />
+                        <Calendar size={48} className="mx-auto text-brand-text mb-4" />
                         <p className="text-ink-muted">Nenhum evento encontrado.</p>
                     </div>
                 ) : (
@@ -112,7 +112,7 @@ export default function ProvinceEvents({ province, events, types }: Props) {
                                         preserveState
                                         className={`px-3 py-1.5 rounded-lg text-sm font-medium transition-colors ${
                                             link.active
-                                                ? 'bg-brand text-white'
+                                                ? 'bg-brand-dark text-white'
                                                 : link.url
                                                 ? 'text-ink hover:bg-cream'
                                                 : 'text-ink-muted opacity-40 pointer-events-none'
