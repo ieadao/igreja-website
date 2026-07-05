@@ -31,7 +31,7 @@ class MenuSeeder extends Seeder
 
         $nav = [
             ['title' => 'Agenda',   'url' => '/agenda',   'order' => 2],
-            ['title' => 'Média',    'url' => '/media',    'order' => 3],
+            ['title' => 'Mídia',    'url' => '/midia',    'order' => 3],
             ['title' => 'Missões',  'url' => '/missoes',  'order' => 4],
             ['title' => 'Notícias', 'url' => '/noticias', 'order' => 5],
             ['title' => 'Dar',      'url' => '/dar',      'order' => 6],
