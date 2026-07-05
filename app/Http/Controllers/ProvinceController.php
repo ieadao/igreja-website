@@ -49,7 +49,13 @@ class ProvinceController extends Controller
     {
         $province = $this->findProvince($provinceSlug);
         $regions  = $province->regions()
-            ->with(['zones' => fn ($q) => $q->withCount('churches')])
+            ->with(['zones' => fn ($q) => $q
+                ->withCount('churches')
+                ->with(['churches' => fn ($q) => $q
+                    ->where('status', 'active')
+                    ->orderBy('name')
+                    ->select('id', 'zone_id', 'name', 'slug', 'type', 'address', 'pastor_name', 'lat', 'lng')]),
+            ])
             ->withCount('churches')
             ->get();
 
