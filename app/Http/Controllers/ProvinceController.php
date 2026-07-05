@@ -161,13 +161,6 @@ class ProvinceController extends Controller
         ]);
     }
 
-    public function dar(string $provinceSlug): \Inertia\Response
-    {
-        return Inertia::render('Province/Dar', [
-            'province' => $this->findProvince($provinceSlug),
-        ]);
-    }
-
     public function igrejas(string $provinceSlug): \Inertia\Response
     {
         $province = $this->findProvince($provinceSlug);

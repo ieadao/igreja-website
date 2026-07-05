@@ -10,7 +10,6 @@ const DESKTOP_LINKS = [
     { label: 'Ministérios', suffix: '/ministerios' },
     { label: 'Missões', suffix: '/missoes' },
     { label: 'Notícias', suffix: '/noticias' },
-    { label: 'Dar', suffix: '/dar' },
 ];
 
 interface Props {

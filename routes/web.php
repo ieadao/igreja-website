@@ -61,9 +61,9 @@ Route::get('/oracao',     fn () => Inertia::render('Prayer'))->name('prayer');
 Route::get('/privacidade',fn () => Inertia::render('Privacy'))->name('privacy');
 Route::get('/termos',     fn () => Inertia::render('Terms'))->name('terms');
 
-// Media (Sermons)
-Route::get('/media',          [SermonController::class, 'index'])->name('media');
-Route::get('/media/{id}',     [SermonController::class, 'show'])->name('sermon.show')->whereNumber('id');
+// Midia (Sermons)
+Route::get('/midia',          [SermonController::class, 'index'])->name('midia');
+Route::get('/midia/{id}',     [SermonController::class, 'show'])->name('sermon.show')->whereNumber('id');
 
 // Agenda (Events)
 Route::get('/agenda',         [EventController::class, 'index'])->name('agenda');
@@ -84,7 +84,6 @@ Route::prefix('/provincia/{provinceSlug}')
         Route::get('/noticias/{slug}',[ProvinceController::class, 'noticiasShow'])->name('province.news.show');
         Route::get('/missoes',       [ProvinceController::class, 'missoes'])->name('province.missions');
         Route::get('/ministerios',   [ProvinceController::class, 'ministerios'])->name('province.ministries');
-        Route::get('/dar',           [ProvinceController::class, 'dar'])->name('province.give');
         Route::get('/sobre',         fn (string $provinceSlug) => Inertia::render('Province/About',    ['province' => \App\Models\Province::where('slug', $provinceSlug)->firstOrFail()]))->name('province.about');
         Route::get('/igrejas',       [ProvinceController::class, 'igrejas'])->name('province.churches');
         Route::get('/pregacoes',     [ProvinceController::class, 'pregacoes'])->name('province.sermons');
