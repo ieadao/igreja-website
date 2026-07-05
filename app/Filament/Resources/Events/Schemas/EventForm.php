@@ -85,9 +85,26 @@ class EventForm
                     ->seconds(false)
                     ->after('starts_at'),
 
+                Select::make('church_id')
+                    ->label('Local (Igreja)')
+                    ->relationship('church', 'name')
+                    ->searchable()
+                    ->preload()
+                    ->nullable()
+                    ->live()
+                    ->getSearchResultsUsing(
+                        fn (string $search) => Church::active()
+                            ->where('name', 'like', "%{$search}%")
+                            ->limit(30)
+                            ->pluck('name', 'id')
+                    )
+                    ->getOptionLabelUsing(fn ($value) => Church::find($value)?->name),
+
                 TextInput::make('location')
-                    ->label('Local')
-                    ->maxLength(255),
+                    ->label('Local (manual)')
+                    ->placeholder('Preencher se não for numa igreja do sistema')
+                    ->maxLength(255)
+                    ->visible(fn ($get) => !$get('church_id') && !$get('is_online')),
 
                 Toggle::make('is_online')
                     ->label('Online')

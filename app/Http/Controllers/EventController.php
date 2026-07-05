@@ -10,7 +10,8 @@ class EventController extends Controller
 {
     public function index(Request $request): \Inertia\Response
     {
-        $query = Event::where('status', 'published')
+        $query = Event::with(['church:id,name,address'])
+            ->where('status', 'published')
             ->orderBy('starts_at');
 
         if ($request->filled('type')) {
@@ -61,7 +62,8 @@ class EventController extends Controller
 
     public function show(string $slug): \Inertia\Response
     {
-        $event = Event::where('status', 'published')
+        $event = Event::with(['church:id,name,address'])
+            ->where('status', 'published')
             ->where('slug', $slug)
             ->firstOrFail();
 

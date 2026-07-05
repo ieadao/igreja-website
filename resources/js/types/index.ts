@@ -86,6 +86,8 @@ export interface Event {
     type: 'service' | 'conference' | 'retreat' | 'seminar' | 'other';
     starts_at: string;
     ends_at: string | null;
+    church_id: number | null;
+    church: { id: number; name: string; address: string | null } | null;
     location: string | null;
     is_online: boolean;
     stream_url: string | null;

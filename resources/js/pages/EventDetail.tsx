@@ -115,6 +115,13 @@ export default function EventDetail({ event, isRegistered }: Props) {
                                     </p>
                                     {event.is_online ? (
                                         <p className="text-ink font-medium">Online / Transmissão ao vivo</p>
+                                    ) : event.church ? (
+                                        <>
+                                            <p className="text-ink font-medium">{event.church.name}</p>
+                                            {event.church.address && (
+                                                <p className="text-ink-muted text-sm mt-0.5">{event.church.address}</p>
+                                            )}
+                                        </>
                                     ) : (
                                         <p className="text-ink font-medium">{event.location ?? 'A definir'}</p>
                                     )}
