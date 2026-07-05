@@ -25,3 +25,20 @@ export function formatDateTime(dateString: string): string {
         minute: '2-digit',
     });
 }
+
+const DAY_NAMES: Record<string, string> = {
+    // full English
+    monday: 'Segunda-feira', tuesday: 'Terça-feira', wednesday: 'Quarta-feira',
+    thursday: 'Quinta-feira', friday: 'Sexta-feira', saturday: 'Sábado', sunday: 'Domingo',
+    // short English (3-letter)
+    mon: 'Segunda-feira', tue: 'Terça-feira', wed: 'Quarta-feira',
+    thu: 'Quinta-feira', fri: 'Sexta-feira', sat: 'Sábado', sun: 'Domingo',
+    // numeric (JS getDay style: 0 = Sunday)
+    '0': 'Domingo', '1': 'Segunda-feira', '2': 'Terça-feira', '3': 'Quarta-feira',
+    '4': 'Quinta-feira', '5': 'Sexta-feira', '6': 'Sábado',
+};
+
+export function formatDay(value: string | null | undefined): string {
+    if (!value) return '';
+    return DAY_NAMES[value.toLowerCase()] ?? DAY_NAMES[value] ?? value;
+}

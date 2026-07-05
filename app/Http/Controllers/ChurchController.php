@@ -27,7 +27,7 @@ class ChurchController extends Controller
                 'programs' => fn ($q) => $q
                     ->where('status', 'active')
                     ->notCancelled()
-                    ->with('groupType:id,name,slug,icon,order')
+                    ->with('groupType:id,name,acronym,slug,icon,order')
                     ->orderBy('group_type_id')
                     ->orderBy('name'),
             ])

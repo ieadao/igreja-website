@@ -9,7 +9,7 @@ class HomogeneousGroupType extends Model
 {
     public $timestamps = false;
 
-    protected $fillable = ['name', 'slug', 'icon', 'order'];
+    protected $fillable = ['name', 'acronym', 'slug', 'icon', 'order', 'description', 'whatsapp_number'];
 
     public function programs(): HasMany
     {

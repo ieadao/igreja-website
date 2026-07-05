@@ -36,9 +36,12 @@ export interface Zone {
 export interface GroupType {
     id: number;
     name: string;
+    acronym: string | null;
     slug: string;
     icon: string;
     order: number;
+    description?: string | null;
+    whatsapp_number?: string | null;
 }
 
 export interface ChurchProgram {

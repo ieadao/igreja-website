@@ -1,6 +1,7 @@
 import { Tabs, TabsList, TabsTrigger, TabsContent } from '@/components/ui/tabs';
 import { Badge } from '@/components/ui/badge';
 import { Clock, MapPin, User, UserCircle, Sparkles, Smile, CalendarX, type LucideIcon } from 'lucide-react';
+import { formatDay } from '@/lib/utils';
 import type { ChurchProgram, GroupType } from '@/types';
 
 const ICON_MAP: Record<string, LucideIcon> = {
@@ -16,11 +17,6 @@ function GroupIcon({ icon }: { icon?: string | null }) {
     return Icon ? <Icon className="w-4 h-4 mr-1 shrink-0" /> : null;
 }
 
-const DAYS: Record<string, string> = {
-    monday: 'Segunda', tuesday: 'Terça', wednesday: 'Quarta',
-    thursday: 'Quinta', friday: 'Sexta', saturday: 'Sábado', sunday: 'Domingo',
-    '1': 'Segunda', '2': 'Terça', '3': 'Quarta', '4': 'Quinta', '5': 'Sexta', '6': 'Sábado', '0': 'Domingo',
-};
 
 const FREQ: Record<string, string> = {
     weekly: 'Semanal', biweekly: 'Quinzenal', monthly: 'Mensal',
@@ -74,7 +70,7 @@ export default function ProgramsByType({ programs }: Props) {
                         className="data-[state=active]:bg-brand data-[state=active]:text-white"
                     >
                         <GroupIcon icon={type.icon} />
-                        {type.name}
+                        {type.acronym ?? type.name}
                         <span className="ml-1.5 text-xs opacity-70">
                             ({grouped.get(type.id)?.programs.length ?? 0})
                         </span>
@@ -87,7 +83,7 @@ export default function ProgramsByType({ programs }: Props) {
                     {progs.map(prog => (
                         <div
                             key={prog.id}
-                            className="bg-cream rounded-lg border border-border p-4 flex flex-wrap gap-4 items-start"
+                            className="bg-cream rounded-lg border border-border p-4 flex flex-col sm:flex-row sm:items-start gap-3"
                         >
                             <div className="flex-1 min-w-0">
                                 <p className="font-medium text-ink">{prog.name ?? type.name}</p>
@@ -95,11 +91,11 @@ export default function ProgramsByType({ programs }: Props) {
                                     <p className="text-sm text-ink-muted mt-1">{prog.description}</p>
                                 )}
                             </div>
-                            <div className="flex flex-wrap gap-2 text-sm text-ink-muted shrink-0">
+                            <div className="flex flex-wrap gap-2 text-sm text-ink-muted sm:shrink-0 sm:justify-end">
                                 {prog.day_of_week && (
                                     <span className="flex items-center gap-1">
                                         <Clock className="w-3.5 h-3.5" />
-                                        {DAYS[prog.day_of_week] ?? prog.day_of_week}
+                                        {formatDay(prog.day_of_week)}
                                         {prog.start_time && ` ${prog.start_time.slice(0, 5)}`}
                                         {prog.end_time && `–${prog.end_time.slice(0, 5)}`}
                                     </span>

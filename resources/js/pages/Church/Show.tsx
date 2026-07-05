@@ -4,6 +4,7 @@ import { Phone, Mail, MapPin, User, Clock, ChevronRight } from 'lucide-react';
 import ProvinceLayout from '@/layouts/ProvinceLayout';
 import ProgramsByType from '@/components/church/ProgramsByType';
 import { Badge } from '@/components/ui/badge';
+import { formatDay } from '@/lib/utils';
 import type { Province, Church } from '@/types';
 import type { MapPin as MapPinType } from '@/components/map/PinMap';
 
@@ -12,11 +13,6 @@ const PinMap = lazy(() => import('@/components/map/PinMap'));
 const TYPE_LABELS: Record<string, string> = {
     church:       'Igreja',
     congregation: 'Congregação',
-};
-
-const DAYS: Record<string, string> = {
-    monday: 'Segunda', tuesday: 'Terça', wednesday: 'Quarta',
-    thursday: 'Quinta', friday: 'Sexta', saturday: 'Sábado', sunday: 'Domingo',
 };
 
 interface Props {
@@ -104,7 +100,7 @@ export default function ChurchShow({ province, church }: Props) {
                                     <div>
                                         <p className="font-medium text-ink">{st.label}</p>
                                         <p className="text-sm text-ink-muted">
-                                            {DAYS[st.day?.toLowerCase()] ?? st.day}
+                                            {formatDay(st.day)}
                                         </p>
                                     </div>
                                     <span className="text-brand-text font-semibold tabular-nums">{st.time}</span>
