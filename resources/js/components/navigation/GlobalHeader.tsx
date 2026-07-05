@@ -6,25 +6,17 @@ import { cn } from '@/lib/utils';
 import OffCanvas from './OffCanvas';
 import type { SharedProps } from '@/types';
 
-const NAV_LINKS = [
-    { label: 'Sobre',      href: '/sobre' },
-    { label: 'Agenda',     href: '/agenda' },
-    { label: 'Média',      href: '/media' },
-    { label: 'Missões',    href: '/missoes' },
-    { label: 'Notícias',   href: '/noticias' },
-    { label: 'Dar',        href: '/dar' },
-];
-
 export default function GlobalHeader({ transparent = false }: { transparent?: boolean }) {
-    const { provinces } = usePage<SharedProps>().props;
-    const [menuOpen, setMenuOpen]         = useState(false);
+    const { provinces, mainMenu } = usePage<SharedProps>().props;
+    const [menuOpen, setMenuOpen]           = useState(false);
     const [provincesOpen, setProvincesOpen] = useState(false);
+    const [openDropdown, setOpenDropdown]   = useState<number | null>(null);
 
     return (
         <>
             <header
                 className={cn(
-                    'fixed top-0 left-0 right-0 z-99 transition-colors duration-300',
+                    'fixed top-0 left-0 right-0 z-80 transition-colors duration-300',
                     transparent
                         ? 'bg-white text-black'
                         : 'bg-cream/95 backdrop-blur-sm border-b border-border text-ink shadow-sm',
@@ -38,30 +30,70 @@ export default function GlobalHeader({ transparent = false }: { transparent?: bo
                             alt="IEADAO"
                             className="w-25 h-25 object-contain"
                         />
-                        {/* <span className={cn(
-                            'font-display text-xl font-semibold tracking-wide',
-                            transparent ? 'text-white' : 'text-ink',
-                        )}>
-                            MAO Moçambique
-                        </span> */}
                     </Link>
 
                     {/* Desktop nav */}
                     <nav className="hidden lg:flex items-center gap-7">
-                        {NAV_LINKS.map((link) => (
-                            <Link
-                                key={link.href}
-                                href={link.href}
-                                className={cn(
-                                    'text-sm font-medium tracking-wide hover:text-brand-text transition-colors',
-                                    transparent ? 'text-black/85 hover:text-brand' : 'text-ink-muted',
-                                )}
-                            >
-                                {link.label}
-                            </Link>
-                        ))}
+                        {mainMenu.map((item) =>
+                            item.children && item.children.length > 0 ? (
+                                <div
+                                    key={item.id}
+                                    className="relative"
+                                    onMouseEnter={() => setOpenDropdown(item.id)}
+                                    onMouseLeave={() => setOpenDropdown(null)}
+                                >
+                                    <button
+                                        className={cn(
+                                            'text-sm font-medium tracking-wide hover:text-brand-text transition-colors flex items-center gap-1',
+                                            transparent ? 'text-black/85 hover:text-brand' : 'text-ink-muted',
+                                        )}
+                                    >
+                                        {item.href ? (
+                                            <Link href={item.href} className="hover:text-brand-text transition-colors">
+                                                {item.label}
+                                            </Link>
+                                        ) : (
+                                            item.label
+                                        )}
+                                        <ChevronDown className="w-3.5 h-3.5" />
+                                    </button>
+                                    <AnimatePresence>
+                                        {openDropdown === item.id && (
+                                            <motion.div
+                                                initial={{ opacity: 0, y: 6 }}
+                                                animate={{ opacity: 1, y: 0 }}
+                                                exit={{ opacity: 0, y: 6 }}
+                                                transition={{ duration: 0.15 }}
+                                                className="absolute top-full left-0 mt-2 w-52 bg-white rounded-lg shadow-xl border border-border py-2 z-50"
+                                            >
+                                                {item.children.map((child) => (
+                                                    <Link
+                                                        key={child.id}
+                                                        href={child.href ?? '#'}
+                                                        className="block px-4 py-2.5 text-sm text-ink-muted hover:text-brand-text hover:bg-brand-pale transition-colors"
+                                                    >
+                                                        {child.label}
+                                                    </Link>
+                                                ))}
+                                            </motion.div>
+                                        )}
+                                    </AnimatePresence>
+                                </div>
+                            ) : (
+                                <Link
+                                    key={item.id}
+                                    href={item.href ?? '#'}
+                                    className={cn(
+                                        'text-sm font-medium tracking-wide hover:text-brand-text transition-colors',
+                                        transparent ? 'text-black/85 hover:text-brand' : 'text-ink-muted',
+                                    )}
+                                >
+                                    {item.label}
+                                </Link>
+                            )
+                        )}
 
-                        {/* Provinces dropdown */}
+                        {/* Provinces dropdown (dynamic, always shown) */}
                         <div
                             className="relative"
                             onMouseEnter={() => setProvincesOpen(true)}

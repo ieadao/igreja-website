@@ -237,11 +237,22 @@ export interface User {
     role_label?: string;
 }
 
+// ── Navigation ────────────────────────────────────────────────────────────────
+
+export interface MenuItem {
+    id: number;
+    label: string;
+    href: string | null;
+    children: MenuItem[];
+}
+
 // ── Inertia shared props ──────────────────────────────────────────────────────
 
 export interface SharedProps {
     auth: { user: User | null };
     provinces: Pick<Province, 'id' | 'name' | 'slug' | 'code'>[];
+    mainMenu: MenuItem[];
+    offcanvasMenu: MenuItem[];
     flash: { success: string | null; error: string | null };
 }
 

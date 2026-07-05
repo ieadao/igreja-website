@@ -1,40 +1,8 @@
-import { Link } from '@inertiajs/react';
+import { Link, usePage } from '@inertiajs/react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { X } from 'lucide-react';
-import type { Province } from '@/types';
+import type { Province, SharedProps } from '@/types';
 
-// ── Global nav structure ──────────────────────────────────────────────────────
-
-const GLOBAL_SECTIONS = [
-    {
-        label: 'Explorar',
-        links: [
-            { label: 'Quem Somos',          href: '/sobre' },
-            { label: 'A Nossa História',     href: '/historia' },
-            { label: 'Intervenção Social',   href: '/social' },
-            { label: 'Missões',              href: '/missoes' },
-            { label: 'Média',                href: '/media' },
-            { label: 'Agenda',               href: '/agenda' },
-            { label: 'Notícias',             href: '/noticias' },
-        ],
-    },
-    {
-        label: 'Estrutura',
-        links: [
-            { label: 'Igrejas & Províncias', href: '/igrejas' },
-            { label: 'Documentos',           href: '/documentos' },
-            { label: 'Parceiros',            href: '/parceiros' },
-        ],
-    },
-    {
-        label: 'Apoiar',
-        links: [
-            { label: 'Dar',                  href: '/dar' },
-            { label: 'Oração',               href: '/oracao' },
-            { label: 'Contacto',             href: '/contacto' },
-        ],
-    },
-];
 
 const PROVINCE_MAIN = [
     { label: 'Início',       suffix: '' },
@@ -167,28 +135,43 @@ function GlobalNav({
     provinces: Pick<Province, 'id' | 'name' | 'slug' | 'code'>[];
     onClose: () => void;
 }) {
+    const { offcanvasMenu } = usePage<SharedProps>().props;
+
     return (
         <div className="space-y-8">
-            {GLOBAL_SECTIONS.map((section) => (
-                <div key={section.label}>
-                    <p className="text-xs font-semibold uppercase tracking-widest text-white/50 mb-3">
-                        {section.label}
-                    </p>
-                    <ul className="space-y-0.5">
-                        {section.links.map((link) => (
-                            <li key={link.href}>
-                                <Link
-                                    href={link.href}
-                                    onClick={onClose}
-                                    className="block px-3 py-2.5 rounded-lg text-white/75 hover:text-white hover:bg-white/8 transition-colors font-medium"
-                                >
-                                    {link.label}
-                                </Link>
-                            </li>
-                        ))}
-                    </ul>
-                </div>
-            ))}
+            {offcanvasMenu.map((item) =>
+                item.children.length > 0 ? (
+                    // Section with children (e.g. Explorar, Estrutura, Apoiar)
+                    <div key={item.id}>
+                        <p className="text-xs font-semibold uppercase tracking-widest text-white/50 mb-3">
+                            {item.label}
+                        </p>
+                        <ul className="space-y-0.5">
+                            {item.children.map((child) => (
+                                <li key={child.id}>
+                                    <Link
+                                        href={child.href ?? '#'}
+                                        onClick={onClose}
+                                        className="block px-3 py-2.5 rounded-lg text-white/75 hover:text-white hover:bg-white/8 transition-colors font-medium"
+                                    >
+                                        {child.label}
+                                    </Link>
+                                </li>
+                            ))}
+                        </ul>
+                    </div>
+                ) : (
+                    // Standalone link
+                    <Link
+                        key={item.id}
+                        href={item.href ?? '#'}
+                        onClick={onClose}
+                        className="block px-3 py-2.5 rounded-lg text-white/75 hover:text-white hover:bg-white/8 transition-colors font-medium"
+                    >
+                        {item.label}
+                    </Link>
+                )
+            )}
 
             {/* Provinces list */}
             <div>
