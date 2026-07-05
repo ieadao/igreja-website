@@ -138,7 +138,7 @@ export default function About({ documents, leadership }: Props) {
                 </div>
             </section>
 
-            {/* Leadership */}
+            {/* Leadership
             {leadership.length > 0 && (
                 <section className="py-20 px-6 bg-[var(--color-cream)]">
                     <div className="max-w-5xl mx-auto">
@@ -163,10 +163,10 @@ export default function About({ documents, leadership }: Props) {
                         </div>
                     </div>
                 </section>
-            )}
+            )} */}
 
             {/* Documents */}
-            {documents.length > 0 && (
+            {/* {documents.length > 0 && (
                 <section className="bg-[var(--color-brand-pale)] py-20 px-6">
                     <div className="max-w-3xl mx-auto">
                         <h2 className="font-display text-4xl font-semibold text-[var(--color-ink)] text-center mb-12">
@@ -205,7 +205,7 @@ export default function About({ documents, leadership }: Props) {
                         ))}
                     </div>
                 </section>
-            )}
+            )} */}
 
             {/* CTA */}
             <section className="bg-[var(--color-brand-dark)] text-white py-16 px-6 text-center">

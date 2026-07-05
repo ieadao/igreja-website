@@ -26,7 +26,7 @@ export default function ProvinceHeader({ province, transparent = false }: Props)
         <>
             <header
                 className={cn(
-                    'fixed top-0 left-0 right-0 z-90 transition-colors duration-300',
+                    'fixed top-0 left-0 right-0 z-80 transition-colors duration-300',
                     transparent
                         ? 'bg-white text-black'
                         : 'bg-cream/95 backdrop-blur-sm border-b border-border text-ink shadow-sm',
