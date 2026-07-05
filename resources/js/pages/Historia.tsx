@@ -237,12 +237,12 @@ export default function Historia() {
                 </section>
 
                 {/* ════════════════════════════════════════════════════════════
-                    CAP. 1 — O CHÃO  (old church building, parallax)
+                    CAP. 1 — O CHÃO  (roots and early missions)
                 ════════════════════════════════════════════════════════════ */}
                 <section className="relative min-h-screen overflow-hidden flex items-center">
                     <div className="absolute inset-0">
                         <img src="/images/historia/image15.jpeg"
-                            alt="Primeira sede da Assembleia de Deus em Lourenço Marques"
+                            alt="Antigo Consulado da Grécia, sede em 1957"
                             className="hs-parallax-img absolute w-full h-[124%] -top-[12%] object-cover object-center grayscale" />
                         <div className="absolute inset-0"
                             style={{ background: 'linear-gradient(105deg, rgba(16,20,61,0.93) 45%, rgba(16,20,61,0.55) 100%)' }} />
@@ -253,32 +253,32 @@ export default function Historia() {
                             <div className="flex items-center gap-4 mb-10">
                                 <span className="hs-reveal font-mono text-[11px] font-bold text-white/30 tracking-widest">01</span>
                                 <div className="hs-reveal h-px flex-1 bg-white/15" />
-                                <span className="hs-reveal font-mono text-[11px] font-bold text-[var(--color-brand-light)] tracking-widest">Séc. XIX</span>
+                                <span className="hs-reveal font-mono text-[11px] font-bold text-[var(--color-brand-light)] tracking-widest">Séc. XVIII – 1911</span>
                             </div>
                             <div className="overflow-hidden mb-3">
                                 <h2 className="hs-title-line font-display font-semibold text-white leading-tight"
                                     style={{ fontSize: 'clamp(2.8rem,6vw,4.5rem)' }}>O Chão</h2>
                             </div>
                             <p className="hs-reveal text-[var(--color-brand-light)] font-medium text-lg mb-7">
-                                Moçambique — terra de encontros
+                                Do Protestantismo à Génese Pentecostal
                             </p>
                             <p className="hs-reveal text-white/65 text-lg leading-relaxed mb-4">
-                                Na ponta sudeste de África, entre o Índico e o Zambeze, Moçambique reúne mais de quarenta línguas e três mundos distintos: norte muçulmano, centro católico, sul pentecostal. Trinta e dois milhões de pessoas, quarenta e uma línguas de raiz Bantu.
+                                As raízes evangélicas em Moçambique remontam a 1742, mas a chama pentecostal foi acesa por moçambicanos que regressavam das minas da África do Sul. Em 1911, o jovem <strong>Paulo Khosa</strong> trouxe a mensagem, dando origem às primeiras congregações que seriam o alicerce das Assembleias de Deus.
                             </p>
                             <p className="hs-reveal text-white/45 text-base leading-relaxed mb-3">
-                                Em 1823 há já uma pequena missão Metodista da África do Sul a operar em Lourenço Marques. Em 1842, um pastor da Igreja Reformada Holandesa chega de Amesterdão — mas o governo colonial recusa a sua instalação. Em 1875, o bispo anglicano Steere visita o território. Em 1879, a Junta Americana pede autorização para trabalhar em Gaza: negada. Em 1883, os Metodistas Episcopais chegam a Cabine; em 1885, a Missão Metodista Livre estabelece-se em Inharrime.
+                                Antes disso, missões Metodistas (1823), Anglicanas (1875) e Reformadas enfrentaram a resistência do governo colonial. A liberdade de missionação só se consolidaria após a Conferência de Berlim em 1885.
                             </p>
-                            <p className="hs-reveal text-white/35 text-base leading-relaxed">
-                                Só após a Conferência de Berlim (1884–85), que consagrou a liberdade de missionação protestante em África, as autoridades portuguesas abriram parcialmente as portas. Mas a resistência da Igreja Católica colonial nunca cessaria por completo.
+                            <p className="hs-reveal text-white/50 text-base leading-relaxed">
+                                Em 1958, Lourenço Marques já era um mosaico de fé, com missões de todo o mundo cooperando para espalhar o Evangelho em solo moçambicano.
                             </p>
                         </div>
 
                         <div className="hidden lg:flex lg:col-span-2 flex-col justify-center gap-10 pl-8 border-l border-white/10">
-                            <p className="hs-reveal text-white/20 text-[10px] tracking-[0.35em] uppercase">Moçambique em números</p>
+                            <p className="hs-reveal text-white/20 text-[10px] tracking-[0.35em] uppercase">Marcos Históricos</p>
                             {[
-                                ['43', 'línguas nacionais'],
-                                ['32M', 'habitantes'],
-                                ['1823', 'ano da 1ª missão protestante'],
+                                ['1911', 'Paulo Khosa traz a chama pentecostal'],
+                                ['1823', 'Início da Missão Metodista em LM'],
+                                ['1885', 'Liberdade de missionação (Berlim)'],
                             ].map(([val, label]) => (
                                 <div key={label} className="hs-reveal">
                                     <div className="font-display font-bold text-white leading-[0.85]"
@@ -286,21 +286,17 @@ export default function Historia() {
                                         {val}
                                     </div>
                                     <div className="w-8 h-0.5 my-3" style={{ backgroundColor: 'rgba(255,103,0,0.55)' }} />
-                                    <p className="text-white/35 text-sm">{label}</p>
+                                    <p className="text-white/50 text-sm">{label}</p>
                                 </div>
                             ))}
-                            <p className="hs-reveal text-white/15 text-[10px] tracking-wide leading-relaxed">
-                                Sede da Assembleia de Deus<br/>Lourenço Marques (hoje Maputo)
-                            </p>
                         </div>
                     </div>
                 </section>
 
                 {/* ════════════════════════════════════════════════════════════
-                    CAP. 2 — OS PIONEIROS  (sticky image + scrolling panels)
+                    CAP. 2 — A CHAMA  (Origins in PT and arrival in MZ)
                 ════════════════════════════════════════════════════════════ */}
                 <section className="relative bg-[var(--color-cream)] overflow-hidden">
-                    {/* Ghost chapter number */}
                     <div className="absolute -top-8 -right-8 leading-none font-display font-bold select-none pointer-events-none"
                         style={{ fontSize: 'clamp(14rem,28vw,22rem)', color: 'transparent', WebkitTextStroke: '1.5px rgba(16,20,61,0.05)' }}>
                         02
@@ -309,100 +305,77 @@ export default function Historia() {
                         <div className="flex items-center gap-4 mb-16">
                             <span className="hs-reveal font-mono text-[11px] font-bold text-[var(--color-ink-faint)] tracking-widest">02</span>
                             <div className="hs-reveal h-px flex-1 bg-[var(--color-border)]" />
-                            <span className="hs-reveal font-mono text-[11px] font-bold text-[var(--color-brand-text)] tracking-widest">1911–1946</span>
+                            <span className="hs-reveal font-mono text-[11px] font-bold text-[var(--color-brand-text)] tracking-widest">1908–1946</span>
                         </div>
 
                         <div className="grid lg:grid-cols-2 gap-16 lg:gap-24 items-start">
-
-                            {/* Sticky image column */}
                             <div className="lg:sticky lg:top-24 space-y-5">
                                 <div className="hs-clip-reveal overflow-hidden rounded-2xl shadow-2xl">
                                     <img src="/images/historia/image4.jpeg"
-                                        alt="Primeiros missionários das Assembleias de Deus em Moçambique"
+                                        alt="Família Chawner em 1927"
                                         className="w-full object-cover grayscale" />
                                 </div>
                                 <p className="text-[var(--color-ink-faint)] text-xs text-center tracking-wide italic">
-                                    Primeiros missionários das Assembleias de Deus em Moçambique
+                                    Charles e Emma Chawner à direita e Austin e Carrie à esquerda (1927)
                                 </p>
                             </div>
 
-                            {/* Scrollable text panels */}
                             <div className="space-y-20">
                                 <div>
                                     <div className="overflow-hidden mb-3">
                                         <h2 className="hs-title-line font-display font-semibold text-[var(--color-ink)] leading-tight"
-                                            style={{ fontSize: 'clamp(2.5rem,5vw,3.8rem)' }}>Os Pioneiros</h2>
+                                            style={{ fontSize: 'clamp(2.5rem,5vw,3.8rem)' }}>A Chama</h2>
                                     </div>
                                     <p className="hs-reveal text-[var(--color-brand-text)] font-medium text-lg mb-6">
-                                        As primeiras sementes do Evangelho
+                                        Austin Chawner e os Primeiros Passos
                                     </p>
                                     <p className="hs-reveal text-[var(--color-ink-muted)] text-lg leading-relaxed mb-5">
-                                        A génese do trabalho Pentecostal em Moçambique não começa com missionários estrangeiros, mas com os próprios moçambicanos. Muitos trabalhavam nas minas da África do Sul, onde encontravam o Evangelho Pentecostal. <strong className="text-[var(--color-ink)]">Paulo Khosa</strong>, um jovem Tonga, foi provavelmente o primeiro a trazer a mensagem Pentecostal a Moçambique — em 1911, antes de qualquer estrutura formal de missão.
+                                        A família Chawner chegou à África do Sul em 1908, focando-se inicialmente no povo Zulu. <strong>Austin Chawner</strong>, que tinha apenas seis anos à chegada, cresceria para se tornar o grande obreiro em Moçambique. Em 1926, obteve residência temporária e iniciou o estudo do Português em Lourenço Marques.
                                     </p>
-                                    <p className="hs-reveal text-[var(--color-ink-muted)] text-lg leading-relaxed">
-                                        Nesse mesmo ano, as Assembleias de Deus chegam a Moçambique. São os missionários portugueses —
-                                        <strong className="text-[var(--color-ink)]"> José Augusto Pina</strong> e
-                                        <strong className="text-[var(--color-ink)]"> Joaquim do Cerro</strong> — que trazem a chama pentecostal ao território lusófono.
+                                    <p className="hs-reveal text-[var(--color-ink-muted)] text-lg leading-relaxed mb-5">
+                                        Casou-se com <strong>Ingrid Lokken</strong> em 1934, uma norueguesa corajosa que já trabalhava no país desde 1929 e tinha conseguido o reconhecimento oficial da missão Pentecostal. Juntos, enfrentaram a Concordata de 1940 e as proibições coloniais, estabelecendo igrejas dirigidas por nacionais.
                                     </p>
                                 </div>
 
-                                {/* Austin Chawner */}
                                 <div className="hs-reveal border-l-4 border-[var(--color-brand)]/30 pl-7">
-                                    <p className="text-[var(--color-brand)] font-bold text-xs tracking-widest uppercase mb-3">O Missionário Fundador</p>
-                                    <h3 className="font-display font-semibold text-[var(--color-ink)] text-2xl mb-4">Austin Chawner</h3>
+                                    <p className="text-[var(--color-brand)] font-bold text-xs tracking-widest uppercase mb-3">O Nascimento da Igreja</p>
+                                    <h3 className="font-display font-semibold text-[var(--color-ink)] text-2xl mb-4">7 de Abril de 1946</h3>
                                     <p className="text-[var(--color-ink-muted)] text-base leading-relaxed mb-4">
-                                        Filho de pioneiros canadianos — Charles e Emma Chawner, que chegaram à África do Sul a 12 de Fevereiro de 1908 — Austin nasceu em 1903 no Canadá e cresceu em missão. Ordenado em London, Ontário, regressou a África já como missionário das Assembleias do Canadá. Tornou-se autor, compositor, editor e linguista, dedicando décadas ao povo de Moçambique.
-                                    </p>
-                                    <p className="text-[var(--color-ink-muted)] text-base leading-relaxed mb-4">
-                                        A 3 de Agosto de 1947, Austin Chawner foi nomeado Presidente da Assembleia de Deus de Lourenço Marques — cargo que exerceu até Abril de 1954. Em 1938, o trabalho foi legalmente reconhecido pelo governo português sob a responsabilidade da Assembleia de Deus de Lisboa. A Concordata de 1940 com a Santa Sé voltou a erguer barreiras: vistos negados, exigências absurdas, pedidos que desapareciam nos gabinetes coloniais.
-                                    </p>
-                                    <p className="text-[var(--color-ink-muted)] text-base leading-relaxed">
-                                        Em 1950, proibido oficialmente de trabalhar no país, Austin continuou a entrar ilegalmente — mantendo a obra viva através de cartas e reuniões clandestinas com os obreiros. Ao seu lado trabalharam missionários noruegueses como <strong>Ella Nilsen</strong> e o casal <strong>Olaf e Jenny Sorensen</strong>. Faleceu a 5 de Novembro de 1964, em Durban, atropelado ao sair do seu veículo. A Revista <em>Novas de Alegria</em> escreveu: <em>«Que Deus levante um substituto que possa continuar com a Obra gigantesca que este pioneiro iniciou.»</em>
+                                        A primeira Acta registra o nascimento oficial da Assembleia de Deus em Lourenço Marques para língua portuguesa na Av. Gomes Freire, 159. O que começou com oito membros e trinta assistentes sob a liderança de <strong>Faria Lopes</strong>, logo floresceria com a chegada dos primeiros missionários portugueses.
                                     </p>
                                 </div>
 
-                                {/* Austin Chawner photo */}
                                 <div className="hs-reveal overflow-hidden rounded-2xl border border-[var(--color-border)] shadow-xl">
                                     <LightboxImage
-                                        src="/images/historia/image14.jpeg"
+                                        src="/images/historia/image5.jpeg"
                                         alt="Missionários Austin e Ingrid Chawner, 1934"
                                         className="w-full object-cover grayscale"
-                                        onClick={lb('/images/historia/image14.jpeg', 'Missionários Austin e Ingrid Chawner, 1934')}
+                                        onClick={lb('/images/historia/image5.jpeg', 'Missionários Austin e Ingrid Chawner no dia do casamento, 31 de Dezembro de 1934')}
                                     />
                                     <div className="bg-white px-6 py-4 border-t border-[var(--color-border)]">
                                         <p className="text-[var(--color-ink-faint)] text-xs tracking-wide italic">
-                                            Missionários Austin e Ingrid Chawner — 1934
+                                            Austin e Ingrid Chawner — 1934
                                         </p>
                                     </div>
                                 </div>
 
-                                <div>
-                                    <p className="hs-reveal text-[var(--color-ink-muted)] text-lg leading-relaxed">
-                                        Em 1942, nasce a revista <em>Novas de Alegria</em> — primeiro registo regular da obra em Moçambique. Um ano depois, uma carta de Janeiro de 1943, vinda da Estação de Missão do Maxaquene em Lourenço Marques, confirma: <em className="text-[var(--color-ink)]">a semente germinou</em>.
-                                    </p>
-                                </div>
-
-                                {/* Historical document: Acta Número Um */}
                                 <div className="hs-reveal overflow-hidden rounded-2xl border border-[var(--color-border)] shadow-xl">
                                     <div className="relative">
                                         <LightboxImage
                                             src="/images/historia/image7.jpeg"
                                             alt="Acta Número Um — 7 de Abril de 1946"
                                             className="w-full object-cover max-h-80 object-top"
-                                            onClick={lb('/images/historia/image7.jpeg', 'Acta Número Um — 7 de Abril de 1946')}
+                                            onClick={lb('/images/historia/image7.jpeg', 'Livro de Actas n.1 — Registro do primeiro culto da Assembleia de Deus em LM')}
                                         />
                                         <div className="absolute bottom-0 left-0 right-0 h-16 pointer-events-none"
                                             style={{ background: 'linear-gradient(to top, white, transparent)' }} />
                                     </div>
                                     <div className="bg-white px-7 py-6 border-t border-[var(--color-border)]">
                                         <p className="text-[var(--color-brand-text)] font-bold text-xs tracking-widest uppercase mb-2">
-                                            Acta Número Um
+                                            Documento Histórico
                                         </p>
                                         <p className="text-[var(--color-ink-muted)] text-sm leading-relaxed italic">
-                                            «Aos sete dias do mês de Abril, do ano da Graça de Nosso Senhor Jesus Cristo, de mil novecentos quarenta e seis, realizou-se a primeira Santa Ceia e culto, no salão provisório, na Av. Gomes Freire cento e cinquenta e nove…»
-                                        </p>
-                                        <p className="text-[var(--color-ink-faint)] text-xs mt-3 font-mono">
-                                            Lourenço Marques, 7 de Abril de 1946 · <span className="text-[var(--color-brand-text)]">clique na imagem para ampliar</span>
+                                            «Aos sete dias do mês de Abril, de mil novecentos quarenta e seis, realizou-se a primeira Santa Ceia e culto...»
                                         </p>
                                     </div>
                                 </div>
@@ -412,459 +385,178 @@ export default function Historia() {
                 </section>
 
                 {/* ════════════════════════════════════════════════════════════
-                    CAP. 3 — A PRIMEIRA FAMÍLIA  (beach photo full-bleed)
-                ════════════════════════════════════════════════════════════ */}
-                <section className="relative overflow-hidden" style={{ minHeight: '85vh' }}>
-                    <div className="absolute inset-0">
-                        <img src="/images/historia/image13.jpeg"
-                            alt="Primeira congregação — 21 de Fevereiro de 1947"
-                            className="hs-parallax-img absolute w-full h-[124%] -top-[12%] object-cover object-center grayscale" />
-                        <div className="absolute inset-0"
-                            style={{ background: 'linear-gradient(to top, rgba(16,20,61,0.96) 0%, rgba(16,20,61,0.5) 55%, rgba(16,20,61,0.2) 100%)' }} />
-                    </div>
-
-                    <div className="relative z-10 flex items-end px-6 pb-20" style={{ minHeight: '85vh' }}>
-                        <div className="max-w-7xl mx-auto w-full grid lg:grid-cols-2 gap-16 items-end">
-                            <div>
-                                <div className="flex items-center gap-4 mb-8">
-                                    <span className="hs-reveal font-mono text-[11px] font-bold text-white/30 tracking-widest">03</span>
-                                    <div className="hs-reveal h-px flex-1 bg-white/15" />
-                                    <span className="hs-reveal font-mono text-[11px] font-bold text-[var(--color-brand-light)] tracking-widest">1946–1958</span>
-                                </div>
-                                <div className="overflow-hidden mb-3">
-                                    <h2 className="hs-title-line font-display font-semibold text-white leading-tight"
-                                        style={{ fontSize: 'clamp(2.5rem,5.5vw,4rem)' }}>A Primeira Família</h2>
-                                </div>
-                                <p className="hs-reveal text-[var(--color-brand-light)] font-medium text-lg mb-5">
-                                    21 de Fevereiro de 1947
-                                </p>
-                                <p className="hs-reveal text-white/65 text-lg leading-relaxed max-w-prose mb-5">
-                                    A Igreja nasceu a 7 de Abril de 1946 com oito membros baptizados e trinta assistentes, no salão provisório da Av. Gomes Freire, 159. O irmão <strong>Faria Lopes</strong> era o obreiro mais destacado na liderança daquela pequena Igreja. A irmã <strong>Mariana Barão Medeiros</strong> foi das primeiras a abrir a sua casa, em 1947, para que o Evangelho pudesse soar sem paredes institucionais.
-                                </p>
-                                <p className="hs-reveal text-white/45 text-base leading-relaxed max-w-prose">
-                                    No primeiro domingo de 1947, sete irmãos são baptizados. A 21 de Dezembro, mais seis descem às águas do Índico. Na Escola Dominical — a primeira feita em terras moçambicanas — os irmãos Pina e Cerro ensinam ao lado de Austin Chawner. Em Abril de 1948, Maria Ana da Costa Pires torna-se mais uma das pioneiras baptizadas nesta família que crescia.
-                                </p>
-                            </div>
-
-                            {/* Group congregation inset */}
-                            <div className="hidden lg:block">
-                                <div className="hs-clip-reveal overflow-hidden rounded-2xl shadow-2xl border border-white/10">
-                                    <LightboxImage
-                                        src="/images/historia/image12.jpeg"
-                                        alt="Congregação da Assembleia de Deus, anos 1950"
-                                        className="w-full object-cover grayscale"
-                                        onClick={lb('/images/historia/image12.jpeg', 'Congregação da Assembleia de Deus, anos 1950')}
-                                    />
-                                </div>
-                                <p className="text-white/25 text-xs text-center mt-3 tracking-wide italic">
-                                    Congregação da Assembleia de Deus, anos 1950
-                                </p>
-                            </div>
-                        </div>
-                    </div>
-                </section>
-
-                {/* ════════════════════════════════════════════════════════════
-                    CAP. 3.5 — ÀS MARGENS DO ÍNDICO  (baptisms & growth)
+                    CAP. 3 — CRESCIMENTO E AVIVAMENTO  (50s - 70s)
                 ════════════════════════════════════════════════════════════ */}
                 <section className="bg-white overflow-hidden py-28 px-6">
                     <div className="max-w-7xl mx-auto">
                         <div className="flex items-center gap-4 mb-16">
-                            <span className="hs-reveal font-mono text-[11px] font-bold text-[var(--color-ink-faint)] tracking-widest">03 ½</span>
+                            <span className="hs-reveal font-mono text-[11px] font-bold text-[var(--color-ink-faint)] tracking-widest">03</span>
                             <div className="hs-reveal h-px flex-1 bg-[var(--color-border)]" />
-                            <span className="hs-reveal font-mono text-[11px] font-bold text-[var(--color-brand-text)] tracking-widest">1947–1968</span>
+                            <span className="hs-reveal font-mono text-[11px] font-bold text-[var(--color-brand-text)] tracking-widest">1947–1970</span>
                         </div>
 
                         <div className="grid lg:grid-cols-5 gap-16 lg:gap-24 items-start">
                             <div className="lg:col-span-3">
                                 <div className="overflow-hidden mb-3">
                                     <h2 className="hs-title-line font-display font-semibold text-[var(--color-ink)] leading-tight"
-                                        style={{ fontSize: 'clamp(2.5rem,5vw,3.8rem)' }}>Às Margens do Índico</h2>
+                                        style={{ fontSize: 'clamp(2.5rem,5vw,3.8rem)' }}>Crescimento e Avivamento</h2>
                                 </div>
                                 <p className="hs-reveal text-[var(--color-brand-text)] font-medium text-lg mb-7">
-                                    Baptismos, crescimento e novos templos
+                                    De Lourenço Marques ao Estádio do Sporting
                                 </p>
                                 <p className="hs-reveal text-[var(--color-ink-muted)] text-lg leading-relaxed mb-5">
-                                    As décadas seguintes são marcadas por um crescimento silencioso mas consistente. Na Praia da Polana, os baptismos tornam-se um ritual sagrado — os crentes africanos e europeus descendo juntos às mesmas águas: 1947, 1950, 1955, 1958, 1963, 1966, 1968. Cada cerimónia, um testemunho público da fé que não distinguia raças.
+                                    Em Maio de 1947, após 34 dias de viagem no navio «Niassa», chegaram <strong>José Augusto Pina</strong> e <strong>Joaquim do Cerro</strong>. A chegada destes missionários portugueses impulsionou o trabalho em língua portuguesa, estabelecendo a Escola Dominical e os primeiros baptismos na Praia da Polana.
                                 </p>
                                 <p className="hs-reveal text-[var(--color-ink-muted)] text-lg leading-relaxed mb-5">
-                                    Em Janeiro de 1950, a missionária norueguesa <strong>Jenny Fremmersvik</strong> junta-se a José Augusto Pina na cidade da Beira. Em Inhambane, o missionário <strong>Per Knutsson</strong> reporta um avivamento extraordinário: conversões de 20 a 30 por culto, trabalho activo em cem aldeias, convenção de distrito com 200 delegados e 2000 pessoas no domingo. A obra pentecostal alastrava pelo país.
-                                </p>
-                                <p className="hs-reveal text-[var(--color-ink-muted)] text-lg leading-relaxed mb-5">
-                                    Na Páscoa de 1953, um novo templo é inaugurado em Lourenço Marques e abre-se uma missão em Salisbury, na Rodésia. A 30 de Dezembro de 1956, José Augusto Pina é nomeado Presidente da Assembleia de Deus. Em 1957, a Igreja instala-se no antigo consulado da Grécia — uma casa colonial com jardim e escadaria de pedra, que se torna o novo templo.
+                                    Em 1969, o país viveu um avivamento sem precedentes. No Estádio Coberto do Sporting, mais de 10.000 pessoas reuniram-se numa única noite sob a pregação do evangelista <strong>Dr. Luís Schiliró</strong>. Relatos de curas de cegos, surdos e paralíticos ocuparam as manchetes dos principais jornais coloniais.
                                 </p>
                                 <p className="hs-reveal text-[var(--color-ink-muted)] text-lg leading-relaxed">
-                                    Em 1967, o crescimento é tão expressivo que um passeio da congregação necessita de sete autocarros. A 25 de Dezembro de 1968, trinta e oito irmãos descem às águas em Lourenço Marques. A Igreja já não cabe nos espaços de antes.
+                                    A Igreja instalou-se no antigo consulado da Grécia em 1957, transformando uma mansão colonial no seu principal templo, símbolo da fé que já não cabia nos salões provisórios.
                                 </p>
                             </div>
 
                             <div className="lg:col-span-2 space-y-5">
-                                {/* Baptism photo */}
                                 <div className="hs-clip-reveal overflow-hidden rounded-2xl shadow-xl border border-[var(--color-border)]">
                                     <LightboxImage
-                                        src="/images/historia/image22.jpeg"
-                                        alt="Baptismos na Praia da Polana — Lourenço Marques, 1958"
+                                        src="/images/historia/image16.png"
+                                        alt="Baptismos na Praia da Polana, 1958"
                                         className="w-full object-cover grayscale"
-                                        onClick={lb('/images/historia/image22.jpeg', 'Baptismos na Praia da Polana — Lourenço Marques, 1958')}
+                                        onClick={lb('/images/historia/image16.png', 'Baptismos na Praia da Polana — Lourenço Marques, 1958')}
                                     />
                                     <div className="bg-[var(--color-cream)] px-5 py-4 border-t border-[var(--color-border)]">
                                         <p className="text-[var(--color-ink-faint)] text-xs italic">Baptismos na Praia da Polana, 1958</p>
                                     </div>
                                 </div>
-
-                                {/* Greek consulate building photo */}
-                                <div className="hs-clip-reveal overflow-hidden rounded-2xl shadow-xl border border-[var(--color-border)]">
+                                <div className="hs-clip-reveal overflow-hidden rounded-xl shadow-2xl border border-white/10">
                                     <LightboxImage
-                                        src="/images/historia/image9.jpeg"
-                                        alt="Assembleia de Deus no antigo consulado da Grécia, Lourenço Marques, 1957"
-                                        className="w-full object-cover grayscale"
-                                        onClick={lb('/images/historia/image9.jpeg', 'Assembleia de Deus no antigo consulado da Grécia, Lourenço Marques, 1957')}
+                                        src="/images/historia/image21.jpeg"
+                                        alt="Jornal Notícias, Julho de 1969"
+                                        className="w-full object-cover"
+                                        onClick={lb('/images/historia/image21.jpeg', 'Jornal Notícias, 15 de Julho de 1969 — Relato de curas no Estádio do Sporting')}
                                     />
-                                    <div className="bg-[var(--color-cream)] px-5 py-4 border-t border-[var(--color-border)]">
-                                        <p className="text-[var(--color-ink-faint)] text-xs italic">Igreja no antigo consulado da Grécia, 1957</p>
-                                    </div>
                                 </div>
-
                             </div>
                         </div>
                     </div>
                 </section>
 
                 {/* ════════════════════════════════════════════════════════════
-                    HORIZONTAL TIMELINE — Marcos do crescimento
+                    CAP. 4 — UM HERÓI MOÇAMBICANO  (Laurentino Mulungo)
                 ════════════════════════════════════════════════════════════ */}
-                {/*
-                    Wrapper carries the total scroll distance (height set by JS).
-                    Its bg-ink background fills the space so no blank area shows.
-                    The inner section uses CSS sticky — no GSAP pin spacer needed.
-                */}
-                <div className="hs-timeline-wrapper bg-[var(--color-ink)]">
-                <section className="hs-timeline-section lg:sticky top-0 overflow-hidden bg-[var(--color-ink)]"
-                    style={{ height: '100svh' }}>
-                    {/* Subtle vertical grid texture */}
-                    <div className="absolute inset-0 pointer-events-none"
-                        style={{ backgroundImage: 'repeating-linear-gradient(90deg,transparent,transparent 79px,rgba(255,255,255,0.018) 79px,rgba(255,255,255,0.018) 80px)' }} />
-                    {/* Orange radial glow */}
-                    <div className="absolute bottom-0 left-0 w-[50vw] h-[50vh] pointer-events-none"
-                        style={{ background: 'radial-gradient(ellipse at 0% 100%, rgba(255,103,0,0.12) 0%, transparent 60%)' }} />
+                <section className="bg-[var(--color-ink)] relative overflow-hidden py-32 px-6">
+                    <div className="absolute inset-0 opacity-[0.03] pointer-events-none">
+                        <img src="/images/historia/image38.jpeg" alt="" className="w-full h-full object-cover" aria-hidden="true" />
+                    </div>
 
-                    <div className="h-full flex flex-col relative z-10">
-                        {/* Header */}
-                        <div className="shrink-0 border-b border-white/8"
-                            style={{ padding: '3.5rem max(1.5rem, calc((100vw - 80rem)/2 + 1.5rem)) 1.75rem' }}>
-                            <p className="text-[var(--color-brand-light)] text-[11px] tracking-[0.28em] uppercase mb-4">
-                                1946 — 1968
-                            </p>
-                            <div className="flex items-end justify-between">
-                                <h3 className="font-display font-semibold text-white"
-                                    style={{ fontSize: 'clamp(2rem,4vw,3rem)' }}>
-                                    Marcos do crescimento
-                                </h3>
-                                <span className="hidden lg:block text-white/20 text-[10px] tracking-[0.3em] uppercase select-none pb-1">
-                                    scroll →
-                                </span>
+                    <div className="relative z-10 max-w-7xl mx-auto grid lg:grid-cols-5 gap-16 lg:gap-24 items-start">
+                        <div className="lg:col-span-2 space-y-5">
+                            <div className="hs-clip-reveal overflow-hidden rounded-2xl shadow-2xl">
+                                <LightboxImage
+                                    src="/images/historia/image38.jpeg"
+                                    alt="Pastor Laurentino Mulungo"
+                                    className="w-full object-cover grayscale"
+                                    onClick={lb('/images/historia/image38.jpeg', 'Pastor Laurentino Mulungo — pioneiro e herói da fé')}
+                                />
+                            </div>
+                            <div className="hs-reveal overflow-hidden rounded-xl border border-white/8 shadow-xl">
+                                <LightboxImage
+                                    src="/images/historia/image34.jpeg"
+                                    alt="A famosa mangueira de Tlavane"
+                                    className="w-full object-cover grayscale max-h-52 object-center"
+                                    onClick={lb('/images/historia/image34.jpeg', 'A «famosa» mangueira de Tlavane — onde a pregação de Mulungo ganhava almas')}
+                                />
+                                <div className="px-5 py-4 bg-white/3 border-t border-white/8">
+                                    <p className="text-white/35 text-xs italic">A «famosa» mangueira de Tlavane</p>
+                                </div>
                             </div>
                         </div>
 
-                        {/* Mobile: native swipe. Desktop: GSAP clips via overflow-hidden */}
-                        <div className="flex-1 flex items-center overflow-x-auto lg:overflow-hidden">
-                            <div className="hs-timeline-track relative flex items-start will-change-transform"
-                                style={{
-                                    paddingLeft:   'max(1.5rem, calc((100vw - 80rem)/2 + 1.5rem))',
-                                    paddingRight:  '10rem',
-                                    paddingTop:    '3rem',
-                                    paddingBottom: '3rem',
-                                }}>
-
-                                {/* Continuous line behind all dots */}
-                                <div className="absolute left-0 right-0 h-px pointer-events-none"
-                                    style={{ top: 'calc(3rem + 7px)', backgroundColor: 'rgba(255,255,255,0.1)' }} />
-
-                                {[
-                                    ['1946', 'Acta Nº 1 — 8 membros, 30 assistentes'],
-                                    ['1947', '1ª Escola Dominical em Moçambique'],
-                                    ['1949', 'Expansão à Beira (Pina + Fremmersvik)'],
-                                    ['1951', 'Avivamento em Inhambane (Knutsson)'],
-                                    ['1953', 'Novo templo em LM + missão na Rodésia'],
-                                    ['1956', 'Pina nomeado Presidente da AD'],
-                                    ['1957', 'Novo templo (antigo consulado da Grécia)'],
-                                    ['1967', '7 autocarros para a congregação'],
-                                    ['1968', '38 baptizados no Natal'],
-                                ].map(([year, event], i) => (
-                                    <div key={year} className="shrink-0 w-[320px]">
-                                        {/* Dot */}
-                                        <div className="w-3.5 h-3.5 rounded-full bg-[var(--color-brand)] relative z-10 mb-9"
-                                            style={{ boxShadow: '0 0 0 5px rgba(255,103,0,0.15)' }} />
-                                        {/* Count */}
-                                        <p className="font-mono text-[10px] text-white/20 tracking-[0.3em] uppercase mb-2">
-                                            {String(i + 1).padStart(2, '0')}&nbsp;/&nbsp;09
-                                        </p>
-                                        {/* Year */}
-                                        <p className="font-display font-bold text-white leading-none mb-5"
-                                            style={{ fontSize: 'clamp(3rem,5vw,4.5rem)' }}>
-                                            {year}
-                                        </p>
-                                        {/* Orange rule */}
-                                        <div className="w-8 h-px mb-4"
-                                            style={{ backgroundColor: 'rgba(255,103,0,0.55)' }} />
-                                        {/* Event */}
-                                        <p className="text-white/45 text-sm leading-relaxed"
-                                            style={{ maxWidth: '240px' }}>
-                                            {event}
-                                        </p>
+                        <div className="lg:col-span-3">
+                            <div className="flex items-center gap-4 mb-10">
+                                <span className="hs-reveal font-mono text-[11px] font-bold text-white/20 tracking-widest">04</span>
+                                <div className="hs-reveal h-px flex-1 bg-white/10" />
+                                <span className="hs-reveal font-mono text-[11px] font-bold text-[var(--color-brand-light)] tracking-widest">1920–2006</span>
+                            </div>
+                            <div className="overflow-hidden mb-3">
+                                <h2 className="hs-title-line font-display font-semibold text-white leading-tight"
+                                    style={{ fontSize: 'clamp(2.5rem,5.5vw,4rem)' }}>Um Herói Moçambicano</h2>
+                            </div>
+                            <p className="hs-reveal text-[var(--color-brand-light)] font-medium text-lg mb-7">
+                                Laurentino Mulungo — O Pescador de Homens
+                            </p>
+                            <p className="hs-reveal text-white/60 text-lg leading-relaxed mb-5">
+                                Nascido na Manhiça-Calanga em 1920, Laurentino Mulungo trocou o ofício de pescador de peixe pelo de «pescador de homens» em 1939. Enfrentou oposição familiar severa e a perseguição colonial, sendo chicoteado e preso por pregar na zona da «Tourada».
+                            </p>
+                            <p className="hs-reveal text-white/50 text-lg leading-relaxed mb-5">
+                                Em 1955, fundou a igreja no Bairro do Aeroporto, conhecida como <strong>Tlavane</strong>. Sem templo oficial, os cultos eram realizados debaixo de uma mangueira — hoje um local histórico. Laurentino foi um dos principais rostos da expansão missionária nacional, organizando a juventude e as ligas femininas.
+                            </p>
+                            <p className="hs-reveal text-white/45 text-lg leading-relaxed mb-8">
+                                Em 1975, foi deportado para campos de reeducação em Nampula e Niassa. Lá, transformou a prisão em púlpito, fundando congregações entre os prisioneiros. «Eu não podia passar horas sem testemunhar de Jesus», dizia ele, um homem cuja vida foi marcada por milagres e perseverança inabalável.
+                            </p>
+                            <div className="hs-reveal grid grid-cols-3 gap-3">
+                                {[33, 35, 36, 37].map((n) => (
+                                    <div key={n} className="overflow-hidden rounded-xl border border-white/8 shadow-lg">
+                                        <LightboxImage
+                                            src={`/images/historia/image${n}.jpeg`}
+                                            alt="Laurentino Mulungo em ministério"
+                                            className="w-full h-28 object-cover grayscale"
+                                            onClick={lb(`/images/historia/image${n}.jpeg`, 'Laurentino Mulungo em diferentes momentos do seu ministério')}
+                                        />
                                     </div>
                                 ))}
                             </div>
                         </div>
                     </div>
                 </section>
-                </div>
 
                 {/* ════════════════════════════════════════════════════════════
-                    CAP. 4 — O AVIVAMENTO  (most dramatic section)
+                    CAP. 5 — FOGO SOB PROVA  (Independence and Persecution)
                 ════════════════════════════════════════════════════════════ */}
-                <section className="relative min-h-screen overflow-hidden">
-                    <div className="absolute inset-0">
-                        <img src="/images/historia/image23.jpeg"
-                            alt="Concentração evangelística — Lourenço Marques 1969"
-                            className="hs-parallax-img absolute w-full h-[124%] -top-[12%] object-cover object-center grayscale contrast-110" />
-                        <div className="absolute inset-0 bg-[var(--color-ink)]/80" />
-                        <div className="absolute inset-0"
-                            style={{ background: 'radial-gradient(ellipse at 40% 60%, rgba(255,103,0,0.4) 0%, transparent 65%)' }} />
-                    </div>
-
-                    <div className="relative z-10 min-h-screen flex items-center px-6 py-32">
-                        <div className="max-w-7xl mx-auto w-full">
-                            <div className="flex items-center gap-4 mb-14">
-                                <span className="hs-reveal font-mono text-[11px] font-bold text-white/25 tracking-widest">04</span>
-                                <div className="hs-reveal h-px flex-1 bg-white/10" />
-                                <span className="hs-reveal font-mono text-[11px] font-bold text-[var(--color-brand-light)] tracking-widest">1969</span>
-                            </div>
-
-                            {/* Full-width counter — cinematic moment */}
-                            <div className="hs-reveal text-center border-y border-white/8 py-10 mb-16">
-                                <div className="font-display font-bold leading-none text-white"
-                                    style={{ fontSize: 'clamp(7rem,20vw,16rem)' }}>
-                                    <span className="hs-counter" data-target="10000">0</span>+
-                                </div>
-                                <p className="text-white/30 text-xs tracking-[0.28em] uppercase mt-4">
-                                    pessoas numa única noite · Estádio Coberto do Sporting
-                                </p>
-                            </div>
-
-                            <div className="grid lg:grid-cols-2 gap-16 lg:gap-24 items-start mb-16">
-                                <div>
-                                    <div className="overflow-hidden mb-3">
-                                        <h2 className="hs-title-line font-display font-semibold text-white leading-tight"
-                                            style={{ fontSize: 'clamp(2.8rem,6vw,4.5rem)' }}>O Avivamento</h2>
-                                    </div>
-                                    <p className="hs-reveal text-[var(--color-brand-light)] font-medium text-lg mb-7">
-                                        Lourenço Marques · 1969
-                                    </p>
-                                    <p className="hs-reveal text-white/65 text-lg leading-relaxed mb-5">
-                                        A onda começou em 1968: o pastor <strong>Alfredo Machado</strong> da Assembleia de Deus de Lisboa vem a Moçambique para cultos especiais — um novo templo com capacidade para 300 pessoas é inaugurado na Beira. No Natal, 38 irmãos descem às águas. A maré subia.
-                                    </p>
-                                    <p className="hs-reveal text-white/60 text-lg leading-relaxed mb-5">
-                                        Em João Belo (Xai-Xai), o evangelista brasileiro <strong>Dr. Luís Schiliró</strong> prega perante 400 a 500 pessoas no salão ferroviário — muitas curas, muitas conversões, autoridades governamentais presentes. Em Março de 1969, nove crentes são baptizados na Praia de Sepúlveda.
-                                    </p>
-                                    <p className="hs-reveal text-white/50 text-lg leading-relaxed mb-5">
-                                        Em Julho, em Lourenço Marques, o Estádio Coberto do Sporting fica completamente esgotado — centenas ficam de fora sem conseguir entrar. Cegos vêem, surdos ouvem, paralíticos andam. O jornal <em>Notícias</em> dedica a manchete ao fenómeno.
-                                    </p>
-                                    <p className="hs-reveal text-white/40 text-base leading-relaxed">
-                                        Na Páscoa de 1970, vinte e sete crentes são baptizados na Baía do Espírito Santo em Lourenço Marques. O avivamento continuava a fazer história.
-                                    </p>
-                                </div>
-
-                                <div className="space-y-5">
-                                    {/* Newspaper clipping */}
-                                    <div className="hs-clip-reveal overflow-hidden rounded-xl shadow-2xl border border-white/10 rotate-1 hover:rotate-0 transition-transform duration-500">
-                                        <LightboxImage
-                                            src="/images/historia/image21.jpeg"
-                                            alt="Jornal Notícias, 15 de Julho de 1969"
-                                            className="w-full object-cover"
-                                            onClick={lb('/images/historia/image21.jpeg', 'Jornal Notícias, 15 de Julho de 1969 — «Dizem-se curadas dezenas de pessoas que assistiram à última pregação no Estádio Coberto do Sporting»')}
-                                        />
-                                    </div>
-                                    <p className="text-white/25 text-xs text-center tracking-wide">
-                                        Jornal Notícias · 15 de Julho de 1969 · <span className="text-[var(--color-brand-light)]/60">clique para ampliar</span>
-                                    </p>
-                                </div>
-                            </div>
-
-                            {/* Pull quote */}
-                            <div className="hs-reveal border-l-2 border-[var(--color-brand-light)]/60 pl-8 max-w-3xl">
-                                <p className="font-display text-[clamp(1.4rem,3vw,2rem)] text-white/75 italic leading-relaxed">
-                                    «Dizem-se curadas dezenas de pessoas que assistiram à última pregação no Estádio Coberto do Sporting. Mais de 10 mil pessoas no recinto e centenas delas sem poder entrar.»
-                                </p>
-                                <p className="text-white/30 text-xs mt-4 font-mono tracking-widest">
-                                    Jornal Notícias · 15 de Julho de 1969
-                                </p>
-                            </div>
-                        </div>
-                    </div>
-                </section>
-
-                {/* ════════════════════════════════════════════════════════════
-                    CAP. 5 — A PERSEVERANÇA  (dark, Dino Amade era)
-                ════════════════════════════════════════════════════════════ */}
-                <section className="bg-[var(--color-ink)] relative overflow-hidden py-32 px-6">
-                    {/* Subtle document texture */}
-                    <div className="absolute inset-0 opacity-[0.04] pointer-events-none">
-                        <img src="/images/historia/image8.jpeg" alt="" className="w-full h-full object-cover" aria-hidden="true" />
-                    </div>
-                    <div className="absolute top-0 right-0 bottom-0 w-px bg-white/5" />
-
-                    <div className="relative z-10 max-w-7xl mx-auto grid lg:grid-cols-2 gap-16 lg:gap-24 items-start">
-                        <div>
-                            <div className="flex items-center gap-4 mb-10">
-                                <span className="hs-reveal font-mono text-[11px] font-bold text-white/20 tracking-widest">05</span>
-                                <div className="hs-reveal h-px flex-1 bg-white/10" />
-                                <span className="hs-reveal font-mono text-[11px] font-bold text-[var(--color-brand-light)] tracking-widest">1975–1994</span>
-                            </div>
-                            <div className="overflow-hidden mb-3">
-                                <h2 className="hs-title-line font-display font-semibold text-white leading-tight"
-                                    style={{ fontSize: 'clamp(2.5rem,5.5vw,4rem)' }}>A Perseverança</h2>
-                            </div>
-                            <p className="hs-reveal text-[var(--color-brand-light)] font-medium text-lg mb-7">
-                                Pr. Dino Amade · 1975–1995
-                            </p>
-                            <p className="hs-reveal text-white/60 text-lg leading-relaxed mb-5">
-                                A 30 de Maio de 1975, o templo da Av. Eduardo Mondlane é inaugurado — dias antes da Independência. Logo depois, com a entrada de Samora Machel, começa a perseguição: o Pastor <strong className="text-white">Dino Amade</strong> — convertido do islamismo, primeiro Superintendente Geral formal da Convenção Nacional — assume a responsabilidade pastoral e lidera com coragem inabalável. Os pastores portugueses partem: Pina, José Carlos, Joaquim Leitão e Manuel Joaquim Fernandes vão para a África do Sul e Portugal.
-                            </p>
-                            <p className="hs-reveal text-white/50 text-lg leading-relaxed mb-5">
-                                No tempo da ditadura marxista, vários pastores são presos e colocados em campos de reeducação. Numerosos locais de culto são encerrados. O prédio de catorze andares pertencente à Igreja é nacionalizado em 1976. Em Quelimane, a evangelista <strong className="text-white/70">Júlia Ghandi</strong> realiza um trabalho estupendo, ganhando muitas almas para Cristo. A fé não se rende.
-                            </p>
-                            <p className="hs-reveal text-white/45 text-lg leading-relaxed mb-5">
-                                Em 1981 inicia-se a guerra civil. Cinco milhões de refugiados — entre eles muitos membros da Igreja — espalham-se pelo país. O território fica intransitável. Mas em cada campo de refugiados, a Igreja planta sementes. Em 1985, nasce a Escola Bíblica — com o apoio dos missionários canadianos <strong className="text-white/70">Bill e Linda Mercer</strong>.
-                            </p>
-                            <p className="hs-reveal text-white/40 text-lg leading-relaxed mb-8">
-                                Em 1992, o acordo de paz é assinado. A partir dessa data, a Igreja começa novamente a desenvolver-se e a crescer. A Convenção Nacional teve como Superintendentes Gerais: Dino Amade, Henrique Mugabe, António Inguane, Fernando Bata e Tiago Manhiça. A chama jamais se apagou.
-                            </p>
-
-                            {/* Dino Amade memorial */}
-                            <div className="hs-reveal border border-white/10 rounded-xl p-6 bg-white/3">
-                                <p className="text-[var(--color-brand-light)] text-xs font-bold tracking-widest uppercase mb-2">In memoriam</p>
-                                <p className="text-white/50 text-sm leading-relaxed">
-                                    Pastor Dino Amade faleceu em 20 de Julho de 2015. De forma ética, bíblica e exemplar, fez a passagem do ministério pastoral ao seu sucessor, ao qual deu todo o apoio como um verdadeiro pai na fé. Foi honrado e será sempre lembrado como um herói da fé — glorificou o nome do Senhor durante o seu ministério exercido em tempos muito difíceis.
-                                </p>
-                            </div>
-                        </div>
-
-                        <div className="space-y-6">
-                            <div className="hidden lg:block">
-                                <div className="hs-clip-reveal overflow-hidden rounded-2xl shadow-2xl">
-                                    <LightboxImage
-                                        src="/images/historia/image38.jpeg"
-                                        alt="Igreja reunida em assembleia"
-                                        className="w-full object-cover"
-                                        onClick={lb('/images/historia/image38.jpeg', 'Igreja reunida em assembleia')}
-                                    />
-                                </div>
-                            </div>
-                            <div className="hs-reveal hidden lg:block overflow-hidden rounded-xl border border-white/8 shadow-xl">
-                                <LightboxImage
-                                    src="/images/historia/image63.jpeg"
-                                    alt="Missionários Bill e Linda Mercer — fundadores da Escola Bíblica, 1985"
-                                    className="w-full object-cover max-h-56 object-top"
-                                    onClick={lb('/images/historia/image63.jpeg', 'Missionários Bill e Linda Mercer — fundadores da Escola Bíblica, 1985')}
-                                />
-                                <div className="px-5 py-4 bg-white/4 border-t border-white/8">
-                                    <p className="text-white/40 text-xs tracking-wide italic">
-                                        Missionários canadianos, fundadores da Escola Bíblica (1985) · <span className="text-[var(--color-brand-light)]/50">clique para ampliar</span>
-                                    </p>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </section>
-
-                {/* ════════════════════════════════════════════════════════════
-                    CAP. 5.5 — LAURENTINO MULUNGO  (memorial, dark)
-                ════════════════════════════════════════════════════════════ */}
-                <section className="bg-[var(--color-ink)] border-t border-white/8 overflow-hidden py-28 px-6">
+                <section className="relative overflow-hidden bg-[var(--color-cream)] py-32 px-6">
                     <div className="max-w-7xl mx-auto">
                         <div className="flex items-center gap-4 mb-16">
-                            <span className="hs-reveal font-mono text-[11px] font-bold text-white/20 tracking-widest">05 ½</span>
-                            <div className="hs-reveal h-px flex-1 bg-white/8" />
-                            <span className="hs-reveal font-mono text-[11px] font-bold text-[var(--color-brand-light)] tracking-widest">1920–1975+</span>
+                            <span className="hs-reveal font-mono text-[11px] font-bold text-[var(--color-ink-faint)] tracking-widest">05</span>
+                            <div className="hs-reveal h-px flex-1 bg-[var(--color-border)]" />
+                            <span className="hs-reveal font-mono text-[11px] font-bold text-[var(--color-brand-text)] tracking-widest">1975–1992</span>
                         </div>
 
-                        <div className="grid lg:grid-cols-5 gap-16 lg:gap-24 items-start">
-                            {/* Photos column */}
-                            <div className="lg:col-span-2 space-y-5">
-                                <div className="hs-clip-reveal overflow-hidden rounded-2xl shadow-2xl">
-                                    <LightboxImage
-                                        src="/images/historia/image40.jpeg"
-                                        alt="Pastor Laurentino Mulungo"
-                                        className="w-full object-cover grayscale"
-                                        onClick={lb('/images/historia/image40.jpeg', 'Pastor Laurentino Mulungo — pioneiro moçambicano')}
-                                    />
+                        <div className="grid lg:grid-cols-2 gap-16 lg:gap-24 items-start">
+                            <div>
+                                <div className="overflow-hidden mb-3">
+                                    <h2 className="hs-title-line font-display font-semibold text-[var(--color-ink)] leading-tight"
+                                        style={{ fontSize: 'clamp(2.5rem,5vw,3.8rem)' }}>Fogo sob Prova</h2>
                                 </div>
-                                <p className="text-white/25 text-xs text-center tracking-wide italic">
-                                    Pr. Laurentino Tongonhane Mulungo (1920–?)
+                                <p className="hs-reveal text-[var(--color-brand-text)] font-medium text-lg mb-7">
+                                    Independência e a Travessia do Deserto
                                 </p>
-
-                                {/* The famous mango tree */}
-                                <div className="hs-reveal overflow-hidden rounded-xl border border-white/8 shadow-xl">
-                                    <LightboxImage
-                                        src="/images/historia/image41.jpeg"
-                                        alt="A famosa mangueira de Tlavane — que muitas pregações ouviu e muitas almas viu serem salvas"
-                                        className="w-full object-cover grayscale max-h-52 object-center"
-                                        onClick={lb('/images/historia/image41.jpeg', 'A «famosa» mangueira de Tlavane — que muitas pregações ouviu e muitas almas viu serem salvas')}
-                                    />
-                                    <div className="px-5 py-4 bg-white/3 border-t border-white/8">
-                                        <p className="text-white/35 text-xs italic">A «famosa» mangueira de Tlavane · clique para ampliar</p>
-                                    </div>
-                                </div>
+                                <p className="hs-reveal text-[var(--color-ink-muted)] text-lg leading-relaxed mb-5">
+                                    O templo da Av. Eduardo Mondlane foi inaugurado em 30 de Maio de 1975, poucos dias antes da independência. Com a ascensão do regime marxista, a Igreja enfrentou tempos de hostilidade: numerosos locais de culto foram encerrados e o prédio de 14 andares, património da Igreja, foi nacionalizado em 1976.
+                                </p>
+                                <p className="hs-reveal text-[var(--color-ink-muted)] text-lg leading-relaxed mb-5">
+                                    Sob a liderança do Pastor <strong>Dino Amade</strong> (1976–2015), herói da fé e visionário, a Igreja resistiu à perseguição. Mesmo durante a guerra civil (1981–1992), o Evangelho avançou nos campos de reeducação e entre os refugiados, consolidando a identidade resiliente das Assembleias de Deus.
+                                </p>
+                                <p className="hs-reveal text-[var(--color-ink-muted)] text-lg leading-relaxed">
+                                    Em 1985, com a vinda dos missionários canadianos <strong>Bill e Linda Mercer</strong>, foi implantada a Escola Bíblica, garantindo que o fogo ministerial permanecesse aceso para as gerações futuras.
+                                </p>
                             </div>
 
-                            {/* Text column */}
-                            <div className="lg:col-span-3">
-                                <p className="hs-reveal text-[var(--color-brand-light)] font-bold text-xs tracking-widest uppercase mb-4">
-                                    Em memória de um herói
-                                </p>
-                                <div className="overflow-hidden mb-3">
-                                    <h2 className="hs-title-line font-display font-semibold text-white leading-tight"
-                                        style={{ fontSize: 'clamp(2.5rem,5vw,3.8rem)' }}>Laurentino Mulungo</h2>
+                            <div className="space-y-6">
+                                <div className="hs-clip-reveal overflow-hidden rounded-2xl shadow-2xl border border-[var(--color-border)]">
+                                    <LightboxImage
+                                        src="/images/historia/image30.jpeg"
+                                        alt="Pastor Dino Amade"
+                                        className="w-full object-cover grayscale"
+                                        onClick={lb('/images/historia/image30.jpeg', 'Pastor Muhibo Dino Mussá Amade — Superintendente Geral e visionário da Escola Bíblica')}
+                                    />
                                 </div>
-                                <p className="hs-reveal text-[var(--color-brand-light)] font-medium text-lg mb-7">
-                                    Manhiça-Calanga · 30 de Abril de 1920
-                                </p>
-
-                                <p className="hs-reveal text-white/60 text-lg leading-relaxed mb-5">
-                                    Laurentino Tongonhane Mulungo nasceu na localidade de Chipugue-Mahila, na Manhiça-Calanga. Convertido, tornou-se um dos maiores pilares da Igreja Pentecostal em Moçambique. Pastoreou a congregação de Tlavane (Aeroporto) — onde a sua pregação debaixo da <em className="text-white/80">«famosa mangueira»</em> ganhava almas semana após semana.
-                                </p>
-                                <p className="hs-reveal text-white/50 text-lg leading-relaxed mb-5">
-                                    Com a independência em 1975, foi preso e enviado para os campos de reeducação do regime marxista. Mas o cárcere não o silenciou — dentro do próprio campo, continuou a baptizar crentes. A prisão tornou-se missão.
-                                </p>
-                                <p className="hs-reveal text-white/45 text-lg leading-relaxed mb-8">
-                                    Ordenado ao ministério evangélico em 1956, o seu legado estende-se por décadas de serviço em tempos de guerra, perseguição e calamidade. A obra de Deus, dizia ele, nunca tem fim — só o terá no dia grandioso da Vinda de Jesus Cristo.
-                                </p>
-
-                                {/* Quote block */}
-                                <div className="hs-reveal border-l-2 border-[var(--color-brand-light)]/40 pl-7 mb-10">
-                                    <p className="font-display text-xl text-white/60 italic leading-relaxed">
-                                        «A obra de e para Deus nunca tem fim, só o terá no dia grandioso da Vinda de Jesus Cristo nosso Salvador.»
-                                    </p>
-                                    <p className="text-white/25 text-xs mt-3 font-mono tracking-widest">Pr. Laurentino Mulungo</p>
-                                </div>
-
-                                {/* Photo row */}
-                                <div className="hs-reveal grid grid-cols-3 gap-3">
-                                    {[
-                                        ['/images/historia/image42.jpeg', 'Culto com missionários em Moçambique'],
-                                        ['/images/historia/image43.jpeg', 'Pr. Laurentino Mulungo com a congregação'],
-                                        ['/images/historia/image44.jpeg', 'Outro culto em Tlavane'],
-                                    ].map(([src, alt]) => (
-                                        <div key={src} className="overflow-hidden rounded-xl border border-white/8 shadow-lg">
-                                            <LightboxImage
-                                                src={src}
-                                                alt={alt}
-                                                className="w-full h-28 object-cover grayscale"
-                                                onClick={lb(src, alt)}
-                                            />
-                                        </div>
-                                    ))}
+                                <div className="hs-reveal overflow-hidden rounded-xl border border-[var(--color-border)] shadow-xl">
+                                    <div className="p-8 bg-white">
+                                        <p className="text-[var(--color-brand-text)] font-bold text-xs tracking-widest uppercase mb-4">Legado Ministerial</p>
+                                        <p className="text-[var(--color-ink-muted)] text-sm leading-relaxed italic">
+                                            «O pr. Dino Amade foi honrado e será sempre lembrado como um herói da fé, pois glorificou o nome do Senhor em tempos de perseguição.»
+                                        </p>
+                                        <p className="text-[var(--color-ink-faint)] text-[10px] mt-4 font-mono">1920–2015</p>
+                                    </div>
                                 </div>
                             </div>
                         </div>
@@ -872,31 +564,66 @@ export default function Historia() {
                 </section>
 
                 {/* ════════════════════════════════════════════════════════════
-                    CAP. 6 — O NASCIMENTO  (1995 — cream + split image)
+                    CAP. 6 — A ÚLTIMA VIAGEM  (Mulungo's death)
                 ════════════════════════════════════════════════════════════ */}
-                <section className="relative overflow-hidden bg-white min-h-screen flex items-center">
-                    {/* Right half image */}
+                <section className="bg-white overflow-hidden py-28 px-6">
+                    <div className="max-w-7xl mx-auto">
+                        <div className="flex items-center gap-4 mb-16">
+                            <span className="hs-reveal font-mono text-[11px] font-bold text-[var(--color-ink-faint)] tracking-widest">06</span>
+                            <div className="hs-reveal h-px flex-1 bg-[var(--color-border)]" />
+                            <span className="hs-reveal font-mono text-[11px] font-bold text-[var(--color-brand-text)] tracking-widest">2006</span>
+                        </div>
+
+                        <div className="grid lg:grid-cols-2 gap-16 lg:gap-24 items-center">
+                            <div className="order-2 lg:order-1">
+                                <div className="hs-clip-reveal overflow-hidden rounded-2xl shadow-2xl border border-[var(--color-border)]">
+                                    <img src="/images/historia/image26.jpeg"
+                                        alt="Igreja de Tlavane"
+                                        className="w-full object-cover grayscale" />
+                                </div>
+                                <p className="text-[var(--color-ink-faint)] text-xs text-center mt-4 italic">
+                                    A Igreja de Tlavane — onde Laurentino Mulungo serviu fielmente até à sua partida
+                                </p>
+                            </div>
+
+                            <div className="order-1 lg:order-2">
+                                <div className="overflow-hidden mb-3">
+                                    <h2 className="hs-title-line font-display font-semibold text-[var(--color-ink)] leading-tight"
+                                        style={{ fontSize: 'clamp(2.5rem,5vw,3.8rem)' }}>A Última Viagem</h2>
+                                </div>
+                                <p className="hs-reveal text-[var(--color-brand-text)] font-medium text-lg mb-6">
+                                    10 de Maio de 2006
+                                </p>
+                                <p className="hs-reveal text-[var(--color-ink-muted)] text-lg leading-relaxed mb-5">
+                                    O dia 10 de Maio de 2006 reservava a despedida de um patriarca. O Pastor Mulungo partiu de Maputo para uma viagem missionária ao Chimoio. Na madrugada do dia seguinte, em Muxungwé, um trágico acidente roubou a vida do grande líder e do Pastor Sebastião Livombo.
+                                </p>
+                                <p className="hs-reveal text-[var(--color-ink-muted)] text-lg leading-relaxed">
+                                    O seu funeral, a 15 de Maio de 2006, foi uma das maiores manifestações de fé do país. Como diz o apóstolo Paulo: <em className="text-[var(--color-ink)]">«Combati o bom combate, acabei a carreira, guardei a fé.»</em> O legado de Mulungo permanece vivo em cada congregação e no coração de milhares de moçambicanos.
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                {/* ════════════════════════════════════════════════════════════
+                    CAP. 7 — O NASCIMENTO  (MAO and present)
+                ════════════════════════════════════════════════════════════ */}
+                <section className="relative overflow-hidden bg-[var(--color-cream)] min-h-screen flex items-center">
                     <div className="absolute right-0 top-0 bottom-0 w-1/2 overflow-hidden hidden lg:block">
-                        <img src="/images/historia/image39.jpeg"
-                            alt="Igreja cheia"
+                        <img src="/images/historia/image31.jpeg"
+                            alt="Pastor Luis Manuel de Sousa Jerónimo"
                             className="hs-parallax-img absolute w-full h-[124%] -top-[12%] object-cover" />
                         <div className="absolute inset-0"
-                            style={{ background: 'linear-gradient(to right, white 0%, rgba(255,255,255,0.1) 40%, transparent 100%)' }} />
+                            style={{ background: 'linear-gradient(to right, #f8f6f2 0%, rgba(248,246,242,0.1) 40%, transparent 100%)' }} />
                     </div>
 
                     <div className="relative z-10 w-full px-6 py-32">
                         <div className="max-w-7xl mx-auto">
                             <div className="lg:max-w-[52%]">
                                 <div className="flex items-center gap-4 mb-8">
-                                    <span className="hs-reveal font-mono text-[11px] font-bold text-[var(--color-ink-faint)] tracking-widest">06</span>
+                                    <span className="hs-reveal font-mono text-[11px] font-bold text-[var(--color-ink-faint)] tracking-widest">07</span>
                                     <div className="hs-reveal h-px flex-1 max-w-[120px] bg-[var(--color-border)]" />
-                                    <span className="hs-reveal font-mono text-[11px] font-bold text-[var(--color-brand-text)] tracking-widest">1995</span>
-                                </div>
-
-                                {/* Ghost year */}
-                                <div className="hs-reveal mb-4 leading-none select-none font-display font-bold"
-                                    style={{ fontSize: 'clamp(5rem,14vw,11rem)', color: 'transparent', WebkitTextStroke: '1.5px rgba(255,103,0,0.18)', letterSpacing: '-0.02em' }}>
-                                    1995
+                                    <span className="hs-reveal font-mono text-[11px] font-bold text-[var(--color-brand-text)] tracking-widest">1995–Hoje</span>
                                 </div>
 
                                 <div className="overflow-hidden mb-4">
@@ -907,13 +634,10 @@ export default function Historia() {
                                     Ministério Alfa e Ômega — MAO
                                 </p>
                                 <p className="hs-reveal text-[var(--color-ink-muted)] text-lg leading-relaxed mb-5">
-                                    Da visão do Pastor <strong className="text-[var(--color-ink)]">Luis Manuel de Sousa Jerónimo</strong>, que assume em 1995 a liderança pastoral da obra, nasce o Ministério Alfa e Ômega. Nascido no norte do país — Mueda, Cabo Delgado — convertido em 1966 de família católica, cresceu servindo ao Senhor desde a infância e a juventude. Concluiu o curso Ministerial da Escola Bíblica e o curso Sepoangol, além de formação autodidáctica em Teologia e formação secular em Construção Civil.
+                                    Nascido da visão do Pastor <strong>Luis Manuel de Sousa Jerónimo</strong>, que assumiu em 1995 a liderança pastoral, o Ministério Alfa e Ômega é um dos pilares da IEADM. Luis Jerónimo conduziu a Igreja num período de reconstrução nacional, alcançando todas as províncias e distritos de Moçambique.
                                 </p>
                                 <p className="hs-reveal text-[var(--color-ink-muted)] text-lg leading-relaxed mb-5">
-                                    Ordenado ao pastorado em Novembro de 1988, recebeu a responsabilidade pastoral das mãos do Pastor Dino Amade como um filho na fé. Foi Vice-Presidente do Executivo da Convenção Nacional por mais de cinco anos, Director do Departamento de Doutrina, e Vice-Superintendente Nacional durante dez anos (2000–2010). É professor nos cursos Ministerial e Pastoral, e faz parte do Departamento de Mediação de Conflitos da Convenção.
-                                </p>
-                                <p className="hs-reveal text-[var(--color-ink-muted)] text-lg leading-relaxed">
-                                    Da primeira congregação, um país inteiro espera. Cada aldeia, cada cidade, cada província — o mapa de Moçambique é o mapa da nossa missão.
+                                    Hoje, coexistem 12 Ministérios em comunhão Convencional, servindo mais de um milhão de crentes. A semente plantada pelos pioneiros em 1911 floresceu em 3000 lugares de culto, onde a educação teológica continua sob a direcção do <strong>Pr. Pedro Muianga</strong>.
                                 </p>
                             </div>
                         </div>
@@ -921,12 +645,55 @@ export default function Historia() {
                 </section>
 
                 {/* ════════════════════════════════════════════════════════════
-                    CAP. 7 — HOJE  (packed church + stats)
+                    CAP. 8 — PATRIMÓNIO  (Temple gallery)
+                ════════════════════════════════════════════════════════════ */}
+                <section className="bg-white py-28 px-6 overflow-hidden">
+                    <div className="max-w-7xl mx-auto">
+                        <div className="flex items-center gap-4 mb-16">
+                            <span className="hs-reveal font-mono text-[11px] font-bold text-[var(--color-ink-faint)] tracking-widest">08</span>
+                            <div className="hs-reveal h-px flex-1 bg-[var(--color-border)]" />
+                            <span className="hs-reveal font-mono text-[11px] font-bold text-[var(--color-brand-text)] tracking-widest">Património Histórico</span>
+                        </div>
+
+                        <div className="grid lg:grid-cols-2 gap-16 items-center mb-20">
+                            <div>
+                                <h2 className="hs-reveal font-display font-semibold text-[var(--color-ink)] text-4xl mb-6">Identidade e Legado</h2>
+                                <p className="hs-reveal text-[var(--color-ink-muted)] text-lg leading-relaxed">
+                                    O templo sede na Av. Eduardo Mondlane é um testemunho vivo de décadas de oração. Das fachadas históricas ao prédio de 14 andares, cada detalhe conta a história de uma comunidade que construiu a sua casa sobre a rocha, resistindo ao tempo e às marés da história.
+                                </p>
+                            </div>
+                            <div className="hs-reveal grid grid-cols-2 gap-4">
+                                <div className="rounded-xl overflow-hidden shadow-lg h-64 border border-[var(--color-border)]">
+                                    <LightboxImage src="/images/historia/image43.jpeg" alt="Prédio de 14 andares" className="w-full h-full object-cover grayscale" onClick={lb('/images/historia/image43.jpeg', 'O Prédio de 14 andares pertença da Igreja nacionalizado pelo Governo em 1976')} />
+                                </div>
+                                <div className="rounded-xl overflow-hidden shadow-lg h-64 mt-8 border border-[var(--color-border)]">
+                                    <LightboxImage src="/images/historia/image44.jpeg" alt="Porta Principal" className="w-full h-full object-cover grayscale" onClick={lb('/images/historia/image44.jpeg', 'Porta Principal do Templo na Av. Eduardo Mondlane')} />
+                                </div>
+                            </div>
+                        </div>
+
+                        <div className="hs-reveal grid grid-cols-2 md:grid-cols-4 lg:grid-cols-6 gap-3">
+                            {[45, 46, 47, 48, 49, 50, 51, 52, 53, 54, 55, 56, 57, 58, 59].map((n) => (
+                                <div key={n} className="aspect-square rounded-lg overflow-hidden border border-[var(--color-border)] group">
+                                    <LightboxImage
+                                        src={`/images/historia/image${n}.jpeg`}
+                                        alt={`Detalhe Histórico ${n}`}
+                                        className="w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all duration-500"
+                                        onClick={lb(`/images/historia/image${n}.jpeg`, 'Detalhe histórico do património e infraestrutura do Templo')}
+                                    />
+                                </div>
+                            ))}
+                        </div>
+                    </div>
+                </section>
+
+                {/* ════════════════════════════════════════════════════════════
+                    CAP. 9 — HOJE  (packed church + stats)
                 ════════════════════════════════════════════════════════════ */}
                 <section className="relative min-h-screen overflow-hidden">
                     <div className="absolute inset-0">
                         <img src="/images/historia/image60.jpeg"
-                            alt="Igreja cheia — Convenção Nacional MAO"
+                            alt="90º Aniversário da IEADM — Convenção de 2015"
                             className="hs-parallax-img absolute w-full h-[124%] -top-[12%] object-cover object-center" />
                         <div className="absolute inset-0"
                             style={{ background: 'linear-gradient(to top, rgba(16,20,61,0.97) 0%, rgba(16,20,61,0.65) 50%, rgba(16,20,61,0.35) 100%)' }} />
@@ -935,7 +702,7 @@ export default function Historia() {
                     <div className="relative z-10 flex flex-col justify-between min-h-screen px-6 py-32">
                         <div className="max-w-7xl mx-auto w-full">
                             <div className="flex items-center gap-4 mb-10">
-                                <span className="hs-reveal font-mono text-[11px] font-bold text-white/25 tracking-widest">07</span>
+                                <span className="hs-reveal font-mono text-[11px] font-bold text-white/25 tracking-widest">09</span>
                                 <div className="hs-reveal h-px flex-1 bg-white/10" />
                                 <span className="hs-reveal font-mono text-[11px] font-bold text-[var(--color-brand-light)] tracking-widest">Hoje</span>
                             </div>
@@ -965,7 +732,7 @@ export default function Historia() {
                                             <span className="hs-counter" data-target={target}>0</span>
                                             <span>{suffix}</span>
                                         </div>
-                                        <p className="text-white/40 text-sm mt-3 leading-tight">{label}</p>
+                                        <p className="text-white/55 text-sm mt-3 leading-tight">{label}</p>
                                     </div>
                                 ))}
                             </div>
@@ -982,7 +749,7 @@ export default function Historia() {
                                     ].map(([val, desc]) => (
                                         <div key={val} className="bg-white/5 border border-white/8 rounded-xl p-5">
                                             <p className="font-display font-bold text-white text-3xl mb-2">{val}</p>
-                                            <p className="text-white/35 text-xs leading-snug">{desc}</p>
+                                            <p className="text-white/55 text-xs leading-snug">{desc}</p>
                                         </div>
                                     ))}
                                 </div>
@@ -1012,7 +779,7 @@ export default function Historia() {
                                     <p className="text-white/45 text-sm leading-relaxed">
                                         A nova Sede da Convenção Nacional está em construção a 50 km de Maputo — o coração administrativo e espiritual da IEADM para as décadas que vêm. A Igreja também exerce trabalho activo nas prisões e mantém quatro Escolas Ministeriais e cursos pastorais em Maputo, Gaza e Inhambane.
                                     </p>
-                                    <p className="text-white/30 text-sm leading-relaxed mt-3">
+                                    <p className="text-white/45 text-sm leading-relaxed mt-3">
                                         Cooperam missionários de Portugal, Canadá, Suécia, Brasil e Estados Unidos da América — na área do ensino, da construção de tabernáculos e da obra social.
                                     </p>
                                 </div>
@@ -1033,10 +800,10 @@ export default function Historia() {
                             {/* Col 1 */}
                             <div className="flex flex-col gap-3">
                                 {([
-                                    ['/images/historia/image1.jpeg',  'Congregação — arquivo histórico',        'h-56'],
-                                    ['/images/historia/image5.jpeg',  'Primeiros anos da Igreja',               'h-36'],
-                                    ['/images/historia/image11.jpeg', 'Culto histórico',                        'h-48'],
-                                    ['/images/historia/image17.jpeg', 'Baptismos históricos',                   'h-64'],
+                                    ['/images/historia/image1.jpeg',  'Dedicatória — registro histórico',      'h-56'],
+                                    ['/images/historia/image4.jpeg',  'Família Chawner em 1927',               'h-36'],
+                                    ['/images/historia/image10.jpeg', 'Nomeação da Presidência em 1947',       'h-48'],
+                                    ['/images/historia/image13.jpeg', 'Baptismos na Praia da Polana, 1947',    'h-64'],
                                 ] as const).map(([src, alt, h]) => (
                                     <div key={src} className="hs-reveal overflow-hidden rounded-xl border border-white/8 group">
                                         <LightboxImage src={src} alt={alt}
@@ -1048,10 +815,10 @@ export default function Historia() {
                             {/* Col 2 */}
                             <div className="flex flex-col gap-3 mt-10">
                                 {([
-                                    ['/images/historia/image2.jpeg',  'Missionários pioneiros',                 'h-36'],
-                                    ['/images/historia/image6.jpeg',  'Assembleia histórica',                   'h-64'],
-                                    ['/images/historia/image16.png',  'Imagem de arquivo — MAO',                'h-36'],
-                                    ['/images/historia/image18.jpeg', 'Assembleia da Igreja',                   'h-56'],
+                                    ['/images/historia/image7.jpeg',  'Acta Número Um — 1946',                 'h-36'],
+                                    ['/images/historia/image11.jpeg', 'Livro de Actas n.78 — 1956',            'h-64'],
+                                    ['/images/historia/image19.jpeg', 'Passeio histórico em 1967',             'h-36'],
+                                    ['/images/historia/image63.jpeg', 'Superintendentes Gerais da IEADM',      'h-56'],
                                 ] as const).map(([src, alt, h]) => (
                                     <div key={src} className="hs-reveal overflow-hidden rounded-xl border border-white/8 group">
                                         <LightboxImage src={src} alt={alt}
@@ -1063,10 +830,10 @@ export default function Historia() {
                             {/* Col 3 */}
                             <div className="flex flex-col gap-3">
                                 {([
-                                    ['/images/historia/image3.jpeg',  'Culto em Moçambique',                   'h-40'],
-                                    ['/images/historia/image10.jpeg', 'Congregação de Lourenço Marques',        'h-52'],
-                                    ['/images/historia/image25.jpeg', 'Convenção Nacional',                    'h-36'],
-                                    ['/images/historia/image26.jpeg', 'Liderança da Igreja',                   'h-60'],
+                                    ['/images/historia/image2.jpeg',  'Início do Protestantismo',              'h-40'],
+                                    ['/images/historia/image12.jpeg', 'Primeira Escola Dominical',             'h-52'],
+                                    ['/images/historia/image20.jpeg', 'Chegada do Pr. Machado em 1968',        'h-36'],
+                                    ['/images/historia/image28.jpeg', 'Convite para o novo Templo — 1975',     'h-60'],
                                 ] as const).map(([src, alt, h]) => (
                                     <div key={src} className="hs-reveal overflow-hidden rounded-xl border border-white/8 group">
                                         <LightboxImage src={src} alt={alt}
@@ -1080,18 +847,18 @@ export default function Historia() {
                         {/* Mobile: simple 2-col grid */}
                         <div className="md:hidden grid grid-cols-2 gap-3">
                             {([
-                                ['/images/historia/image1.jpeg', 'Congregação — arquivo histórico'],
-                                ['/images/historia/image2.jpeg', 'Missionários pioneiros'],
-                                ['/images/historia/image3.jpeg', 'Culto em Moçambique'],
-                                ['/images/historia/image5.jpeg', 'Primeiros anos da Igreja'],
-                                ['/images/historia/image6.jpeg', 'Assembleia histórica'],
-                                ['/images/historia/image10.jpeg', 'Congregação de Lourenço Marques'],
-                                ['/images/historia/image11.jpeg', 'Culto histórico'],
-                                ['/images/historia/image16.png', 'Imagem de arquivo — MAO'],
-                                ['/images/historia/image17.jpeg', 'Baptismos históricos'],
-                                ['/images/historia/image18.jpeg', 'Assembleia da Igreja'],
-                                ['/images/historia/image25.jpeg', 'Convenção Nacional'],
-                                ['/images/historia/image26.jpeg', 'Liderança da Igreja'],
+                                ['/images/historia/image1.jpeg', 'Dedicatória — registro histórico'],
+                                ['/images/historia/image4.jpeg', 'Família Chawner em 1927'],
+                                ['/images/historia/image10.jpeg', 'Nomeação da Presidência em 1947'],
+                                ['/images/historia/image13.jpeg', 'Baptismos na Praia da Polana, 1947'],
+                                ['/images/historia/image7.jpeg', 'Acta Número Um — 1946'],
+                                ['/images/historia/image11.jpeg', 'Livro de Actas n.78 — 1956'],
+                                ['/images/historia/image19.jpeg', 'Passeio histórico em 1967'],
+                                ['/images/historia/image63.jpeg', 'Superintendentes Gerais'],
+                                ['/images/historia/image2.jpeg', 'Início do Protestantismo'],
+                                ['/images/historia/image12.jpeg', 'Primeira Escola Dominical'],
+                                ['/images/historia/image20.jpeg', 'Chegada do Pr. Machado em 1968'],
+                                ['/images/historia/image28.jpeg', 'Convite para o novo Templo — 1975'],
                             ] as const).map(([src, alt]) => (
                                 <div key={src} className="hs-reveal overflow-hidden rounded-xl border border-white/8 group">
                                     <LightboxImage src={src} alt={alt}
@@ -1108,9 +875,9 @@ export default function Historia() {
                 ════════════════════════════════════════════════════════════ */}
                 <div className="grid grid-cols-3 h-72 overflow-hidden">
                     {([
-                        ['/images/historia/image39.jpeg', 'Culto na sede central'],
-                        ['/images/historia/image62.jpeg', 'Liderança na Convenção Nacional'],
-                        ['/images/historia/image24.jpeg', 'Oração colectiva'],
+                        ['/images/historia/image39.jpeg', 'Vista parcial da congregação'],
+                        ['/images/historia/image62.jpeg', 'Pastor António Inguane'],
+                        ['/images/historia/image25.jpeg', 'Culto na Missão Suiça'],
                     ] as const).map(([src, alt], i) => (
                         <div key={i} className="relative overflow-hidden group cursor-zoom-in" onClick={lb(src, alt)}
                             role="button" tabIndex={0} onKeyDown={(e) => { if (e.key === 'Enter') lb(src, alt)(); }}>
