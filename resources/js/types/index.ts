@@ -143,6 +143,65 @@ export interface Document {
     published_at: string | null;
 }
 
+export interface SitePageAboutSections {
+    hero_quote?: string | null;
+    hero_reference?: string | null;
+    mission?: string | null;
+    vision?: string | null;
+    timeline?: Array<{ year: string; label: string; desc: string }>;
+    cta_heading?: string | null;
+    cta_body?: string | null;
+    cta_button_label?: string | null;
+    cta_button_href?: string | null;
+}
+
+export interface SitePageHomogeneousGroupSections {
+    scripture_badge?: string | null;
+    scripture_highlights?: Array<{ label: string; url?: string | null }>;
+    key_points?: Array<{ title: string; body: string }>;
+    cta_heading?: string | null;
+    cta_body?: string | null;
+    cta_button_label?: string | null;
+}
+
+export interface SitePageChurchStructureSections {
+    intro_title?: string | null;
+    intro_body?: string | null;
+    blocks?: Array<{
+        type: 'text' | 'image';
+        title: string;
+        body?: string | null;
+        image?: string | null;
+        caption?: string | null;
+    }>;
+}
+
+export interface SitePageSections {
+    about?: SitePageAboutSections;
+    homogeneous_group?: SitePageHomogeneousGroupSections;
+    church_structure?: SitePageChurchStructureSections;
+}
+
+export interface SitePage {
+    id: number;
+    title: string;
+    slug: string;
+    template: 'about' | 'homogeneous_group' | 'church_structure' | string;
+    hero_image: string | null;
+    excerpt: string | null;
+    content: string | null;
+    sections: SitePageSections;
+    whatsapp_number: string | null;
+    is_published: boolean;
+    group_type?: GroupType | null;
+}
+
+export interface SitePageRelatedData {
+    leadership?: Array<{ id: number; name: string; role: string }>;
+    documents?: Document[];
+    groupType?: GroupType | null;
+}
+
 // ── Missions & Social ─────────────────────────────────────────────────────────
 
 export interface Missionary {

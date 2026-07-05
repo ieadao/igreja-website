@@ -137,4 +137,31 @@ class GlobalController extends Controller
             'filters'  => ['province' => $request->province ?? ''],
         ]);
     }
+
+    public function homogeneousGroups(): \Inertia\Response
+    {
+        $groups = \App\Models\HomogeneousGroupType::query()
+            ->orderBy('order')
+            ->get()
+            ->map(function ($group) {
+                // Find if there's a specific SitePage for this group
+                $page = \App\Models\SitePage::where('group_type_id', $group->id)
+                    ->where('is_published', true)
+                    ->first(['id', 'slug', 'hero_image', 'excerpt']);
+
+                return [
+                    'id' => $group->id,
+                    'name' => $group->name,
+                    'acronym' => $group->acronym,
+                    'slug' => $group->slug,
+                    'icon' => $group->icon,
+                    'description' => $group->description,
+                    'page_slug' => $page?->slug,
+                    'hero_image' => $page?->hero_image,
+                    'excerpt' => $page?->excerpt,
+                ];
+            });
+
+        return Inertia::render('HomogeneousGroups', compact('groups'));
+    }
 }

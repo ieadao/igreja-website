@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\ChurchController;
+use App\Http\Controllers\GateController;
 use App\Http\Controllers\ContactController;
 use App\Http\Controllers\DocumentsController;
 use App\Http\Controllers\DonationController;
@@ -12,9 +13,13 @@ use App\Http\Controllers\PartnershipController;
 use App\Http\Controllers\ProvinceController;
 use App\Http\Controllers\RegionController;
 use App\Http\Controllers\SermonController;
+use App\Http\Controllers\SitePageController;
 use App\Http\Controllers\ZoneController;
 use Inertia\Inertia;
 use Illuminate\Support\Facades\Route;
+
+// ── Gate unlock ───────────────────────────────────────────────────────────────
+Route::post('/gate/unlock', [GateController::class, 'unlock'])->name('gate.unlock');
 
 // ── National pages ────────────────────────────────────────────────────────────
 Route::get('/', [GlobalController::class, 'index'])->name('home');
@@ -36,7 +41,7 @@ Route::get('/api/churches', function () {
         ]);
 })->name('api.churches');
 
-Route::get('/sobre',               [GlobalController::class, 'quemSomos'])->name('about');
+Route::get('/sobre',               [SitePageController::class, 'about'])->name('about');
 Route::get('/historia',            [GlobalController::class, 'historia'])->name('history');
 Route::get('/social',              [GlobalController::class, 'social'])->name('social');
 Route::get('/missoes',             [GlobalController::class, 'missoes'])->name('missions');
@@ -47,6 +52,9 @@ Route::post('/parcerias',          [PartnershipController::class, 'store'])->nam
 Route::post('/apoios',             [DonationController::class, 'store'])->name('donation.store');
 
 Route::get('/igrejas',    [GlobalController::class, 'churches'])->name('churches');
+Route::get('/grupos-homogeneos', [GlobalController::class, 'homogeneousGroups'])->name('homogeneous-groups.index');
+Route::get('/grupos-homogeneos/{slug}', [SitePageController::class, 'homogeneousGroup'])->name('homogeneous-groups.show');
+Route::get('/estrutura-da-igreja', [SitePageController::class, 'churchStructure'])->name('church-structure.show');
 Route::get('/noticias',   [NewsController::class, 'index'])->name('news');
 Route::get('/documentos', [DocumentsController::class, 'index'])->name('documents');
 Route::get('/oracao',     fn () => Inertia::render('Prayer'))->name('prayer');
