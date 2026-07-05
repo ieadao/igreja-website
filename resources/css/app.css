@@ -25,6 +25,26 @@
 
     --color-border:       #E4E3EC;
     --color-border-strong:#C4C2D8;
+
+    /* ── shadcn/ui semantic tokens (required for bg-background, bg-card, etc.) */
+    --color-background:          #FAF9F5;
+    --color-foreground:          #10143D;
+    --color-card:                #FFFFFF;
+    --color-card-foreground:     #10143D;
+    --color-popover:             #FFFFFF;
+    --color-popover-foreground:  #10143D;
+    --color-primary:             #FF6700;
+    --color-primary-foreground:  #10143D;
+    --color-secondary:           #FFF3EA;
+    --color-secondary-foreground:#1A1D6B;
+    --color-muted:               #FFF3EA;
+    --color-muted-foreground:    #5A5D8B;
+    --color-accent:              #FFF3EA;
+    --color-accent-foreground:   #10143D;
+    --color-destructive:         #DC2626;
+    --color-destructive-foreground:#FFFFFF;
+    --color-input:               #E4E3EC;
+    --color-ring:                #FF6700;
 }
 
 /* ── shadcn/ui semantic variables ────────────────────────────────────────── */
