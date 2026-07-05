@@ -1,6 +1,6 @@
 import { Head, Link } from '@inertiajs/react';
 import { lazy, Suspense } from 'react';
-import { Phone, Mail, MapPin, User, Clock, ChevronRight } from 'lucide-react';
+import { Phone, Mail, MapPin, User, Clock, ChevronRight, HandCoins } from 'lucide-react';
 import ProvinceLayout from '@/layouts/ProvinceLayout';
 import ProgramsByType from '@/components/church/ProgramsByType';
 import { Badge } from '@/components/ui/badge';
@@ -15,6 +15,13 @@ const TYPE_LABELS: Record<string, string> = {
     congregation: 'Congregação',
 };
 
+const GIVE_CATEGORIES = [
+    { title: 'Dízimo', description: '10% dos rendimentos — base bíblica do sustento da obra' },
+    { title: 'Oferta', description: 'Contribuição livre de adoração e gratidão' },
+    { title: 'Missões', description: 'Apoia directamente os missionários em campo' },
+    { title: 'Intervenção Social', description: 'Financia projectos de impacto comunitário' },
+];
+
 interface Props {
     province: Province;
     church: Church;
@@ -24,6 +31,35 @@ export default function ChurchShow({ province, church }: Props) {
     const base       = `/provincia/${province.slug}`;
     const regionBase = church.region ? `${base}/${church.region.slug}` : base;
     const zoneBase   = church.zone ? `${regionBase}/${church.zone.slug}` : regionBase;
+
+    type GiveMethod = { icon: string; title: string; detail?: string; note?: string };
+
+    const giveMethods: GiveMethod[] = [];
+
+    if (church.mpesa_number) {
+        giveMethods.push({
+            icon: '📱',
+            title: 'M-Pesa',
+            detail: church.mpesa_number,
+            note: church.mpesa_name ? `Titular: ${church.mpesa_name}` : undefined,
+        });
+    }
+    if (church.emola_number) {
+        giveMethods.push({
+            icon: '📲',
+            title: 'e-Mola',
+            detail: church.emola_number,
+            note: church.emola_name ? `Titular: ${church.emola_name}` : undefined,
+        });
+    }
+    if (church.bank_name) {
+        giveMethods.push({
+            icon: '🏦',
+            title: church.bank_name,
+            detail: church.bank_nib ? `NIB: ${church.bank_nib}` : undefined,
+            note: church.bank_account_name ? `Titular: ${church.bank_account_name}` : undefined,
+        });
+    }
 
     const pin: MapPinType | null =
         church.lat && church.lng
@@ -155,6 +191,50 @@ export default function ChurchShow({ province, church }: Props) {
                                 </a>
                             )}
                         </div>
+                    </section>
+                )}
+
+                {/* Give */}
+                {giveMethods.length > 0 && (
+                    <section className="bg-white rounded-2xl border border-border shadow-sm p-6">
+                        <h2 className="font-display text-xl font-bold text-ink mb-5 flex items-center gap-2">
+                            <HandCoins className="w-5 h-5 text-brand-text" /> Dar
+                        </h2>
+
+                        <h3 className="text-sm font-semibold uppercase tracking-wide text-ink-muted mb-3">
+                            Formas de Dar
+                        </h3>
+                        <div className="grid sm:grid-cols-2 gap-4 mb-6">
+                            {GIVE_CATEGORIES.map(cat => (
+                                <div key={cat.title}>
+                                    <p className="font-medium text-ink">{cat.title}</p>
+                                    <p className="text-sm text-ink-muted leading-snug">{cat.description}</p>
+                                </div>
+                            ))}
+                        </div>
+
+                        <div className="grid sm:grid-cols-3 gap-4">
+                            {giveMethods.map(method => (
+                                <div
+                                    key={method.title}
+                                    className="bg-cream rounded-xl p-4 border border-border"
+                                >
+                                    <div className="text-2xl mb-2">{method.icon}</div>
+                                    <h3 className="font-semibold text-ink mb-1">{method.title}</h3>
+                                    {method.detail && (
+                                        <p className="text-sm font-mono text-brand-text mb-1">{method.detail}</p>
+                                    )}
+                                    {method.note && (
+                                        <p className="text-xs text-ink-muted leading-snug">{method.note}</p>
+                                    )}
+                                </div>
+                            ))}
+                        </div>
+                        {church.give_instructions && (
+                            <p className="text-sm text-ink-muted leading-relaxed mt-5 pt-5 border-t border-border">
+                                {church.give_instructions}
+                            </p>
+                        )}
                     </section>
                 )}
 

@@ -77,6 +77,14 @@ export interface Church {
     service_times: { day: string; time: string; label: string }[] | null;
     status: 'active' | 'inactive' | 'plant';
     programs?: ChurchProgram[];
+    mpesa_number: string | null;
+    mpesa_name: string | null;
+    emola_number: string | null;
+    emola_name: string | null;
+    bank_name: string | null;
+    bank_account_name: string | null;
+    bank_nib: string | null;
+    give_instructions: string | null;
 }
 
 // ── Content ───────────────────────────────────────────────────────────────────

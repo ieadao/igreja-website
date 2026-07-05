@@ -12,6 +12,8 @@ class Church extends Model
         'province_id', 'region_id', 'zone_id', 'name', 'slug', 'type',
         'address', 'lat', 'lng', 'pastor_name', 'phone', 'email',
         'service_times', 'status', 'founded_at',
+        'mpesa_number', 'mpesa_name', 'emola_number', 'emola_name',
+        'bank_name', 'bank_account_name', 'bank_nib', 'give_instructions',
     ];
 
     protected $casts = [

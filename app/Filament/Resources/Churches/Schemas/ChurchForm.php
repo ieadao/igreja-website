@@ -10,6 +10,7 @@ use Filament\Forms\Components\Select;
 use Filament\Forms\Components\Textarea;
 use Filament\Forms\Components\TextInput;
 use Filament\Forms\Components\TimePicker;
+use Filament\Schemas\Components\Section;
 use Filament\Schemas\Schema;
 use Illuminate\Database\Eloquent\Builder;
 
@@ -114,6 +115,49 @@ class ChurchForm
                     ->collapsible()
                     ->defaultItems(0)
                     ->columnSpanFull(),
+
+                Section::make('Dar (doações locais)')
+                    ->description('Preencha os métodos que esta igreja aceita para receber donativos. Só os métodos preenchidos aparecem na página pública.')
+                    ->collapsible()
+                    ->columns(2)
+                    ->columnSpanFull()
+                    ->schema([
+                        TextInput::make('mpesa_number')
+                            ->label('Número M-Pesa')
+                            ->tel()
+                            ->maxLength(30),
+
+                        TextInput::make('mpesa_name')
+                            ->label('Titular M-Pesa')
+                            ->maxLength(100),
+
+                        TextInput::make('emola_number')
+                            ->label('Número e-Mola')
+                            ->tel()
+                            ->maxLength(30),
+
+                        TextInput::make('emola_name')
+                            ->label('Titular e-Mola')
+                            ->maxLength(100),
+
+                        TextInput::make('bank_name')
+                            ->label('Banco')
+                            ->maxLength(100),
+
+                        TextInput::make('bank_account_name')
+                            ->label('Titular da conta')
+                            ->maxLength(100),
+
+                        TextInput::make('bank_nib')
+                            ->label('NIB')
+                            ->maxLength(30),
+
+                        Textarea::make('give_instructions')
+                            ->label('Instruções adicionais')
+                            ->placeholder('ex: entregar ao tesoureiro após o culto')
+                            ->rows(3)
+                            ->columnSpanFull(),
+                    ]),
             ]);
     }
 }
