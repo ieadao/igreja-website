@@ -12,7 +12,10 @@ interface Props {
 
 function EventCard({ event }: { event: Event }) {
     return (
-        <div className="bg-white rounded-xl overflow-hidden border border-border hover:shadow-md transition-shadow">
+        <Link
+            href={`/agenda/${event.slug}`}
+            className="block bg-white rounded-xl overflow-hidden border border-border hover:shadow-md transition-shadow"
+        >
             <div className="p-5 flex flex-col gap-3">
                 <div className="flex items-center justify-between">
                     <div className="flex items-center gap-2 text-brand-text">
@@ -36,7 +39,7 @@ function EventCard({ event }: { event: Event }) {
                     </span>
                 )}
             </div>
-        </div>
+        </Link>
     );
 }
 
