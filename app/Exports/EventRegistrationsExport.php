@@ -23,15 +23,15 @@ class EventRegistrationsExport implements FromQuery, WithHeadings, WithMapping, 
 
     public function headings(): array
     {
-        return ['Nome', 'Email', 'Telefone', 'Estado', 'Inscrito em'];
+        return ['Nome', 'Telefone', 'Comprovativo', 'Estado', 'Inscrito em'];
     }
 
     public function map(mixed $row): array
     {
         return [
             $row->name,
-            $row->email ?? '—',
             $row->phone ?? '—',
+            $row->payment_proof ? asset('storage/' . $row->payment_proof) : '—',
             match ($row->status) {
                 'confirmed'  => 'Confirmado',
                 'waitlisted' => 'Lista de espera',

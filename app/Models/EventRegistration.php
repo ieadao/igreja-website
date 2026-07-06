@@ -8,7 +8,7 @@ use Illuminate\Database\Eloquent\Relations\BelongsTo;
 class EventRegistration extends Model
 {
     protected $fillable = [
-        'event_id', 'user_id', 'name', 'email', 'phone', 'status',
+        'event_id', 'user_id', 'name', 'email', 'phone', 'payment_proof', 'status',
     ];
 
     public function event(): BelongsTo

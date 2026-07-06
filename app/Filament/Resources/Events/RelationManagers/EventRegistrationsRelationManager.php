@@ -60,12 +60,17 @@ class EventRegistrationsRelationManager extends RelationManager
                     ->label('Nome')
                     ->searchable(),
 
-                TextColumn::make('email')
-                    ->label('Email')
-                    ->searchable(),
-
                 TextColumn::make('phone')
                     ->label('Telefone'),
+
+                TextColumn::make('payment_proof')
+                    ->label('Comprovativo')
+                    ->formatStateUsing(fn (?string $state) => $state ? 'Ver comprovativo' : '—')
+                    ->url(fn ($record) => $record->payment_proof
+                        ? asset('storage/' . $record->payment_proof)
+                        : null)
+                    ->openUrlInNewTab()
+                    ->color(fn ($record) => $record->payment_proof ? 'primary' : 'gray'),
 
                 TextColumn::make('status')
                     ->badge()

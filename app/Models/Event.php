@@ -11,7 +11,7 @@ class Event extends Model
     protected $fillable = [
         'scope_type', 'scope_id', 'church_id', 'title', 'slug', 'cover_image', 'description', 'type',
         'starts_at', 'ends_at', 'location', 'is_online', 'stream_url',
-        'max_capacity', 'registration_required', 'status',
+        'max_capacity', 'registration_required', 'registrations_open', 'is_paid', 'status',
     ];
 
     protected function casts(): array
@@ -21,6 +21,8 @@ class Event extends Model
             'ends_at'               => 'datetime',
             'is_online'             => 'boolean',
             'registration_required' => 'boolean',
+            'registrations_open'    => 'boolean',
+            'is_paid'               => 'boolean',
         ];
     }
 

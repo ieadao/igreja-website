@@ -122,7 +122,18 @@ class EventForm
                     ->nullable(),
 
                 Toggle::make('registration_required')
-                    ->label('Inscrição obrigatória'),
+                    ->label('Inscrição obrigatória')
+                    ->live(),
+
+                Toggle::make('registrations_open')
+                    ->label('Inscrições abertas')
+                    ->helperText('Desative para encerrar as inscrições deste evento.')
+                    ->default(true)
+                    ->visible(fn ($get) => $get('registration_required')),
+
+                Toggle::make('is_paid')
+                    ->label('Evento pago')
+                    ->helperText('Em eventos pagos, a inscrição exige o envio de um comprovativo de pagamento (PDF ou imagem).'),
 
                 Select::make('status')
                     ->options([

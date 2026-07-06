@@ -105,6 +105,8 @@ export interface Event {
     cover_image: string | null;
     max_capacity: number | null;
     registration_required: boolean;
+    registrations_open: boolean;
+    is_paid: boolean;
     status: 'draft' | 'published' | 'cancelled' | 'completed';
     scope_type: 'national' | 'province';
     scope_id: number | null;

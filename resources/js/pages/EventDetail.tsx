@@ -179,18 +179,29 @@ export default function EventDetail({ event, isRegistered }: Props) {
 
                     {/* Registration CTA */}
                     {!isCancelled && !isPast && event.registration_required && !isRegistered && (
-                        <div className="bg-brand-pale rounded-2xl border border-brand/20 p-6 text-center">
-                            <h2 className="font-display text-xl font-bold text-ink mb-2">Inscrição necessária</h2>
-                            <p className="text-ink-muted text-sm mb-4">
-                                Este evento requer inscrição prévia. Garanta já o seu lugar.
-                            </p>
-                            <Button
-                                onClick={() => setRegistrationOpen(true)}
-                                className="bg-brand hover:bg-brand-dark text-brand-dark hover:text-white px-8"
-                            >
-                                Inscrever-me
-                            </Button>
-                        </div>
+                        event.registrations_open ? (
+                            <div className="bg-brand-pale rounded-2xl border border-brand/20 p-6 text-center">
+                                <h2 className="font-display text-xl font-bold text-ink mb-2">Inscrição necessária</h2>
+                                <p className="text-ink-muted text-sm mb-4">
+                                    {event.is_paid
+                                        ? 'Este evento é pago e requer inscrição prévia com comprovativo de pagamento.'
+                                        : 'Este evento requer inscrição prévia. Garanta já o seu lugar.'}
+                                </p>
+                                <Button
+                                    onClick={() => setRegistrationOpen(true)}
+                                    className="bg-brand hover:bg-brand-dark text-brand-dark hover:text-white px-8"
+                                >
+                                    Inscrever-me
+                                </Button>
+                            </div>
+                        ) : (
+                            <div className="bg-gray-50 border border-border rounded-2xl p-6 text-center">
+                                <h2 className="font-display text-xl font-bold text-ink mb-1">Inscrições encerradas</h2>
+                                <p className="text-ink-muted text-sm">
+                                    As inscrições para este evento já não estão disponíveis.
+                                </p>
+                            </div>
+                        )
                     )}
 
                     {isRegistered && (
@@ -210,6 +221,7 @@ export default function EventDetail({ event, isRegistered }: Props) {
                     </DialogHeader>
                     <EventRegistrationForm
                         eventSlug={event.slug}
+                        isPaid={event.is_paid}
                         onSuccess={() => setRegistrationOpen(false)}
                     />
                 </DialogContent>
