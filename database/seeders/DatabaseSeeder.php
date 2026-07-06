@@ -22,6 +22,13 @@ class DatabaseSeeder extends Seeder
             SitePageSeeder::class,
         ]);
 
+        // Só semeia os menus quando ainda não existem, para não apagar
+        // alterações feitas no menu builder do painel (o MenuSeeder faz
+        // delete de tudo; para repor de propósito: db:seed --class=MenuSeeder)
+        if (\Datlechin\FilamentMenuBuilder\Models\Menu::count() === 0) {
+            $this->call(MenuSeeder::class);
+        }
+
         // firstOrCreate: não reescreve a password se a conta já existir
         $admin = User::firstOrCreate(
             ['email' => 'wiltonbaltazar@gmail.com'],

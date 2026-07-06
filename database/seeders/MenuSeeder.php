@@ -54,7 +54,7 @@ class MenuSeeder extends Seeder
             ['title' => 'A Nossa História',   'url' => '/historia', 'order' => 2],
             ['title' => 'Intervenção Social', 'url' => '/social',   'order' => 3],
             ['title' => 'Missões',            'url' => '/missoes',  'order' => 4],
-            ['title' => 'Média',              'url' => '/media',    'order' => 5],
+            ['title' => 'Mídia',              'url' => '/midia',    'order' => 5],
             ['title' => 'Agenda',             'url' => '/agenda',   'order' => 6],
             ['title' => 'Notícias',           'url' => '/noticias', 'order' => 7],
         ];
@@ -72,7 +72,6 @@ class MenuSeeder extends Seeder
         $estruturaLinks = [
             ['title' => 'Igrejas & Províncias', 'url' => '/igrejas',    'order' => 1],
             ['title' => 'Documentos',           'url' => '/documentos', 'order' => 2],
-            ['title' => 'Parceiros',            'url' => '/parceiros',  'order' => 3],
         ];
         foreach ($estruturaLinks as $link) {
             MenuItem::create(array_merge($link, [
