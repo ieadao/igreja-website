@@ -2,6 +2,7 @@
 
 namespace App\Filament\Resources\Churches\Schemas;
 
+use App\Filament\Forms\Components\MapPicker;
 use App\Models\Region;
 use App\Models\Zone;
 use Filament\Forms\Components\DatePicker;
@@ -64,6 +65,11 @@ class ChurchForm
 
                 TextInput::make('address')
                     ->maxLength(255)
+                    ->columnSpanFull(),
+
+                MapPicker::make('location_map')
+                    ->label('Localização no mapa')
+                    ->helperText('Clique no mapa para marcar a localização da igreja. Pode arrastar o marcador para ajustar.')
                     ->columnSpanFull(),
 
                 TextInput::make('lat')
