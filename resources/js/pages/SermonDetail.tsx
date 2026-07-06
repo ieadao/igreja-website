@@ -46,7 +46,7 @@ export default function SermonDetail({ sermon, related }: Props) {
                 {/* Back link */}
                 <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 pt-6">
                     <Link
-                        href="/media"
+                        href="/midia"
                         className="inline-flex items-center gap-1.5 text-sm text-ink-muted hover:text-brand-text transition-colors"
                     >
                         <ChevronLeft className="w-4 h-4" /> Voltar às pregações

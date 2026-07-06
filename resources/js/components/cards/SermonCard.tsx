@@ -23,7 +23,7 @@ export default function SermonCard({ sermon }: { sermon: Sermon }) {
 
     return (
         <Link
-            href={`/media/${sermon.id}`}
+            href={`/midia/${sermon.id}`}
             className="group block bg-white rounded-xl overflow-hidden border border-border shadow-sm hover:shadow-md transition-shadow"
         >
             <div className="relative aspect-video bg-ink/10 overflow-hidden">

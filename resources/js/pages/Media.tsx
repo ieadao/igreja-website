@@ -35,12 +35,12 @@ export default function Media({ sermons, series, preachers, months, provinces, f
         if (m) params.mes = m;
         if (pr) params.province = pr;
 
-        router.get('/media', params, { preserveState: true, preserveScroll: false });
+        router.get('/midia', params, { preserveState: true, preserveScroll: false });
     }
 
     function clear() {
         setSerie(''); setPregador(''); setScope('all'); setMes(''); setProvince('');
-        router.get('/media', {}, { preserveState: true, preserveScroll: false });
+        router.get('/midia', {}, { preserveState: true, preserveScroll: false });
     }
 
     const hasFilters = serie || pregador || scope !== 'all' || mes || province;

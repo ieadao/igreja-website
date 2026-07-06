@@ -126,7 +126,7 @@ export default function SermonSection({ sermon }: { sermon: Sermon | null }) {
 
                         <div className="mt-8 pt-8 border-t border-white/10">
                             <Link
-                                href="/media"
+                                href="/midia"
                                 className="text-sm font-semibold text-brand-light hover:text-white transition-colors"
                             >
                                 Ver todas as pregações →

@@ -28,7 +28,7 @@ export default function ProvinceSermons({ province, sermons }: Props) {
                         <Mic2 size={48} className="mx-auto text-brand-text mb-4" />
                         <p className="text-ink-muted mb-6">Nenhuma pregação publicada para esta província ainda.</p>
                         <Link
-                            href="/media"
+                            href="/midia"
                             className="inline-flex items-center gap-2 text-brand-text font-medium hover:underline"
                         >
                             Ver todas as pregações nacionais <ArrowRight size={16} />
@@ -45,7 +45,7 @@ export default function ProvinceSermons({ province, sermons }: Props) {
                         <div className="mt-10 pt-6 border-t border-border flex items-center justify-between">
                             <p className="text-sm text-ink-muted">A mostrar as {sermons.length} pregações mais recentes</p>
                             <Link
-                                href={`/media?province=${province.id}`}
+                                href={`/midia?province=${province.id}`}
                                 className="inline-flex items-center gap-1.5 text-sm text-brand-text font-medium hover:underline"
                             >
                                 Ver todas <ArrowRight size={14} />
