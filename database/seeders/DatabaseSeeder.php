@@ -41,10 +41,11 @@ class DatabaseSeeder extends Seeder
         );
         $admin->assignRole('super_admin');
 
-        // Conteúdo de demonstração — só corre em ambiente local, para que
-        // migrate:fresh --seed instale tudo no dev sem poluir a produção.
-        // Em produção, correr um destes de propósito: db:seed --class=...
-        if (app()->environment('local')) {
+        // Conteúdo inicial — corre uma única vez, enquanto a base de dados
+        // ainda não tem igrejas. Depois disso o conteúdo é gerido no painel
+        // e voltar a semear duplicaria eventos/notícias (alguns seeders usam
+        // create()). Para repor de propósito: db:seed --class=...
+        if (\App\Models\Church::count() === 0) {
             $this->call([
                 SampleDataSeeder::class,      // regiões, zonas, igrejas, programas
                 ComprehensiveSeeder::class,   // estrutura + conteúdo por província
