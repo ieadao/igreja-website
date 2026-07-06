@@ -68,10 +68,10 @@ export default function Contact() {
                                 <p className="text-sm">
                                     <span className="text-[var(--color-ink-muted)]">Email: </span>
                                     <a
-                                        href="mailto:geral@alfaomega.org.mz"
+                                        href="mailto:geral@ieadao.org.mz"
                                         className="text-[var(--color-brand-text)] hover:underline"
                                     >
-                                        geral@alfaomega.org.mz
+                                        geral@ieadao.org.mz
                                     </a>
                                 </p>
                                 <p className="text-sm">
