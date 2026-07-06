@@ -14,7 +14,6 @@
 /.zed
 /auth.json
 /node_modules
-/public/build
 /public/fonts-manifest.dev.json
 /public/hot
 /public/storage
@@ -33,3 +32,6 @@ Thumbs.db
 
 # Office temp/lock files
 ~$*
+
+# public/build is intentionally tracked: compiled assets are deployed
+# via git to shared hosting (no node/npm on the server)
