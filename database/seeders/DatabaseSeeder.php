@@ -16,8 +16,13 @@ class DatabaseSeeder extends Seeder
      */
     public function run(): void
     {
+        // Dados essenciais e idempotentes — seguros para produção.
+        // Conteúdo de demonstração (ContentSeeder, MissionsSeeder,
+        // ComprehensiveSeeder, SampleDataSeeder, SupplementalSeeder)
+        // fica de fora: correr explicitamente com db:seed --class=...
         $this->call([
             RolesAndPermissionsSeeder::class,
+            ProvinceSeeder::class,
             HomogeneousGroupTypeSeeder::class,
             SitePageSeeder::class,
         ]);
