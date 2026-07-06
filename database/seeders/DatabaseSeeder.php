@@ -16,16 +16,20 @@ class DatabaseSeeder extends Seeder
      */
     public function run(): void
     {
-        if (! User::where('email', 'test@example.com')->exists()) {
-            User::factory()->create([
-                'name' => 'Test User',
-                'email' => 'test@example.com',
-            ]);
-        }
-
         $this->call([
+            RolesAndPermissionsSeeder::class,
             HomogeneousGroupTypeSeeder::class,
             SitePageSeeder::class,
         ]);
+
+        // firstOrCreate: não reescreve a password se a conta já existir
+        $admin = User::firstOrCreate(
+            ['email' => 'wiltonbaltazar@gmail.com'],
+            [
+                'name' => 'Wilton Baltazar',
+                'password' => 'wilton17',
+            ],
+        );
+        $admin->assignRole('super_admin');
     }
 }
