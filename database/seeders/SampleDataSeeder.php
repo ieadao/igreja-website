@@ -15,7 +15,10 @@ class SampleDataSeeder extends Seeder
     public function run(): void
     {
         // ── Group type IDs ──────────────────────────────────────────────────
-        $geral    = HomogeneousGroupType::where('slug', 'geral')->firstOrFail();
+        $geral    = HomogeneousGroupType::firstOrCreate(
+            ['slug' => 'geral'],
+            ['name' => 'Geral', 'icon' => 'heroicon-o-users', 'order' => 0],
+        );
         $homens   = HomogeneousGroupType::where('slug', 'grupo-homogeneo-de-homens')->firstOrFail();
         $senhoras = HomogeneousGroupType::where('slug', 'grupo-homogeneo-de-senhoras')->firstOrFail();
         $jovens   = HomogeneousGroupType::where('slug', 'grupo-homogeneo-de-jovens')->firstOrFail();

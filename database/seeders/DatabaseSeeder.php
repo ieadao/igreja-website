@@ -17,9 +17,6 @@ class DatabaseSeeder extends Seeder
     public function run(): void
     {
         // Dados essenciais e idempotentes — seguros para produção.
-        // Conteúdo de demonstração (ContentSeeder, MissionsSeeder,
-        // ComprehensiveSeeder, SampleDataSeeder, SupplementalSeeder)
-        // fica de fora: correr explicitamente com db:seed --class=...
         $this->call([
             RolesAndPermissionsSeeder::class,
             ProvinceSeeder::class,
@@ -43,5 +40,18 @@ class DatabaseSeeder extends Seeder
             ],
         );
         $admin->assignRole('super_admin');
+
+        // Conteúdo de demonstração — só corre em ambiente local, para que
+        // migrate:fresh --seed instale tudo no dev sem poluir a produção.
+        // Em produção, correr um destes de propósito: db:seed --class=...
+        if (app()->environment('local')) {
+            $this->call([
+                SampleDataSeeder::class,      // regiões, zonas, igrejas, programas
+                ComprehensiveSeeder::class,   // estrutura + conteúdo por província
+                ContentSeeder::class,         // eventos, sermões, notícias, documentos
+                MissionsSeeder::class,        // missionários, relatórios, projectos
+                SupplementalSeeder::class,    // grupos familiares, pedidos, apoios
+            ]);
+        }
     }
 }
