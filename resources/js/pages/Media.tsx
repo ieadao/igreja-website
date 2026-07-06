@@ -8,15 +8,13 @@ import type { Sermon, PaginatedData, Province } from '@/types';
 interface Props {
     sermons: PaginatedData<Sermon>;
     series: string[];
-    preachers: string[];
     months: string[];
     provinces: Pick<Province, 'id' | 'name'>[];
-    filters: { serie?: string; pregador?: string; scope?: string; mes?: string; province?: string };
+    filters: { serie?: string; scope?: string; mes?: string; province?: string };
 }
 
-export default function Media({ sermons, series, preachers, months, provinces, filters = {} }: Props) {
+export default function Media({ sermons, series, months, provinces, filters = {} }: Props) {
     const [serie, setSerie]       = useState(filters.serie ?? '');
-    const [pregador, setPregador] = useState(filters.pregador ?? '');
     const [scope, setScope]       = useState(filters.scope ?? 'all');
     const [mes, setMes]           = useState(filters.mes ?? '');
     const [province, setProvince] = useState(filters.province ?? '');
@@ -24,13 +22,11 @@ export default function Media({ sermons, series, preachers, months, provinces, f
     function apply(overrides: Record<string, string> = {}) {
         const params: Record<string, string> = {};
         const s   = overrides.serie    ?? serie;
-        const p   = overrides.pregador ?? pregador;
         const sc  = overrides.scope    ?? scope;
         const m   = overrides.mes      ?? mes;
         const pr  = overrides.province ?? province;
 
         if (s) params.serie = s;
-        if (p) params.pregador = p;
         if (sc && sc !== 'all') params.scope = sc;
         if (m) params.mes = m;
         if (pr) params.province = pr;
@@ -39,11 +35,11 @@ export default function Media({ sermons, series, preachers, months, provinces, f
     }
 
     function clear() {
-        setSerie(''); setPregador(''); setScope('all'); setMes(''); setProvince('');
+        setSerie(''); setScope('all'); setMes(''); setProvince('');
         router.get('/midia', {}, { preserveState: true, preserveScroll: false });
     }
 
-    const hasFilters = serie || pregador || scope !== 'all' || mes || province;
+    const hasFilters = serie || scope !== 'all' || mes || province;
 
     function formatMonthLabel(ym: string) {
         const [y, m] = ym.split('-');
@@ -76,15 +72,6 @@ export default function Media({ sermons, series, preachers, months, provinces, f
                     >
                         <option value="">Todas as séries</option>
                         {series.map(s => <option key={s} value={s}>{s}</option>)}
-                    </select>
-
-                    <select
-                        value={pregador}
-                        onChange={e => { setPregador(e.target.value); apply({ pregador: e.target.value }); }}
-                        className="h-9 rounded-md border border-input bg-background px-3 py-1 text-sm focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring"
-                    >
-                        <option value="">Todos os pregadores</option>
-                        {preachers.map(p => <option key={p} value={p}>{p}</option>)}
                     </select>
 
                     <select

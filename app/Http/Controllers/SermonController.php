@@ -16,9 +16,6 @@ class SermonController extends Controller
         if ($request->filled('serie')) {
             $query->where('series', $request->serie);
         }
-        if ($request->filled('pregador')) {
-            $query->where('speaker_name', $request->pregador);
-        }
         if ($request->filled('scope') && $request->scope !== 'all') {
             $query->where('scope_type', $request->scope);
         }
@@ -40,12 +37,6 @@ class SermonController extends Controller
             ->orderBy('series')
             ->pluck('series');
 
-        $preachers = Sermon::where('status', 'published')
-            ->whereNotNull('speaker_name')
-            ->distinct()
-            ->orderBy('speaker_name')
-            ->pluck('speaker_name');
-
         $driver = \DB::getDriverName();
         $monthFormat = $driver === 'sqlite' 
             ? "strftime('%Y-%m', preached_at)" 
@@ -63,10 +54,9 @@ class SermonController extends Controller
         return Inertia::render('Media', [
             'sermons'   => $sermons,
             'series'    => $series,
-            'preachers' => $preachers,
             'months'    => $months,
             'provinces' => $provinces,
-            'filters'   => $request->only(['serie', 'pregador', 'scope', 'mes', 'province']),
+            'filters'   => $request->only(['serie', 'scope', 'mes', 'province']),
         ]);
     }
 
