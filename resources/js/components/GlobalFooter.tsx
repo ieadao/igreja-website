@@ -16,7 +16,7 @@ export default function GlobalFooter() {
                             {/* <span className="font-display text-xl font-semibold text-white">MAO</span> */}
                         </div>
                         <p className="text-sm leading-relaxed text-white/70">
-                            Ministério Alfa e Ômega — levando o Evangelho a todo Moçambique desde 1996.
+                            Ministério Alfa e Ômega — levando o Evangelho a todo Moçambique desde 1995.
                         </p>
                     </div>
 
