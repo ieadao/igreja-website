@@ -35,3 +35,6 @@ Thumbs.db
 
 # public/build is intentionally tracked: compiled assets are deployed
 # via git to shared hosting (no node/npm on the server)
+/public/build
+!public/build/
+!public/build/**
