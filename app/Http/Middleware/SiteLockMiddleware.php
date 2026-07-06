@@ -12,8 +12,9 @@ class SiteLockMiddleware
 {
     public function handle(Request $request, Closure $next): Response
     {
-        // Never lock admin panel or the unlock endpoint itself
-        if ($request->is('admin', 'admin/*', 'gate/unlock')) {
+        // Never lock the admin panel, its Livewire endpoints (Filament's
+        // login/forms POST to livewire*/update) or the unlock endpoint
+        if ($request->is('admin', 'admin/*', 'livewire*', 'gate/unlock')) {
             return $next($request);
         }
 
