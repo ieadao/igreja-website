@@ -16,6 +16,11 @@ class CreateSermon extends CreateRecord
             $data['scope_id']   = auth()->user()->province_id;
         }
 
+        if (auth()->user()?->hasRole('church_editor')) {
+            $data['scope_type'] = 'church';
+            $data['scope_id']   = auth()->user()->church_id;
+        }
+
         return $data;
     }
 }

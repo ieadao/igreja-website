@@ -18,7 +18,14 @@ class EventForm
 {
     public static function configure(Schema $schema): Schema
     {
-        $isAdmin = auth()->user()?->hasAnyRole(['super_admin', 'admin']);
+        $user           = auth()->user();
+        $isAdmin        = $user?->hasAnyRole(['super_admin', 'admin']);
+        $isProvinceUser = $user?->hasAnyRole(['province_manager', 'province_editor']);
+        $isChurchUser   = $user?->hasRole('church_editor') && $user->church_id;
+
+        $scopeChurches = fn ($query) => $query
+            ->when($isChurchUser, fn ($q) => $q->whereKey($user->church_id))
+            ->when($isProvinceUser, fn ($q) => $q->where('province_id', $user->province_id));
 
         return $schema
             ->components([
@@ -87,13 +94,14 @@ class EventForm
 
                 Select::make('church_id')
                     ->label('Local (Igreja)')
-                    ->relationship('church', 'name')
+                    ->relationship('church', 'name', modifyQueryUsing: $scopeChurches)
                     ->searchable()
                     ->preload()
                     ->nullable()
                     ->live()
+                    ->default($isChurchUser ? $user->church_id : null)
                     ->getSearchResultsUsing(
-                        fn (string $search) => Church::active()
+                        fn (string $search) => $scopeChurches(Church::active())
                             ->where('name', 'like', "%{$search}%")
                             ->limit(30)
                             ->pluck('name', 'id')

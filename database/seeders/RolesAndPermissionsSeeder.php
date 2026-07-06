@@ -14,7 +14,7 @@ class RolesAndPermissionsSeeder extends Seeder
         app()[PermissionRegistrar::class]->forgetCachedPermissions();
 
         // Ensure all roles exist
-        $roles = ['super_admin', 'admin', 'province_manager', 'province_editor', 'region_leader', 'pastor', 'missionary', 'viewer'];
+        $roles = ['super_admin', 'admin', 'province_manager', 'province_editor', 'region_leader', 'pastor', 'church_editor', 'missionary', 'viewer'];
         foreach ($roles as $name) {
             Role::firstOrCreate(['name' => $name, 'guard_name' => 'web']);
         }
@@ -24,7 +24,8 @@ class RolesAndPermissionsSeeder extends Seeder
             'Province', 'Region', 'Zone', 'Church', 'HomogeneousGroupType', 'ChurchProgram', 'FamilyGroup', 'Role',
             'Event', 'Sermon', 'News', 'Document',
             'Missionary', 'MissionReport', 'SocialProject',
-            'User', 'ContactRequest', 'PartnershipRequest'
+            'User', 'ContactRequest', 'PartnershipRequest',
+            'AccessCode', 'FinancialSupport', 'SiteLock', 'SitePage'
         ];
         $actions = ['ViewAny', 'View', 'Create', 'Update', 'Delete', 'DeleteAny',
                     'ForceDelete', 'ForceDeleteAny', 'Reorder', 'Replicate', 'Restore', 'RestoreAny'];
@@ -52,6 +53,7 @@ class RolesAndPermissionsSeeder extends Seeder
         // province_ed    R        R       R       R       R       —        —            CRU    CRU     CRU   R     —           —              —              —      —        —
         // region_leader  R        R       CRUD    CRUD    R       —        CRUD         —      —       —     —     —           —              —              —      —        —
         // pastor         R        R       R       R       R       CRUD     CRUD         —      —       —     —     —           —              —              —      —        —
+        // church_editor  —        —       —       R       —       —        —            CRU    CRU     CRU   —     —           —              —              —      —        —   (own church only)
         // missionary     R        R       —       —       R       —        —            —      —       —     —     RU(own)     CRU(own)       —              —      —        —
         // viewer         R        R       R       R       R       —        —            —      —       —     R     —           —              —              —      —        —
 
@@ -68,7 +70,9 @@ class RolesAndPermissionsSeeder extends Seeder
                 // Phase 3 — Missões & Social
                 $crud('Missionary'), $crud('MissionReport'), $crud('SocialProject'),
                 // Phase 4 — Utilizadores & Comunicação
-                $crud('User'), $crud('ContactRequest'), $crud('PartnershipRequest')
+                $crud('User'), $crud('ContactRequest'), $crud('PartnershipRequest'),
+                // Configuração & Financeiro
+                $crud('AccessCode'), $crud('FinancialSupport'), $crud('SiteLock'), $crud('SitePage')
             ),
 
             'province_manager' => array_merge(
@@ -83,7 +87,9 @@ class RolesAndPermissionsSeeder extends Seeder
                 // Phase 3
                 $crud('Missionary'), $crud('MissionReport'), $crud('SocialProject'),
                 // Phase 4
-                $cru('User'), $crud('ContactRequest'), $r('PartnershipRequest')
+                $cru('User'), $crud('ContactRequest'), $r('PartnershipRequest'),
+                // Financeiro (registos limitados à própria província no resource)
+                $crud('FinancialSupport')
             ),
 
             'province_editor' => array_merge(
@@ -108,6 +114,12 @@ class RolesAndPermissionsSeeder extends Seeder
                 $r('Province'), $r('Region'), $r('Zone'), $r('Church'),
                 $r('HomogeneousGroupType'),
                 $crud('ChurchProgram'), $crud('FamilyGroup')
+            ),
+
+            'church_editor' => array_merge(
+                $r('Church'),
+                // Phase 2 — content scoped to own church (see resource getEloquentQuery)
+                $cru('Event'), $cru('Sermon'), $cru('News')
             ),
 
             'missionary' => array_merge(

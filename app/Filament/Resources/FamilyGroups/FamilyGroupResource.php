@@ -10,6 +10,7 @@ use App\Filament\Resources\FamilyGroups\Tables\FamilyGroupsTable;
 use App\Models\FamilyGroup;
 use BackedEnum;
 use Filament\Resources\Resource;
+use Illuminate\Database\Eloquent\Builder;
 use Filament\Schemas\Schema;
 use Filament\Support\Icons\Heroicon;
 use Filament\Tables\Table;
@@ -33,6 +34,33 @@ class FamilyGroupResource extends Resource
     public static function getNavigationGroup(): string|\UnitEnum|null
     {
         return 'Estrutura';
+    }
+
+    public static function getEloquentQuery(): Builder
+    {
+        $query = parent::getEloquentQuery();
+        $user  = auth()->user();
+
+        if (! $user || $user->hasAnyRole(['super_admin', 'admin'])) {
+            return $query;
+        }
+
+        if ($user->hasAnyRole(['province_manager', 'province_editor'])) {
+            return $query->whereHas('church', fn (Builder $q) => $q->where('province_id', $user->province_id));
+        }
+
+        if ($user->hasRole('region_leader')) {
+            return $query->whereHas('church', fn (Builder $q) => $q->where(
+                'region_id',
+                $user->scope_type === 'region' ? $user->scope_id : -1,
+            ));
+        }
+
+        if ($user->church_id) {
+            return $query->where('church_id', $user->church_id);
+        }
+
+        return $query;
     }
 
     public static function form(Schema $schema): Schema

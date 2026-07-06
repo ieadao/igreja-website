@@ -45,6 +45,11 @@ class EventResource extends Resource
                          ->where('scope_id', $user->province_id);
         }
 
+        if ($user?->hasRole('church_editor')) {
+            return $query->where('scope_type', 'church')
+                         ->where('scope_id', $user->church_id);
+        }
+
         return $query;
     }
 
