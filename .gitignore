@@ -30,3 +30,6 @@ Thumbs.db
 /docs/story.docx
 /doc_content.txt
 /doc_with_images.txt
+
+# Office temp/lock files
+~$*
