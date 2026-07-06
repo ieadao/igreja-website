@@ -133,7 +133,11 @@ function EventsSection({ province, events }: { province: Province; events: Event
 
                 <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-4">
                     {events.map(event => (
-                        <div key={event.id} className="bg-cream rounded-xl p-5 flex flex-col gap-3">
+                        <Link
+                            key={event.id}
+                            href={`/agenda/${event.slug}`}
+                            className="bg-cream rounded-xl p-5 flex flex-col gap-3 hover:shadow-md transition-shadow"
+                        >
                             <div className="flex items-center gap-2 text-brand-text">
                                 <Calendar size={16} />
                                 <span className="text-xs font-medium">{formatDate(event.starts_at)}</span>
@@ -148,7 +152,7 @@ function EventsSection({ province, events }: { province: Province; events: Event
                             <span className="text-xs text-brand-text font-medium capitalize bg-brand-pale px-2 py-0.5 rounded-full self-start">
                                 {event.type}
                             </span>
-                        </div>
+                        </Link>
                     ))}
                 </div>
             </div>
