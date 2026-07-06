@@ -2,7 +2,7 @@ import { Link } from '@inertiajs/react';
 
 export default function GlobalFooter() {
     return (
-        <footer className="bg-ink text-white/70 mt-24">
+        <footer className="bg-ink text-white/70">
             <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
                 <div className="grid grid-cols-1  items-center md:grid-cols-4 gap-10">
                     {/* Brand */}
@@ -26,8 +26,9 @@ export default function GlobalFooter() {
                         <ul className="space-y-2.5 text-sm">
                             {[
                                 ['Quem Somos', '/sobre'],
-                                ['Visão & Missão', '/sobre#visao'],
-                                ['Liderança', '/sobre#lideranca'],
+                                ['A Nossa História', '/historia'],
+                                ['Estrutura da Igreja', '/estrutura-da-igreja'],
+                                ['Grupos Homogéneos', '/grupos-homogeneos'],
                                 ['Documentos', '/documentos'],
                             ].map(([label, href]) => (
                                 <li key={href}>
@@ -43,9 +44,9 @@ export default function GlobalFooter() {
                         <ul className="space-y-2.5 text-sm">
                             {[
                                 ['Agenda', '/agenda'],
-                                ['Pregações', '/media'],
+                                ['Mídia', '/midia'],
                                 ['Notícias', '/noticias'],
-                                ['Igrejas', '/igrejas'],
+                                ['Acção Social', '/social'],
                             ].map(([label, href]) => (
                                 <li key={href}>
                                     <Link href={href} className="hover:text-white transition-colors">{label}</Link>
@@ -59,10 +60,11 @@ export default function GlobalFooter() {
                         <h4 className="text-white text-xs font-semibold uppercase tracking-widest mb-4">Conectar</h4>
                         <ul className="space-y-2.5 text-sm">
                             {[
-                                ['Contacto', '/contacto'],
-                                ['Dar', '/dar'],
+                                ['Encontrar uma Igreja', '/igrejas'],
                                 ['Missões', '/missoes'],
                                 ['Oração', '/oracao'],
+                                ['Dar', '/dar'],
+                                ['Contacto', '/contacto'],
                             ].map(([label, href]) => (
                                 <li key={href}>
                                     <Link href={href} className="hover:text-white transition-colors">{label}</Link>
