@@ -9,9 +9,6 @@ class HomogeneousGroupTypeSeeder extends Seeder
 {
     public function run(): void
     {
-        // Limpar tipos anteriores (só correr uma vez em fresh install)
-        HomogeneousGroupType::truncate();
-
         $types = [
             ['name' => 'Grupo Homogéneo de Homens',      'slug' => 'grupo-homogeneo-de-homens',      'icon' => 'heroicon-o-user',             'order' => 1],
             ['name' => 'Grupo Homogéneo de Senhoras',    'slug' => 'grupo-homogeneo-de-senhoras',    'icon' => 'heroicon-o-user-circle',      'order' => 2],
@@ -19,8 +16,10 @@ class HomogeneousGroupTypeSeeder extends Seeder
             ['name' => 'Grupo Homogéneo de Crianças',    'slug' => 'grupo-homogeneo-de-criancas',    'icon' => 'heroicon-o-face-smile',       'order' => 4],
         ];
 
+        // Idempotente: actualiza pelo slug em vez de truncar, para não
+        // quebrar as FKs de church_programs que apontam para esta tabela
         foreach ($types as $type) {
-            HomogeneousGroupType::create($type);
+            HomogeneousGroupType::updateOrCreate(['slug' => $type['slug']], $type);
         }
     }
 }
