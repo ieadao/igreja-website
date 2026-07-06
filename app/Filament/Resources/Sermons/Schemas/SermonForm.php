@@ -8,6 +8,7 @@ use Filament\Forms\Components\FileUpload;
 use Filament\Forms\Components\Select;
 use Filament\Forms\Components\Textarea;
 use Filament\Forms\Components\TextInput;
+use Filament\Forms\Components\Toggle;
 use Filament\Schemas\Schema;
 
 class SermonForm
@@ -90,6 +91,12 @@ class SermonForm
                     ])
                     ->required()
                     ->default('draft'),
+
+                Toggle::make('is_featured')
+                    ->label('Destacar na página inicial')
+                    ->helperText('A pregação publicada mais recente com destaque aparece na página inicial.')
+                    ->default(false)
+                    ->visible($isAdmin),
 
                 Textarea::make('description')
                     ->label('Descrição')

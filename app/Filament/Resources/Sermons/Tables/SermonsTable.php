@@ -5,6 +5,7 @@ namespace App\Filament\Resources\Sermons\Tables;
 use Filament\Actions\BulkActionGroup;
 use Filament\Actions\DeleteBulkAction;
 use Filament\Actions\EditAction;
+use Filament\Tables\Columns\IconColumn;
 use Filament\Tables\Columns\ImageColumn;
 use Filament\Tables\Columns\TextColumn;
 use Filament\Tables\Filters\SelectFilter;
@@ -48,6 +49,11 @@ class SermonsTable
                     ->label('Duração')
                     ->formatStateUsing(fn (?int $state) => $state ? "{$state} min" : '—')
                     ->toggleable(isToggledHiddenByDefault: true),
+
+                IconColumn::make('is_featured')
+                    ->label('Destaque')
+                    ->boolean()
+                    ->sortable(),
 
                 TextColumn::make('status')
                     ->badge()

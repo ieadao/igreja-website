@@ -16,6 +16,17 @@ class GlobalController extends Controller
 {
     public function index(): \Inertia\Response
     {
+        $sermonColumns = ['id', 'title', 'speaker_name', 'series', 'cover_image', 'description', 'video_url', 'audio_url', 'pdf_url', 'duration_minutes', 'preached_at', 'status', 'scope_type', 'scope_id'];
+
+        $sermon = Sermon::where('status', 'published')
+            ->where('is_featured', true)
+            ->latest('preached_at')
+            ->first($sermonColumns)
+            ?? Sermon::where('scope_type', 'national')
+                ->where('status', 'published')
+                ->latest('preached_at')
+                ->first($sermonColumns);
+
         return Inertia::render('Home', [
             'stats' => [
                 'churches'     => Church::where('status', 'active')->count(),
@@ -33,10 +44,7 @@ class GlobalController extends Controller
                 ->orderBy('starts_at')
                 ->limit(3)
                 ->get(['id', 'title', 'slug', 'type', 'starts_at', 'ends_at', 'location', 'is_online', 'registration_required', 'status', 'scope_type', 'scope_id', 'cover_image']),
-            'sermon' => Sermon::where('scope_type', 'national')
-                ->where('status', 'published')
-                ->latest('preached_at')
-                ->first(['id', 'title', 'speaker_name', 'series', 'cover_image', 'description', 'video_url', 'audio_url', 'pdf_url', 'duration_minutes', 'preached_at', 'status', 'scope_type', 'scope_id']),
+            'sermon' => $sermon,
         ]);
     }
 
