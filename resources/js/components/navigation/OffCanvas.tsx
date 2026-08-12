@@ -240,11 +240,11 @@ function ProvinceNav({ province, onClose }: { province: Province; onClose: () =>
                 </ul>
             </div>
 
-            {/* Trocar de província */}
+            {/* Província */}
             {otherProvinces.length > 0 && (
                 <div>
                     <p className="text-xs font-semibold uppercase tracking-widest text-white/50 mb-3">
-                        Trocar de província
+                        Província
                     </p>
                     <ul className="space-y-0.5">
                         {otherProvinces.map((p) => (

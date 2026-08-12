@@ -38,3 +38,5 @@ Thumbs.db
 /public/build
 !public/build/
 !public/build/**
+
+SECURITY-HARDENING-PLAN.md
