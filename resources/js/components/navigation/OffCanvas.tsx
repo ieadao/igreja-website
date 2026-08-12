@@ -199,7 +199,9 @@ function GlobalNav({
 // ── Province nav content ──────────────────────────────────────────────────────
 
 function ProvinceNav({ province, onClose }: { province: Province; onClose: () => void }) {
+    const { provinces } = usePage<SharedProps>().props;
     const base = `/provincia/${province.slug}`;
+    const otherProvinces = provinces.filter((p) => p.slug !== province.slug);
 
     return (
         <div className="space-y-8">
@@ -237,6 +239,28 @@ function ProvinceNav({ province, onClose }: { province: Province; onClose: () =>
                     ))}
                 </ul>
             </div>
+
+            {/* Trocar de província */}
+            {otherProvinces.length > 0 && (
+                <div>
+                    <p className="text-xs font-semibold uppercase tracking-widest text-white/50 mb-3">
+                        Trocar de província
+                    </p>
+                    <ul className="space-y-0.5">
+                        {otherProvinces.map((p) => (
+                            <li key={p.id}>
+                                <Link
+                                    href={`/provincia/${p.slug}`}
+                                    onClick={onClose}
+                                    className="block px-3 py-2.5 rounded-lg text-white/75 hover:text-white hover:bg-white/8 transition-colors"
+                                >
+                                    {p.name}
+                                </Link>
+                            </li>
+                        ))}
+                    </ul>
+                </div>
+            )}
         </div>
     );
 }

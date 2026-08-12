@@ -1,9 +1,10 @@
-import { Link } from '@inertiajs/react';
+import { Link, usePage } from '@inertiajs/react';
 import { useState } from 'react';
-import { Menu } from 'lucide-react';
+import { motion, AnimatePresence } from 'framer-motion';
+import { Menu, ChevronDown } from 'lucide-react';
 import { cn } from '@/lib/utils';
 import OffCanvas from './OffCanvas';
-import type { Province } from '@/types';
+import type { Province, SharedProps } from '@/types';
 
 const DESKTOP_LINKS = [
     { label: 'Eventos', suffix: '/eventos' },
@@ -18,8 +19,11 @@ interface Props {
 }
 
 export default function ProvinceHeader({ province, transparent = false }: Props) {
+    const { provinces } = usePage<SharedProps>().props;
     const [menuOpen, setMenuOpen] = useState(false);
+    const [provincesOpen, setProvincesOpen] = useState(false);
     const base = `/provincia/${province.slug}`;
+    const otherProvinces = provinces.filter((p) => p.slug !== province.slug);
 
     return (
         <>
@@ -70,6 +74,47 @@ export default function ProvinceHeader({ province, transparent = false }: Props)
                                 {link.label}
                             </Link>
                         ))}
+
+                        {otherProvinces.length > 0 && (
+                            <div
+                                className="relative"
+                                onMouseEnter={() => setProvincesOpen(true)}
+                                onMouseLeave={() => setProvincesOpen(false)}
+                            >
+                                <button
+                                    className={cn(
+                                        'text-sm font-medium tracking-wide hover:text-brand-text transition-colors flex items-center gap-1',
+                                        transparent ? 'text-black/85 hover:text-brand' : 'text-ink-muted',
+                                    )}
+                                    aria-haspopup="true"
+                                    aria-expanded={provincesOpen}
+                                >
+                                    Trocar de província
+                                    <ChevronDown className="w-3.5 h-3.5" />
+                                </button>
+                                <AnimatePresence>
+                                    {provincesOpen && (
+                                        <motion.div
+                                            initial={{ opacity: 0, y: 6 }}
+                                            animate={{ opacity: 1, y: 0 }}
+                                            exit={{ opacity: 0, y: 6 }}
+                                            transition={{ duration: 0.15 }}
+                                            className="absolute top-full right-0 mt-2 w-56 bg-white rounded-lg shadow-xl border border-border py-2 z-50"
+                                        >
+                                            {otherProvinces.map((p) => (
+                                                <Link
+                                                    key={p.id}
+                                                    href={`/provincia/${p.slug}`}
+                                                    className="block px-4 py-2.5 text-sm text-ink-muted hover:text-brand-text hover:bg-brand-pale transition-colors"
+                                                >
+                                                    {p.name}
+                                                </Link>
+                                            ))}
+                                        </motion.div>
+                                    )}
+                                </AnimatePresence>
+                            </div>
+                        )}
                     </nav>
 
                     {/* Menu button */}
