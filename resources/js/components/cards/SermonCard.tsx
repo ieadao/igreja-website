@@ -2,24 +2,11 @@ import { Link } from '@inertiajs/react';
 import { Play, Clock, BookOpen } from 'lucide-react';
 import { Badge } from '@/components/ui/badge';
 import { formatDate, storageUrl } from '@/lib/utils';
+import { getYouTubeThumbnail } from '@/lib/youtube';
 import type { Sermon } from '@/types';
 
-function getYouTubeThumbnail(url: string | null): string | null {
-    if (!url) return null;
-    const patterns = [
-        /youtu\.be\/([^?&]+)/,
-        /youtube\.com\/watch\?v=([^&]+)/,
-        /youtube\.com\/embed\/([^?]+)/,
-    ];
-    for (const pattern of patterns) {
-        const match = url.match(pattern);
-        if (match) return `https://img.youtube.com/vi/${match[1]}/hqdefault.jpg`;
-    }
-    return null;
-}
-
 export default function SermonCard({ sermon }: { sermon: Sermon }) {
-    const thumbnail = getYouTubeThumbnail(sermon.video_url) ?? storageUrl(sermon.cover_image);
+    const thumbnail = storageUrl(sermon.cover_image) || getYouTubeThumbnail(sermon.video_url);
 
     return (
         <Link

@@ -5,20 +5,8 @@ import SermonCard from '@/components/cards/SermonCard';
 import { Button } from '@/components/ui/button';
 import { Badge } from '@/components/ui/badge';
 import { formatDate, storageUrl } from '@/lib/utils';
+import { getYouTubeEmbedUrl } from '@/lib/youtube';
 import type { Sermon } from '@/types';
-
-function getYouTubeEmbedUrl(url: string): string | null {
-    const patterns = [
-        /youtu\.be\/([^?&]+)/,
-        /youtube\.com\/watch\?v=([^&]+)/,
-        /youtube\.com\/embed\/([^?]+)/,
-    ];
-    for (const pattern of patterns) {
-        const match = url.match(pattern);
-        if (match) return `https://www.youtube.com/embed/${match[1]}?rel=0`;
-    }
-    return null;
-}
 
 interface Props {
     sermon: Sermon;
@@ -26,7 +14,7 @@ interface Props {
 }
 
 export default function SermonDetail({ sermon, related }: Props) {
-    const embedUrl = sermon.video_url ? getYouTubeEmbedUrl(sermon.video_url) : null;
+    const embedUrl = getYouTubeEmbedUrl(sermon.video_url);
     const coverUrl = storageUrl(sermon.cover_image);
 
     function shareWhatsApp() {

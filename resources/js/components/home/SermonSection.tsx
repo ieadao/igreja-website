@@ -1,21 +1,13 @@
 import { Link } from '@inertiajs/react';
 import { BookOpen, Download, Headphones, PlayCircle } from 'lucide-react';
 import { formatDate, storageUrl } from '@/lib/utils';
+import { getYouTubeThumbnail } from '@/lib/youtube';
 import type { Sermon } from '@/types';
-
-function extractYouTubeId(url: string | null): string | null {
-    if (!url) return null;
-    const match = url.match(/(?:youtu\.be\/|youtube\.com\/(?:embed\/|v\/|watch\?v=))([\w-]{11})/);
-    return match ? match[1] : null;
-}
 
 export default function SermonSection({ sermon }: { sermon: Sermon | null }) {
     if (!sermon) return null;
 
-    const youtubeId = extractYouTubeId(sermon.video_url);
-    const thumbnail = youtubeId
-        ? `https://img.youtube.com/vi/${youtubeId}/maxresdefault.jpg`
-        : storageUrl(sermon.cover_image);
+    const thumbnail = storageUrl(sermon.cover_image) || getYouTubeThumbnail(sermon.video_url, 'maxresdefault');
 
     return (
         <section className="py-20 bg-ink">
