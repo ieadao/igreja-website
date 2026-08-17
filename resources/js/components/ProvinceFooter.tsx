@@ -36,7 +36,7 @@ export default function ProvinceFooter({ province }: { province: Province }) {
                     </div>
 
                     <div>
-                        <h4 className="text-white text-xs font-semibold uppercase tracking-widest mb-4">MAO Nacional</h4>
+                        <h4 className="text-white text-xs font-semibold uppercase tracking-widest mb-4">IEADAO</h4>
                         <ul className="space-y-2.5 text-sm">
                             {[
                                 ['Site Nacional',       '/'],

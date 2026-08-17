@@ -1,7 +1,7 @@
 import { Link, usePage } from '@inertiajs/react';
 import { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { Menu, ChevronDown } from 'lucide-react';
+import { Menu, ChevronDown, ArrowLeft } from 'lucide-react';
 import { cn } from '@/lib/utils';
 import OffCanvas from './OffCanvas';
 import type { Province, SharedProps } from '@/types';
@@ -62,6 +62,17 @@ export default function ProvinceHeader({ province, transparent = false }: Props)
 
                     {/* Desktop nav */}
                     <nav className="hidden lg:flex items-center gap-7">
+                        <Link
+                            href="/"
+                            className={cn(
+                                'flex items-center gap-1.5 text-sm font-medium tracking-wide hover:text-brand-text transition-colors',
+                                transparent ? 'text-black/85 hover:text-brand' : 'text-ink-muted',
+                            )}
+                        >
+                            <ArrowLeft className="w-3.5 h-3.5" />
+                            Site Nacional
+                        </Link>
+
                         {DESKTOP_LINKS.map((link) => (
                             <Link
                                 key={link.suffix}
@@ -101,12 +112,6 @@ export default function ProvinceHeader({ province, transparent = false }: Props)
                                             transition={{ duration: 0.15 }}
                                             className="absolute top-full right-0 mt-2 w-56 bg-white rounded-lg shadow-xl border border-border py-2 z-50"
                                         >
-                                            <Link
-                                                href="/"
-                                                className="block px-4 py-2.5 text-sm font-medium text-ink-muted hover:text-brand-text hover:bg-brand-pale transition-colors border-b border-border mb-1 pb-3"
-                                            >
-                                                ← Site Nacional
-                                            </Link>
                                             {otherProvinces.map((p) => (
                                                 <Link
                                                     key={p.id}

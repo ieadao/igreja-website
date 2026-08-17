@@ -1,6 +1,6 @@
 import { Link, usePage } from '@inertiajs/react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { X } from 'lucide-react';
+import { X, ArrowLeft } from 'lucide-react';
 import type { Province, SharedProps } from '@/types';
 
 
@@ -100,13 +100,7 @@ export default function OffCanvas(props: Props) {
                         {/* Footer CTA */}
                         <div className="px-6 pb-8 pt-4 border-t border-white/10">
                             {props.mode === 'province' ? (
-                                <Link
-                                    href="/"
-                                    onClick={onClose}
-                                    className="text-sm text-white/60 hover:text-white/90 transition-colors"
-                                >
-                                    ← MAO Nacional
-                                </Link>
+                            <></>
                             ) : (
                                 <a
                                     href="https://wa.me/258840000000"
@@ -207,6 +201,16 @@ function ProvinceNav({ province, onClose }: { province: Province; onClose: () =>
         <div className="space-y-8">
             {/* Main links */}
             <ul className="space-y-0.5">
+                <li>
+                    <Link
+                        href="/"
+                        onClick={onClose}
+                        className="flex items-center gap-2 px-3 py-2.5 rounded-lg text-white/75 hover:text-white hover:bg-white/8 transition-colors font-medium border-b border-white/10 mb-1 pb-3.5"
+                    >
+                        <ArrowLeft className="w-4 h-4" />
+                        Site Nacional
+                    </Link>
+                </li>
                 {PROVINCE_MAIN.map((item) => (
                     <li key={item.suffix}>
                         <Link
